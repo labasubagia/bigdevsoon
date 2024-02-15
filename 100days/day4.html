@@ -1,0 +1,262 @@
+<!-- COPY TO YOUR LOCAL TO MAKE THE MAP WORK -->
+
+<html>
+
+<head>
+  <!-- Our unique tag to identify the solution -->
+  <bds />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BigDevSoon Challenge</title>
+
+  <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Add your external script links here, if any -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+
+  <!-- leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="true" />
+
+
+  <style>
+    .poppins-thin {
+      font-family: "Poppins", sans-serif;
+      font-weight: 100;
+      font-style: normal;
+    }
+
+    .poppins-thin-italic {
+      font-family: "Poppins", sans-serif;
+      font-weight: 100;
+      font-style: italic;
+    }
+
+    .poppins-extralight {
+      font-family: "Poppins", sans-serif;
+      font-weight: 200;
+      font-style: normal;
+    }
+
+    .poppins-extralight-italic {
+      font-family: "Poppins", sans-serif;
+      font-weight: 200;
+      font-style: italic;
+    }
+
+    .poppins-light {
+      font-family: "Poppins", sans-serif;
+      font-weight: 300;
+      font-style: normal;
+    }
+
+    .poppins-light-italic {
+      font-family: "Poppins", sans-serif;
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    .poppins-regular {
+      font-family: "Poppins", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .poppins-regular-italic {
+      font-family: "Poppins", sans-serif;
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    .poppins-medium {
+      font-family: "Poppins", sans-serif;
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    .poppins-medium-italic {
+      font-family: "Poppins", sans-serif;
+      font-weight: 500;
+      font-style: italic;
+    }
+
+    .poppins-semibold {
+      font-family: "Poppins", sans-serif;
+      font-weight: 600;
+      font-style: normal;
+    }
+
+    .poppins-semibold-italic {
+      font-family: "Poppins", sans-serif;
+      font-weight: 600;
+      font-style: italic;
+    }
+
+    .poppins-bold {
+      font-family: "Poppins", sans-serif;
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    .poppins-bold-italic {
+      font-family: "Poppins", sans-serif;
+      font-weight: 700;
+      font-style: italic;
+    }
+
+    .poppins-extrabold {
+      font-family: "Poppins", sans-serif;
+      font-weight: 800;
+      font-style: normal;
+    }
+
+    .poppins-extrabold-italic {
+      font-family: "Poppins", sans-serif;
+      font-weight: 800;
+      font-style: italic;
+    }
+
+    .poppins-black {
+      font-family: "Poppins", sans-serif;
+      font-weight: 900;
+      font-style: normal;
+    }
+
+    .poppins-black-italic {
+      font-family: "Poppins", sans-serif;
+      font-weight: 900;
+      font-style: italic;
+    }
+
+
+    /* leaflet */
+    .leaflet-popup {
+      padding: 10px 10px 10px 10px;
+      min-width: 400px;
+      position: absolute;
+      z-index: 1000 !important;
+    }
+
+    .leaflet-popup .leaflet-popup-close-button {
+      display: none !important;
+    }
+
+    .leaflet-popup .leaflet-popup-content-wrapper {
+      background: #ec4899;
+      color: white;
+    }
+
+    .leaflet-popup .leaflet-popup-tip-container .leaflet-popup-tip {
+      background: #ec4899;
+    }
+
+    .leaflet-popup-content p {
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body class="poppins-regular relative">
+
+  <!-- bg map -->
+  <div id="map" class="h-screen w-screen z-0"></div>
+
+
+  <!-- bg-color -->
+  <div class="bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500 opacity-30 z-20 w-screen h-screen fixed top-0 left-0">
+  </div>
+
+  <!-- page -->
+  <div class="fixed top-0 left-0 w-screen h-screen flex z-30 p-20 pb-32 justify-around bg-black bg-opacity-20">
+
+    <!-- left -->
+    <div class="text-white">
+      <p class="text-5xl mb-6 poppins-bold">Contact Us</p>
+      <p class="text-xl poppins-semibold leading-8">
+        Get in touch us! Whether you have question feedback <br>
+        or just want to say hello <br>
+        we're here for you.
+      </p>
+    </div>
+
+    <!-- right from -->
+    <div class="text-gray-600 bg-white rounded-xl p-12 w-[500px] h-[750px] flex flex-col justify-between">
+
+      <!-- form input -->
+      <div>
+        <p class="text-xl mb-6 poppins-semibold">Send Us Message</p>
+
+        <div class="mb-4">
+          <input type="text" class="p-3 border border-2 rounded-lg min-w-full" placeholder="Name">
+        </div>
+
+        <div class="mb-4">
+          <input type="text" class="p-3 border border-2 rounded-lg min-w-full" placeholder="Email">
+        </div>
+
+        <div class="mb-8">
+          <input type="text" class="p-3 border border-2 rounded-lg min-w-full" placeholder="Phone">
+        </div>
+
+        <div class="mb-4">
+          <p class="mb-4">Preferred contact method of communication</p>
+          <div class="flex gap-4">
+            <div>
+              <input class="cursor-pointer" type="radio" checked name="contact" id="email"> Email
+            </div>
+            <div>
+              <input class="cursor-pointer" type="radio" name="contact" id="phone"> Phone
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <textarea class="border border-2 min-w-full p-3 rounded-lg min-h-[150px]" placeholder="Message"></textarea>
+        </div>
+
+      </div>
+
+      <!-- submit -->
+      <button class="w-full p-3 bg-pink-500 text-white rounded-lg hover:bg-indigo-500 transition ease-out duraiton-300">Submit</button>
+    </div>
+  </div>
+
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- map settings -->
+  <script>
+    var Jawg_Dark = L.tileLayer('https://tile.jawg.io/jawg-dark/{z}/{x}/{y}{r}.png?access-token={accessToken}', {
+      attribution: '<a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      minZoom: 0,
+      maxZoom: 22,
+      accessToken: 'PyTJUlEU1OPJwCJlW1k0NC8JIt2CALpyuj7uc066O7XbdZCjWEL3WYJIk6dnXtps'
+    });
+
+    const map = L.map('map', {
+      zoomControl: false,
+      attributionControl: false
+    }).setView([51.5, -0.03], 17);
+    Jawg_Dark.addTo(map)
+
+    const marker = L.marker([51.499, -0.0355]).addTo(map);
+
+    const popup = L.popup({
+      closeOnClick: false,
+      autoClose: false
+    }).setContent(
+      `<div>
+        <p class="text-lg poppins-semibold">Windler, Lockman and McClure</p>
+        <p class="poppins-regular text-lg">3629 N Cole Rd, Boise, Illinois</p>
+      </div>`
+    )
+    marker.bindPopup(popup).openPopup();
+  </script>
+
+</body>
+
+
+</html>
