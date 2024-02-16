@@ -2,7 +2,7 @@
 
 <head>
   <!-- Our unique tag to identify the solution -->
-  <bds/>
+  <bds>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BigDevSoon Challenge</title>
@@ -126,46 +126,23 @@
   </style>
 </head>
 
-<body class="poppons-regular flex w-screen h-screen">
+<body class="">
+  <div class="poppons-regular flex w-full h-screen">
+    <!-- left -->
+    <div class="h-screen bg-[url(https://www.littlesugarsnaps.com/wp-content/uploads/2019/06/Coconut-Iced-Coffee-1584.jpg)] bg-cover">
 
-  <!-- left -->
-  <div class="h-screen bg-[url(https://www.littlesugarsnaps.com/wp-content/uploads/2019/06/Coconut-Iced-Coffee-1584.jpg)] bg-cover">
-
-    <div class="flex flex-col justify-between h-screen">
-      <div></div>
-      <div class="grid grid-cols-2 mb-8 text-white">
-        <div class="bg-black uppercase text-xl p-2 px-5">
-          SWEET ICED COFFEE WITH COCONUT MILK
+      <div class="flex flex-col justify-between h-screen">
+        <div></div>
+        <div class="grid grid-cols-2 mb-8 text-white">
+          <div class="bg-black uppercase text-xl p-2 px-5">
+            SWEET ICED COFFEE WITH COCONUT MILK
+          </div>
+          <div class=""></div>
         </div>
-        <div class=""></div>
       </div>
     </div>
-  </div>
 
-  <!-- right -->
-  <div class="p-20 relative">
-
-    <!-- head -->
-    <!-- <div>
-
-      <div class="flex gap-3">
-        <div class="flex gap-2">
-          <i data-lucide="star" class="h-5 w-5 text-yellow-500 fill-yellow-500"></i>
-          <i data-lucide="star" class="h-5 w-5 text-yellow-500 fill-yellow-500"></i>
-          <i data-lucide="star" class="h-5 w-5 text-yellow-500 fill-yellow-500"></i>
-          <i data-lucide="star" class="h-5 w-5 text-yellow-500 fill-yellow-500"></i>
-          <i data-lucide="star" class="h-5 w-5 text-yellow-500"></i>
-        </div>
-        <p class="text-sm poppins-semibold">(150)</p>
-      </div>
-
-      <p class="text-5xl poppins-bold mt-5">
-        Sweet Iced Coffee With Coconut Milk
-      </p>
-
-    </div> -->
-
-    <div class="grid grid-cols-7 fixed left-0 top-8">
+    <div class="grid grid-cols-7 absolute left-0 top-8">
       <div class="col-span-2"></div>
 
       <div class="col-span-3 bg-white p-5">
@@ -188,85 +165,110 @@
       <div class="col-span-2"></div>
     </div>
 
-    <!-- indicator -->
-    <div class="mt-[150px] flex gap-10">
+    <!-- right -->
+    <div class="p-20 relative">
 
-      <div class="flex gap-2">
-        <i data-lucide="timer" class="w-10 h-10"></i>
-        <div>
-          <p class="uppercase poppins-bold">total time</p>
-          <p class="poppins-semibold text-yellow-500">10 minutes</p>
+      <!-- head -->
+      <!-- <div>
+
+        <div class="flex gap-3">
+          <div class="flex gap-2">
+            <i data-lucide="star" class="h-5 w-5 text-yellow-500 fill-yellow-500"></i>
+            <i data-lucide="star" class="h-5 w-5 text-yellow-500 fill-yellow-500"></i>
+            <i data-lucide="star" class="h-5 w-5 text-yellow-500 fill-yellow-500"></i>
+            <i data-lucide="star" class="h-5 w-5 text-yellow-500 fill-yellow-500"></i>
+            <i data-lucide="star" class="h-5 w-5 text-yellow-500"></i>
+          </div>
+          <p class="text-sm poppins-semibold">(150)</p>
+        </div>
+
+        <p class="text-5xl poppins-bold mt-5">
+          Sweet Iced Coffee With Coconut Milk
+        </p>
+
+      </div> -->
+
+      <!-- indicator -->
+      <div class="mt-[150px] flex gap-10">
+
+        <div class="flex gap-2">
+          <i data-lucide="timer" class="w-10 h-10"></i>
+          <div>
+            <p class="uppercase poppins-bold">total time</p>
+            <p class="poppins-semibold text-yellow-500">10 minutes</p>
+          </div>
+        </div>
+
+        <div class="flex gap-2">
+          <i data-lucide="award" class="w-10 h-10"></i>
+          <div>
+            <p class="uppercase poppins-bold">level</p>
+            <p class="poppins-semibold text-yellow-500">medium</p>
+          </div>
+        </div>
+
+        <div class="flex gap-2">
+          <i data-lucide="wallet" class="w-10 h-10"></i>
+          <div>
+            <p class="uppercase poppins-bold">budget</p>
+            <p class="poppins-semibold text-yellow-500">under $2</p>
+          </div>
         </div>
       </div>
 
-      <div class="flex gap-2">
-        <i data-lucide="award" class="w-10 h-10"></i>
-        <div>
-          <p class="uppercase poppins-bold">level</p>
-          <p class="poppins-semibold text-yellow-500">medium</p>
-        </div>
+      <!-- desc -->
+      <div class="poppins-semibold-italic mt-8">
+        <p>
+          Sweet Iced Coffee with coconut milk is easy to make and stores well in the fridge.
+        </p>
+        <p>
+          Make a large batch and save yourself a few trips to the coffee shop.
+        </p>
       </div>
 
-      <div class="flex gap-2">
-        <i data-lucide="wallet" class="w-10 h-10"></i>
-        <div>
-          <p class="uppercase poppins-bold">budget</p>
-          <p class="poppins-semibold text-yellow-500">under $2</p>
-        </div>
-      </div>
-    </div>
+      <!-- ingredients -->
+      <div class="mt-8">
+        <p class="text-xl uppercase poppins-semibold">ingredients</p>
 
-    <!-- desc -->
-    <div class="poppins-semibold-italic mt-8">
-      <p>
-        Sweet Iced Coffee with coconut milk is easy to make and stores well in the fridge.
-      </p>
-      <p>
-        Make a large batch and save yourself a few trips to the coffee shop.
-      </p>
-    </div>
+        <div class="mt-4">
 
-    <!-- ingredients -->
-    <div class="mt-8">
-      <p class="text-xl uppercase poppins-semibold">ingredients</p>
+          <div class="flex items-center mb-4 gap-2">
+            <input type="checkbox" checked value="" class="w-5 h-5 rounded text-white accent-yellow-500">
+            <label>3 tablespoon Espresso coffee powder</label>
+          </div>
 
-      <div class="mt-4">
+          <div class="flex items-center mb-4 gap-2">
+            <input type="checkbox" value="" class="w-5 h-5 rounded text-white accent-yellow-500">
+            <label>1 cup of the boil water</label>
+          </div>
 
-        <div class="flex items-center mb-4 gap-2">
-          <input type="checkbox" checked value="" class="w-5 h-5 rounded text-white accent-yellow-500">
-          <label>3 tablespoon Espresso coffee powder</label>
-        </div>
+          <div class="flex items-center mb-4 gap-2">
+            <input type="checkbox" value="" class="w-5 h-5 rounded text-white accent-yellow-500">
+            <label> 1 cup of Coconut milk</label>
+          </div>
 
-        <div class="flex items-center mb-4 gap-2">
-          <input type="checkbox" value="" class="w-5 h-5 rounded text-white accent-yellow-500">
-          <label>1 cup of the boil water</label>
-        </div>
+          <div class="flex items-center mb-4 gap-2">
+            <input type="checkbox" value="" class="w-5 h-5 rounded text-white accent-yellow-500">
+            <label>3 tablespoon Espresso coffee powder</label>
+          </div>
 
-        <div class="flex items-center mb-4 gap-2">
-          <input type="checkbox" value="" class="w-5 h-5 rounded text-white accent-yellow-500">
-          <label> 1 cup of Coconut milk</label>
-        </div>
-
-        <div class="flex items-center mb-4 gap-2">
-          <input type="checkbox" value="" class="w-5 h-5 rounded text-white accent-yellow-500">
-          <label>3 tablespoon Espresso coffee powder</label>
         </div>
 
       </div>
 
-    </div>
+      <!-- instructions -->
+      <div class="mt-10">
+        <p class="text-xl uppercase poppins-semibold">instructions</p>
+        <ol class="list-decimal flex flex-col gap-3 pl-4 mt-4">
+          <li>boil some water and let it sit for 1-2 minutes</li>
+          <li>put the coffee grounds into cafetiere and pour in the water</li>
+          <li>let the Coffee steep for 5 minutes then slowly press down the plunger on your cafetiere</li>
+          <li>pour the coffee into a jug, allow to cool then chill for several hour</li>
+          <li>whisk in the coconut milk and condensed milk and serve over plenty of ice</li>
+          <li>The coffee can be stored in the fridge for up to 5 days. Shake or stir again before serving</li>
+        </ol>
+      </div>
 
-    <!-- instructions -->
-    <div class="mt-10">
-      <p class="text-xl uppercase poppins-semibold">instructions</p>
-      <ol class="list-decimal flex flex-col gap-3 pl-4 mt-4">
-        <li>boil some water and let it sit for 1-2 minutes</li>
-        <li>put the coffee grounds into cafetiere and pour in the water</li>
-        <li>let the Coffee steep for 5 minutes then slowly press down the plunger on your cafetiere</li>
-        <li>pour the coffee into a jug, allow to cool then chill for several hour</li>
-        <li>whisk in the coconut milk and condensed milk and serve over plenty of ice</li>
-        <li>The coffee can be stored in the fridge for up to 5 days. Shake or stir again before serving</li>
-      </ol>
     </div>
 
   </div>
