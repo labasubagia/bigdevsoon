@@ -1,6 +1,6 @@
 // just for vscode extensions
 module.exports = {
-  content: ['./src/**/*.{html}'],
+  content: ['./**/*.{html}'],
   theme: {},
   plugins: [],
 }
