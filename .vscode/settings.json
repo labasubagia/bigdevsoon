@@ -1,7 +1,15 @@
 {
-    "cSpell.words": [
-        "extralight",
-        "lucide",
-        "Zhang"
-    ]
+  "cSpell.words": [
+    "extralight",
+    "lucide",
+    "Zhang"
+  ],
+  "tailwindCSS.includeLanguages": {
+    "html": "html",
+    "javascript": "javascript",
+    "css": "css"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  }
 }

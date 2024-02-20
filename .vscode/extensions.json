@@ -1,5 +1,6 @@
 {
-    "recommendations": [
-        "ritwickdey.liveserver"
-    ]
+  "recommendations": [
+    "ritwickdey.liveserver",
+    "bradlc.vscode-tailwindcss"
+  ]
 }
