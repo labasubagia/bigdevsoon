@@ -1,0 +1,333 @@
+<html>
+
+<head>
+  <!-- Our unique tag to identify the solution -->
+  <bds />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BigDevSoon Challenge</title>
+
+  <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Add your external script links here, if any -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <style>
+    .poppins-thin {
+      font-family: "Poppins", sans-serif;
+      font-weight: 100;
+      font-style: normal;
+    }
+
+    .poppins-thin-italic {
+      font-family: "Poppins", sans-serif;
+      font-weight: 100;
+      font-style: italic;
+    }
+
+    .poppins-extralight {
+      font-family: "Poppins", sans-serif;
+      font-weight: 200;
+      font-style: normal;
+    }
+
+    .poppins-extralight-italic {
+      font-family: "Poppins", sans-serif;
+      font-weight: 200;
+      font-style: italic;
+    }
+
+    .poppins-light {
+      font-family: "Poppins", sans-serif;
+      font-weight: 300;
+      font-style: normal;
+    }
+
+    .poppins-light-italic {
+      font-family: "Poppins", sans-serif;
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    .poppins-regular {
+      font-family: "Poppins", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .poppins-regular-italic {
+      font-family: "Poppins", sans-serif;
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    .poppins-medium {
+      font-family: "Poppins", sans-serif;
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    .poppins-medium-italic {
+      font-family: "Poppins", sans-serif;
+      font-weight: 500;
+      font-style: italic;
+    }
+
+    .poppins-semibold {
+      font-family: "Poppins", sans-serif;
+      font-weight: 600;
+      font-style: normal;
+    }
+
+    .poppins-semibold-italic {
+      font-family: "Poppins", sans-serif;
+      font-weight: 600;
+      font-style: italic;
+    }
+
+    .poppins-bold {
+      font-family: "Poppins", sans-serif;
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    .poppins-bold-italic {
+      font-family: "Poppins", sans-serif;
+      font-weight: 700;
+      font-style: italic;
+    }
+
+    .poppins-extrabold {
+      font-family: "Poppins", sans-serif;
+      font-weight: 800;
+      font-style: normal;
+    }
+
+    .poppins-extrabold-italic {
+      font-family: "Poppins", sans-serif;
+      font-weight: 800;
+      font-style: italic;
+    }
+
+    .poppins-black {
+      font-family: "Poppins", sans-serif;
+      font-weight: 900;
+      font-style: normal;
+    }
+
+    .poppins-black-italic {
+      font-family: "Poppins", sans-serif;
+      font-weight: 900;
+      font-style: italic;
+    }
+  </style>
+</head>
+
+<body class="poppins-regular w-full min-h-screen bg-[url(https://images.unsplash.com/photo-1618044733300-9472054094ee?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNvbW1lcmNlfGVufDB8MHwwfHx8MA%3D%3D)] bg-cover">
+
+  <!-- solution -->
+  <div class="min-h-screen w-full backdrop-blur-md bg-cover flex md:items-center md:justify-center">
+  
+    <!-- container -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 mx-auto">
+      
+      <!-- products -->
+      <div class="bg-white p-4 rounded-lg w-full">
+
+        <!-- title -->
+        <div class="flex justify-between items-center">
+          <p class="poppins-semibold text-xl">Your Product List</p>
+          <p class="text-lg">4 Items</p>
+        </div>
+
+        <!-- items -->
+        <div class="flex flex-col gap-4 my-4">
+
+          <!-- item -->
+          <div class="flex gap-4">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjbULhhAAzq7TVJLzr9R8NALNpIhLv9f-FZg&usqp=CAU" class="size-24 rounded-lg object-cover" alt="">
+            
+            <div class="flex flex-col w-full items-center justify-center gap-5">
+              <!-- title -->
+              <div class="flex items-center justify-between w-full">
+                <p>Soap</p>
+
+                <!-- close -->
+                <button>
+                  <i data-lucide="x" class="size-6"></i>
+                </button>
+              </div>
+              
+              <!-- price -->
+              <div class="flex items-center justify-between w-full">
+                <!-- btn -->
+                <div class="flex items-center justify-center gap-2">
+                  <button class="bg-gray-200 p-1 rounded-lg">
+                    <i data-lucide="minus" class="size-5"></i>
+                  </button>
+                  <p>1</p>
+                  <button class="bg-gray-200 p-1 rounded-lg">
+                    <i data-lucide="plus" class="size-5"></i>
+                  </button>
+                </div>
+
+                <p class="poppins-semibold">$50</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <img src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//94/MTA-54153535/oem_kaos-pria-wanita-tshirt-pria-berbentuk-polos-sedikitkualitas-katun-tipis-kaos-musim-ins-style-tren-t-shirt-kasual-korea_full01.jpg" class="size-24 rounded-lg object-cover" alt="">
+            
+            <div class="flex flex-col w-full items-center justify-center gap-5">
+              <!-- title -->
+              <div class="flex items-center justify-between w-full">
+                <p>T-Shirt</p>
+
+                <!-- close -->
+                <button>
+                  <i data-lucide="x" class="size-6"></i>
+                </button>
+              </div>
+              
+              <!-- price -->
+              <div class="flex items-center justify-between w-full">
+                <!-- btn -->
+                <div class="flex items-center justify-center gap-2">
+                  <button class="bg-gray-200 p-1 rounded-lg">
+                    <i data-lucide="minus" class="size-5"></i>
+                  </button>
+                  <p>1</p>
+                  <button class="bg-gray-200 p-1 rounded-lg">
+                    <i data-lucide="plus" class="size-5"></i>
+                  </button>
+                </div>
+
+                <p class="poppins-semibold">$50</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <img src="https://cdn.apartmenttherapy.info/image/upload/f_auto,q_auto:eco,c_fill,g_auto,w_1500,ar_3:2/k%2FPhoto%2FSeries%2F2023-11-how-to-make-kimchi%2Fhow-to-make-kimchi-259" class="size-24 rounded-lg object-cover" alt="">
+            
+            <div class="flex flex-col w-full items-center justify-center gap-5">
+              <!-- title -->
+              <div class="flex items-center justify-between w-full">
+                <p>Kimchi</p>
+
+                <!-- close -->
+                <button>
+                  <i data-lucide="x" class="size-6"></i>
+                </button>
+              </div>
+              
+              <!-- price -->
+              <div class="flex items-center justify-between w-full">
+                <!-- btn -->
+                <div class="flex items-center justify-center gap-2">
+                  <button class="bg-gray-200 p-1 rounded-lg">
+                    <i data-lucide="minus" class="size-5"></i>
+                  </button>
+                  <p>1</p>
+                  <button class="bg-gray-200 p-1 rounded-lg">
+                    <i data-lucide="plus" class="size-5"></i>
+                  </button>
+                </div>
+
+                <p class="poppins-semibold">$50</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <img src="https://miro.medium.com/v2/resize:fit:612/1*OUDp2LUktqrmBmCE41IHVg.jpeg" class="size-24 rounded-lg object-cover" alt="">
+            
+            <div class="flex flex-col w-full items-center justify-center gap-5">
+              <!-- title -->
+              <div class="flex items-center justify-between w-full">
+                <p>Airless Basketball</p>
+
+                <!-- close -->
+                <button>
+                  <i data-lucide="x" class="size-6"></i>
+                </button>
+              </div>
+              
+              <!-- price -->
+              <div class="flex items-center justify-between w-full">
+                <!-- btn -->
+                <div class="flex items-center justify-center gap-2">
+                  <button class="bg-gray-200 p-1 rounded-lg">
+                    <i data-lucide="minus" class="size-5"></i>
+                  </button>
+                  <p>1</p>
+                  <button class="bg-gray-200 p-1 rounded-lg">
+                    <i data-lucide="plus" class="size-5"></i>
+                  </button>
+                </div>
+
+                <p class="poppins-semibold">$50</p>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+      <!-- order  -->
+      <div class="flex flex-col gap-6">
+
+        <!-- summary -->
+        <div class="bg-white p-4 rounded-lg divide-y-2 space-y-4">
+
+          <div>
+            <p class="text-xl poppins-semibold">Order Summary</p>
+
+            <div class="mt-4 space-y-2">
+              <div class="flex items-center justify-between w-full">
+                <p>Subtotal</p>
+                <p>$200</p>
+              </div>
+              <div class="flex items-center justify-between w-full">
+                <p>Tax</p>
+                <p>$20</p>
+              </div>
+              <div class="flex items-center justify-between w-full">
+                <p>Shipping</p>
+                <p>$30</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-2 space-y-4">
+            <div class="poppins-semibold text-xl flex items-center justify-between w-full">
+              <p>Total</p>
+              <p>$250</p>
+            </div>
+
+            <button class="w-full bg-black p-2 text-center text-white rounded-full">Pay Now</button>
+          </div>
+        </div>
+
+        <!-- promo -->
+        <div class="bg-white p-4 rounded-lg space-y-2">
+          <p class="poppins-semibold text-xl">Promo Code</p>
+          <input type="text" placeholder="Enter Promo Code" class="p-2 px-3 border-2 rounded-lg outline-none w-full" id="">
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+
+</html>
