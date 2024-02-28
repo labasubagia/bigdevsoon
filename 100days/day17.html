@@ -1,0 +1,186 @@
+<html>
+
+<head>
+  <!-- Our unique tag to identify the solution -->
+  <bds />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BigDevSoon Challenge</title>
+
+  <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Add your external script links here, if any -->
+  <link rel="stylesheet" href="../style/font.css">
+</head>
+
+<body class="poppins-regular w-full min-h-screen">
+
+  <!-- solution -->
+  <div class="min-h-screen min-w-screen bg-gray-300 bg-cover flex md:items-center md:justify-center text-gray-800">
+    
+    <!-- item -->
+    <div class="flex-col flex items-center gap-4">
+      <div class="flex gap-4 items-center justify-center md:w-[1000px]">
+        <!-- prev -->
+        <button id="prev" class="rounded-lg p-2 shadow bg-white size-fit" onclick="changeContent(currentIndex-1)">
+          <i data-lucide="chevron-left" class="size-6"></i>
+        </button>
+  
+        <!-- content -->
+        <div class="rounded-xl overflow-hidden grid-cols-12 grid bg-white shadow">
+          <img 
+            id="img"
+            class="size-96 object-cover col-span-5"
+            src="" alt=""
+          />
+  
+          <div class="p-8 col-span-7 flex flex-col justify-between gap-4">
+            
+            <!-- info -->
+            <div>
+  
+              <!-- title -->
+              <p class="text-2xl poppins-semibold line-clamp-2" id="title"></p>
+              
+              <!-- desc -->
+              <p id="desc" class="mt-4 line-clamp-6">
+              </p>
+            </div>
+  
+            <!-- btm -->
+            <div class="flex justify-between items-center">
+              <!-- author -->
+              <div class="flex gap-3 items-center">
+                <img 
+                  id="author-img" 
+                  class="size-16 rounded-full object-cover"
+                  src="" alt="">
+                <div>
+                  <!-- name -->
+                  <p id="author-name" class="poppins-semibold"></p>
+                  <p id="published-date" class="text-sm"></p>
+                </div>
+              </div>
+              
+              <!-- share -->
+              <button class="p-2 rounded-xl bg-gray-200 relative">
+
+                <i data-lucide="forward" class="size-6"></i>
+              </button>
+            </div>
+  
+          </div>
+        </div>
+  
+        <!-- next -->
+        <button id="next" class="rounded-lg p-2 shadow bg-white size-fit" onclick="changeContent(currentIndex+1)">
+          <i data-lucide="chevron-right" class="size-6"></i>
+        </button>
+      </div>
+
+      <!-- indicator -->
+      <div id="indicator" class="flex items-center justify-center gap-2">
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+
+    const imageDOM = document.querySelector('#img')
+    const titleDOM = document.querySelector('#title')
+    const descDOM = document.querySelector('#desc')
+
+    const authorImageDOM = document.querySelector('#author-img') 
+    const authorNameDOM = document.querySelector('#author-name') 
+    const publishedDateDOM  = document.querySelector('#published-date')
+
+    const indicatorDOM = document.querySelector('#indicator')
+
+    let currentIndex = 0
+    let previousIndex = 0
+
+    const contents = [
+      {
+        image: 'https://img.freepik.com/premium-photo/concept-abstract-quantum-computer-3d-illustration-generating-ai_117038-4020.jpg',
+        title: 'The rise of quantum computing, A paradigm shift in technology',
+        desc: `Quantum computing is revolutionizing technology with its unparalleled computational power through qubits. Its transformative impact extends across cryptography, optimization, drug discovery, and artificial intelligence, pushing the boundaries of what's achievable in the digital realm.`,
+        authorImage: 'https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW4lMjBmYWNlfGVufDB8fDB8fHww',
+        authorName: 'Steve Nguyen',
+        publishedDate: '24 Feb 2024',
+      },
+      {
+        image: 'https://1.bp.blogspot.com/-QdGIL5Pv-AE/WLkHiBHschI/AAAAAAAABkA/2-G0fO9LEV8U3qbdKdIH6ZpBA9riEGtoQCLcB/s1600/rust_programming_feb2017.png',
+        title: "Rust: Blazing fast with memory safety.",
+        desc: "Rust excels in delivering blazing-fast performance while prioritizing memory safety. With its innovative ownership system, Rust prevents common memory-related errors, providing developers with a powerful and secure programming language.",
+        authorImage: 'https://www.mnp.ca/-/media/foundation/integrations/personnel/2020/12/16/13/57/personnel-image-4483.jpg?h=800&w=600&hash=9D5E5FCBEE00EB562DCD8AC8FDA8433D',
+        authorName: 'John Carroll',
+        publishedDate: '25 Feb 2024',
+      },
+      {
+        image: 'https://www.ft.com/__origami/service/image/v2/images/raw/https%3A%2F%2Fd1e00ek4ebabms.cloudfront.net%2Fproduction%2Fd6452773-769d-440c-a03d-2b6c2486d983.jpg?source=next-article&fit=scale-down&quality=highest&width=700&dpr=1',
+        title: "Artificial Generative Intelligence (AGI), friend or enemy",
+        desc: "The debate over artificial generative intelligence revolves around its potential benefits in revolutionizing industries and the ethical concerns of job displacement. Striking a balanced and responsible development approach will shape its role as either a valuable ally or a potential challenge in the evolving technological landscape",
+        authorImage: 'https://media.hswstatic.com/eyJidWNrZXQiOiJjb250ZW50Lmhzd3N0YXRpYy5jb20iLCJrZXkiOiJnaWZcL3BsYXlcLzBiN2Y0ZTliLWY1OWMtNDAyNC05ZjA2LWIzZGMxMjg1MGFiNy0xOTIwLTEwODAuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo4Mjh9fX0=',
+        authorName: 'Tom Casuary',
+        publishedDate: '26 Feb 2024',
+      },
+      
+    ]
+
+    function changeContent(index) {
+      previousIndex = currentIndex
+      currentIndex = getIndex(index)
+      changeIndicator(currentIndex, previousIndex)
+
+      const {image, title, desc, authorImage, authorName, publishedDate } = contents[currentIndex]
+      imageDOM.src = image
+      titleDOM.innerHTML = title
+      descDOM.innerHTML = desc
+      authorImageDOM.src = authorImage
+      authorNameDOM.innerHTML = authorName
+      publishedDateDOM.innerHTML = publishedDate
+
+    }
+
+    function changeIndicator(currentIndex, previousIndex) {
+      const indicatorItemDOM = indicatorDOM.querySelectorAll('.indicator-item')
+    
+      indicatorItemDOM[currentIndex].classList.add('bg-white')
+      indicatorItemDOM[currentIndex].classList.remove('bg-gray-200')
+
+      if (previousIndex == currentIndex) return
+
+      indicatorItemDOM[previousIndex].classList.add('bg-gray-200')
+      indicatorItemDOM[previousIndex].classList.remove('bg-white')
+    }
+
+    function getIndex(index) {
+      const firstIndex = 0
+      const lastIndex = contents.length - 1
+      if (index < firstIndex) return lastIndex
+      if (index > lastIndex) return firstIndex
+      return index
+    }
+
+    function initIndicator() {
+      indicatorDOM.innerHTML = contents.reduce((acc, current, index) => {
+        acc += `<div class="size-3 shadow rounded-full bg-gray-200 indicator-item"></div>`
+        return acc
+      }, '')
+    }
+
+    document.addEventListener('DOMContentLoaded', event => {
+      // init
+      lucide.createIcons();
+      initIndicator()
+      changeContent(currentIndex)
+    })
+
+
+  </script>
+</body>
+
+</html>
