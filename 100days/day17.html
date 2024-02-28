@@ -28,10 +28,10 @@
         </button>
   
         <!-- content -->
-        <div class="rounded-xl overflow-hidden grid-cols-12 grid bg-white shadow">
+        <div class="rounded-xl grid-cols-12 grid bg-white shadow">
           <img 
             id="img"
-            class="size-96 object-cover col-span-5"
+            class="size-96 object-cover col-span-5 rounded-xl"
             src="" alt=""
           />
   
@@ -64,7 +64,16 @@
               </div>
               
               <!-- share -->
-              <button class="p-2 rounded-xl bg-gray-200 relative">
+              <button class="p-2 rounded-xl bg-gray-200 relative group">
+
+                <!-- tooltip -->
+                <div class="hidden group-hover:block transition-all ease-out duration-300 delay-200">
+                  <div class="flex gap-3 p-2 items-center justify-center bg-black absolute -top-12 -left-10 z-20 rounded-lg">
+                    <i data-lucide="facebook" class="cursor-pointer size-7 text-white"></i>
+                    <i data-lucide="twitter" class="cursor-pointer size-7 text-white"></i>
+                    <i data-lucide="instagram" class="cursor-pointer size-7 text-white"></i>
+                  </div>
+                </div>
 
                 <i data-lucide="forward" class="size-6"></i>
               </button>
