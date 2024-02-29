@@ -113,11 +113,7 @@
     function selectView(elem) {
       const selectedView = elem.getAttribute('data-select')
       for (const key in viewMapFn) {
-        if (key == selectedView) {
-          viewMapFn[key](true)
-        } else {
-          viewMapFn[key](false)
-        }
+        viewMapFn[key](key == selectedView)
       }
     }
 
