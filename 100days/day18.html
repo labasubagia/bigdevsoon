@@ -40,7 +40,7 @@
       <div id="rows" class="hidden flex-col gap-2 p-6 w-screen h-screen md:w-[900px] md:h-[700px] overflow-y-scroll"></div>
       <div id="thumbnail" class="hidden flex-col gap-2 p-6 md:w-[900px] md:h-[700px]">
         <img id="thumbnail-view" class="w-full md:h-[500px] rounded-md" src="" alt="">
-        <div id="thumbnail-item" class="flex gap-4 overflow-x-scroll mt-4"></div>
+        <div id="thumbnail-item" class="flex gap-4 overflow-x-scroll mt-4 p-2"></div>
       </div>
     </div>
     
@@ -106,13 +106,6 @@
 
     document.addEventListener('DOMContentLoaded', event => {
       lucide.createIcons();
-      for (const key in viewMapFn) {
-        viewMapFn[key](false)
-      }
-      thumbnailItemContainerDOM.querySelectorAll('.thumbnail-item').forEach((item, index) => {
-        item.addEventListener('click', () => changeThumbnail(index))
-      })
-
       initGrid() 
     })
 
@@ -160,6 +153,10 @@
       }, '')
       thumbnailDOM.classList.remove(show ? 'hidden' : 'flex')
       thumbnailDOM.classList.add(show ? 'flex': 'hidden')
+
+      thumbnailItemContainerDOM.querySelectorAll('.thumbnail-item').forEach((item, index) => {
+        item.addEventListener('click', () => changeThumbnail(index))
+      })
     } 
 
     function changeThumbnail(index) {
