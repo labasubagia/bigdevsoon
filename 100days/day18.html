@@ -148,7 +148,7 @@
       thumbnailImageDOM.src = images[currentThumbnailIndex].url
       thumbnailItemContainerDOM.innerHTML = images.reduce((acc, image) => {
         return acc + `
-          <img class="w-[150px]  ring-white rounded-md thumbnail-item" src="${image.url}" alt="${image.title}"/>
+          <img class="w-[150px]  ring-white rounded-md thumbnail-item cursor-pointer" src="${image.url}" alt="${image.title}"/>
         `
       }, '')
       thumbnailDOM.classList.remove(show ? 'hidden' : 'flex')
@@ -163,9 +163,11 @@
       previousThumbnailIndex = currentThumbnailIndex
       currentThumbnailIndex = getIndex(index)
       const items = thumbnailItemContainerDOM.querySelectorAll('.thumbnail-item')
-      items[currentThumbnailIndex].classList.add('ring-2')
-      items[previousThumbnailIndex].classList.remove('ring-2')
       thumbnailImageDOM.src = images[index].url
+      items[currentThumbnailIndex].classList.add('ring-2')
+      if (previousThumbnailIndex != currentThumbnailIndex) {
+        items[previousThumbnailIndex].classList.remove('ring-2')
+      }
     }
 
     function getIndex(index) {
