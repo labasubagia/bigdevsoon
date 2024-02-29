@@ -23,9 +23,9 @@
 <body class="poppins-regular w-full min-h-screen">
 
   <!-- solution -->
-  <div class="min-h-screen min-w-screen bg-gray-300 bg-cover flex md:items-center md:justify-center text-gray-800">
+  <div class="min-h-screen min-w-screen bg-gray-300 bg-cover flex md:p-3 md:items-center md:justify-center text-gray-800">
 
-    <div class="bg-gray-900 rounded-lg overflow-hidden text-gray-100">
+    <div class="bg-gray-900 md:rounded-lg overflow-hidden text-gray-100">
       <!-- head -->
       <div class="p-4 flex justify-between items-center gap-4 bg-gray-800">
         <p class="text-lg poppins-semibold">Images</p>
@@ -36,10 +36,10 @@
         </div>
       </div>
 
-      <div id="grid" class="hidden grid-cols-12 grid-rows-12 items-start gap-4 p-6 w-[900px] h-[700px] overflow-y-auto"></div>
-      <div id="rows" class="hidden flex-col gap-2 p-6 w-[900px] h-[700px] overflow-y-scroll"></div>
-      <div id="thumbnail" class="hidden flex-col gap-2 p-6 w-[900px] h-[700px]">
-        <img id="thumbnail-view" class="h-[500px] rounded-md" src="" alt="">
+      <div id="grid" class="hidden sm:grid-cols-6 md:grid-cols-12 items-start gap-4 p-6 md:w-[900px] md:h-[700px] overflow-y-auto"></div>
+      <div id="rows" class="hidden flex-col gap-2 p-6 w-screen h-screen md:w-[900px] md:h-[700px] overflow-y-scroll"></div>
+      <div id="thumbnail" class="hidden flex-col gap-2 p-6 md:w-[900px] md:h-[700px]">
+        <img id="thumbnail-view" class="w-full md:h-[500px] rounded-md" src="" alt="">
         <div id="thumbnail-item" class="flex gap-4 overflow-x-scroll mt-4"></div>
       </div>
     </div>
@@ -109,10 +109,11 @@
       for (const key in viewMapFn) {
         viewMapFn[key](false)
       }
-      initThumbnail() 
       thumbnailItemContainerDOM.querySelectorAll('.thumbnail-item').forEach((item, index) => {
         item.addEventListener('click', () => changeThumbnail(index))
       })
+
+      initThumbnail() 
     })
 
 
@@ -130,7 +131,7 @@
     function initGrid(show=true) {
       gridDOM.innerHTML = images.reduce((acc, image) => {
         return acc + `
-          <img src="${image.url}" class="object-fit col-span-4 row-span-4 rounded-lg w-full h-full" alt="${image.title}" />
+          <img src="${image.url}" class="object-fit sm:col-span-3 md:col-span-4 md:row-span-4 rounded-lg w-full h-full" alt="${image.title}" />
         `
       }, '')
       gridDOM.classList.remove(show ? 'hidden' : 'grid')
