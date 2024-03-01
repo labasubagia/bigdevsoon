@@ -141,7 +141,6 @@
     }
 
     function initThumbnail(show=true) {
-      thumbnailImageDOM.src = images[currentThumbnailIndex].url
       thumbnailItemContainerDOM.innerHTML = images.reduce((acc, image) => {
         return acc + `
           <img class="w-[150px]  ring-white rounded-md thumbnail-item cursor-pointer" src="${image.url}" alt="${image.title}"/>
@@ -153,6 +152,8 @@
       thumbnailItemContainerDOM.querySelectorAll('.thumbnail-item').forEach((item, index) => {
         item.addEventListener('click', () => changeThumbnail(index))
       })
+
+      changeThumbnail(currentThumbnailIndex)
     } 
 
     function changeThumbnail(index) {
@@ -161,9 +162,8 @@
       const items = thumbnailItemContainerDOM.querySelectorAll('.thumbnail-item')
       thumbnailImageDOM.src = images[index].url
       items[currentThumbnailIndex].classList.add('ring-2')
-      if (previousThumbnailIndex != currentThumbnailIndex) {
-        items[previousThumbnailIndex].classList.remove('ring-2')
-      }
+      if (previousThumbnailIndex == currentThumbnailIndex) return
+      items[previousThumbnailIndex].classList.remove('ring-2')
     }
 
     function getIndex(index) {
