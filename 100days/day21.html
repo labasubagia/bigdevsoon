@@ -182,13 +182,9 @@
 
     pricingTypeDOM.addEventListener('change', event => {
       const isMonthly = pricingTypeDOM.checked
-      if (isMonthly) {
-        textPricingMonthlyDOM.classList.add('text-black')
-        textPricingAnnuallyDOM.classList.remove('text-black')
-      } else {
-        textPricingMonthlyDOM.classList.remove('text-black')
-        textPricingAnnuallyDOM.classList.add('text-black')
-      }
+      
+      textPricingMonthlyDOM.classList[isMonthly ? 'add' : 'remove']('text-black')
+      textPricingAnnuallyDOM.classList[isMonthly ? 'remove' : 'add']('text-black')
 
       planPricesDOM.forEach((priceDOM, index) => {
         priceDOM.innerHTML = `$${pricing[index][Number(isMonthly)]}`
