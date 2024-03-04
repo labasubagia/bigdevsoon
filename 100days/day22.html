@@ -13,6 +13,12 @@
   <!-- Add your external script links here, if any -->
   <link rel="stylesheet" href="../style/font.css">
 
+  <style>
+    *::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+
 </head>
 
 <body class="poppins-regular w-full min-h-screen">
@@ -21,9 +27,39 @@
   <div class="absolute left-0 top-0 min-h-screen min-w-full bg-orange-200 sm:p-2 md:p-3 flex sm:items-center sm:justify-center text-gray-800 z-20">
     
     <!-- card -->
-    <div class="bg-white w-full sm:w-fit h-screen sm:h-full sm:rounded-lg p-4 border border-gray-100 shadow-xl relative">
+    <div class="bg-white w-full h-screen sm:w-[425px] sm:h-[700px] sm:rounded-lg overflow-hidden border border-gray-100 shadow-2xl relative">
 
-      
+      <!-- home -->
+      <div class="w-full h-full top-0 left-0 p-4 z-0">
+        <!-- header -->
+        <div class="flex justify-between items-center">
+          <p class="text-xl poppins-semibold">Messages</p>
+          <div class="flex gap-2">
+            <button>
+              <i data-lucide="bell" class="size-6"></i>
+            </button>
+            <button>
+              <i data-lucide="more-vertical" class="size-6"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- stories -->
+        <div id="storyContainer" class="whitespace-nowrap space-x-2 overflow-y-hidden overflow-x-scroll scroll-smooth mt-6"></div>
+        
+
+        <!-- chats -->
+        <div id="listChatContainer" class="z-20 flex flex-col gap-4 overflow-hidden mt-8"></div>
+
+        <button class="rounded-full bg-orange-500 absolute bottom-4 right-4 p-3 hover:p-4">
+          <i class="size-8 text-white" data-lucide="plus"></i>
+        </button>
+      </div>
+
+
+      <!-- chat -->
+      <div id="chatContainer" class="hidden h-full w-full bg-white absolute top-0 left-0 z-20"></div>
+    
     </div>
 
   </div>
@@ -31,9 +67,262 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>
 
+    const storyContainerDOM = document.querySelector('#storyContainer')
+    const listChatContainer = document.querySelector('#listChatContainer')
+    const chatContainer = document.querySelector('#chatContainer')
+
+    const currentUser = {
+      id: id(),
+    }
+
+    let contacts = [
+      {
+        id: id(),
+        profile: 'https://cdn.idntimes.com/content-images/community/2021/11/fromandroid-cba5e857eb0ddd391fc1f7c3c55dda70_600x400.jpg',
+        name: 'Jane Nakamura',
+        chats: [
+          {
+            owner: true,
+            message: 'Hi John',
+            time: new Date('2024-03-04 14:20'),
+          },
+          {
+            owner: true,
+            message: 'Have a time for a date?',
+            time: new Date('2024-03-04 14:21'),
+          },
+          {
+            owner: currentUser.id,
+            message: 'Sure',
+            time: new Date('2024-03-04 14:21'),
+          },
+          {
+            owner: currentUser.id,
+            message: 'How about tomorrow at 1PM?',
+            time: new Date('2024-03-04 14:22'),
+          },
+          {
+            owner: true,
+            message: 'Deal!',
+            time: new Date('2024-03-04 14:26'),
+          },
+          {
+            owner: true,
+            message: `I'll see you soon`,
+            time: new Date('2024-03-04 14:26'),
+          },
+        ]
+      },
+      {
+        id: 'u02',
+        profile: 'https://i.mydramalist.com/rNbPxE_5_c.jpg',
+        name: 'Jessica Lee',
+        chats: [],
+      },
+
+      {
+        id: id(),
+        profile: 'https://www.tvtime.com/_next/image?url=https%3A%2F%2Fartworks.thetvdb.com%2Fbanners%2Fv4%2Factor%2F484297%2Fphoto%2F61b7795687d38.jpg&w=640&q=75',
+        name: 'Rui',
+        chats: [
+          {
+            owner: true,
+            message: 'hi',
+            time: new Date('2024-03-04 08:00'),
+          }
+        ],
+      },
+
+      {
+        id: id(),
+        profile: 'https://cdn1-production-images-kly.akamaized.net/R9wzwKpPxZHeTyIZLOfOvK-aWMo=/1200x900/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/1353508/original/061824900_1474558310-Kento_Yamazaki.jpg',
+        name: 'Steven Zhang',
+        chats: [
+          {
+            owner: currentUser.id,
+            message: `Hey, Jane ask me out`,
+            time: new Date('2024-03-04 13:45'),
+          },
+          {
+            owner: 'u03',
+            message: 'Dude Count me in',
+            time: new Date('2024-03-04 14:20'),
+          },
+          {
+            owner: 'u03',
+            message: `I'm a professional third wheeler`,
+            time: new Date('2024-03-04 14:20'),
+          },
+        ],
+      }
+    ]
+    contacts.forEach((contact, index) => {
+      contacts[index].chats.sort((a,b) => a.time - b.time)
+    })
+
+    function id() {
+      return (Math.random() + 1).toString(36).substring(7)
+    }
+
     document.addEventListener('DOMContentLoaded', event => {
+      initStories()
+      changeListChat()
+      changeChat()
       refreshIcons()
     })
+
+
+    function initStories() {
+      storyContainerDOM.innerHTML = contacts.reduce((htmlStr, contact) => {
+        return htmlStr +getStoryComponent(contact)
+      },'')
+    }
+
+    function getStoryComponent(contact) {
+      return `
+        <div class="inline-block">
+          <img class="rounded-full object-cover size-14 border-2 border-white" src="${contact.profile}" alt="${contact.name}" />  
+        </div>
+      `
+    }
+
+    function changeListChat() {
+      listChats = contacts
+        .map((contact, index) => ({...contact, order: index }))
+        .filter(contact => contact.chats.length)
+        .sort((a, b) => {
+          aTime = a.chats[a.chats.length-1].time
+          bTime = b.chats[b.chats.length-1].time
+          return bTime - aTime
+        });
+      listChatContainer.innerHTML = listChats.reduce((htmlStr, contact) => {
+        return htmlStr + getListChatComponent(contact, contact.order) 
+      }, '')
+    }
+
+    function getListChatComponent(contact, index=0) {
+      if (!contact?.chats.length) {
+        return '' 
+      }
+      const lastChat = contact.chats[contact.chats.length-1]
+      const time = getFormattedTime(lastChat.time)
+      return `
+        <div class="flex justify-between items-center gap-2 cursor-pointer" onclick="showChat(${index})">
+          <div class="flex gap-2 items-center">
+            <img class="rounded-full border border-white size-14 object-cover" src="${contact.profile}" alt="${contact.name}"/>
+            <div>
+              <p class="text-lg poppins-semibold text-sm">${contact.name}</p>
+              <p class="mt-1 text-sm line-clamp-1">${lastChat.message}</p>
+            </div>
+          </div>
+          <p class="text-gray-500 text-xs whitespace-nowrap">${time}</p>
+        </div>
+      `
+    }
+
+    function showChat(index) {
+      chatContainer.classList.add('block')
+      chatContainer.classList.remove('hidden')
+      changeChat(index)
+    }
+
+    function hideChat() {
+      chatContainer.classList.add('hidden')
+      chatContainer.classList.remove('block')
+      changeListChat()
+    }
+
+    function changeChat(index=0) {
+      chatContainer.innerHTML = getChatComponent(index)
+      const chatContentDOM = document.querySelector('#chatContent')
+      chatContentDOM.scrollTop = chatContentDOM.scrollHeight
+      refreshIcons()
+    }
+
+    function getChatComponent(index) {
+      contact = contacts[index]
+      return `
+        <div class="relative h-full flex flex-col">
+  
+          <div class="flex justify-between items-center gap-4 p-4 py-6 border-b-2">
+            <button><i data-lucide="arrow-left" class="size-6" onclick="hideChat()"></i></button>
+            <div class="w-fit flex flex-col items-center justify-center">
+              <img class="size-24 rounded-full object-cover border-2 border-white" src="${contact.profile}" alt="${contact.name}" />
+              <p class="text-xl poppins-semibold mt-2">${contact.name}</p>
+            </div>
+            <div></div>
+          </div>
+
+          <div id="chatContent" class="flex-col flex gap-6 flex-1 overflow-y-scroll p-4">
+            ${contact.chats.reduce((htmlStr, chat) => htmlStr + getChatMessageComponent(contact, chat), '')}
+          </div>
+
+          <div class="mt-2 p-4">
+            <input onkeydown="sendMessage(${index}, event)" type="text" class="p-3 px-4 bg-gray-200 w-full rounded-xl outline-rounded-xl" id="inputChat" placeholder="message"/>
+          </div>
+        </div>
+      `
+    }
+
+    function sendMessage(index, e) {
+      if (e.keyCode != 13) return
+      contacts[index].chats.push({
+        owner: currentUser.id,
+        message: e.target.value,
+        time: new Date()
+      })
+      changeChat(index)
+    }
+
+    function getChatMessageComponent(contact, chat) {
+      const time = getFormattedTime(chat.time)
+      if (chat.owner === currentUser.id) {
+        return `
+          <div>
+            <div class="text-center text-sm text-gray-500 mb-1">${time}</div>
+            <div class="flex justify-end">
+              <div class="p-2 px-3 bg-orange-500 text-white rounded-lg">
+                ${chat.message}
+              </div>
+            </div>
+          </div>
+        `
+      }
+
+      return `
+        <div>
+          <div class="text-center text-sm text-gray-500 mb-2">${time}</div>
+          <div class="flex justify-start items-center gap-2">
+            <img class="size-10 object-cover rounded-full border border-white" src="${contact.profile}" alt="${contact.name}" />
+            <div class="p-2 px-3 bg-gray-200 rounded-lg">
+              ${chat.message}
+            </div>
+          </div>
+        </div>
+      `
+    }
+
+    function getFormattedTime(payloadDate) {
+      const date = getDate(payloadDate)
+      const time = getTime(payloadDate)
+      if (date == getDate(new Date())) {
+        return `Today ${time}`
+      }
+      return `${date} ${time}`
+    }
+
+    function getTime(date) {
+      const hour = String(date.getHours()).padStart(2, '0')
+      const minute = String(date.getMinutes()).padStart(2,'0')
+      return `${hour}:${minute}`
+    }
+
+    function getDate(date) {
+      const year = date.getFullYear()
+      const month = String(date.getMonth() + 1).padStart(2, '0')
+      const day = String(date.getDate()).padStart(2, '0')
+      return `${day}/${month}/${year}`
+    }
 
     function refreshIcons() {
       lucide.createIcons()
