@@ -30,7 +30,7 @@
     <div class="bg-white w-full h-screen sm:w-[425px] sm:h-[700px] sm:rounded-lg overflow-hidden border border-gray-100 shadow-2xl relative">
 
       <!-- home -->
-      <div class="w-full h-full top-0 left-0 p-4 z-0">
+      <div class="w-full h-full top-0 left-0 p-4 z-0 overflow-hidden">
         <!-- header -->
         <div class="flex justify-between items-center">
           <p class="text-xl poppins-semibold">Messages</p>
@@ -49,7 +49,7 @@
         
 
         <!-- chats -->
-        <div id="listChatContainer" class="z-20 flex flex-col gap-4 overflow-hidden mt-8"></div>
+        <div id="listChatContainer" class="z-20 flex flex-col gap-4 overflow-y-scroll h-full sm:h-[510px] mt-8"></div>
 
         <button class="rounded-full bg-orange-500 absolute bottom-4 right-4 p-3 hover:p-4">
           <i class="size-8 text-white" data-lucide="plus"></i>
@@ -114,10 +114,29 @@
         ]
       },
       {
-        id: 'u02',
+        id: id(),
         profile: 'https://i.mydramalist.com/rNbPxE_5_c.jpg',
         name: 'Jessica Lee',
-        chats: [],
+        chats: [
+          {
+            owner: true,
+            message: 'Have some taste',
+            time: new Date('2024-03-04 08:12'),
+          }
+        ],
+      },
+
+      {
+        id: id(),
+        profile: 'https://upload.wikimedia.org/wikipedia/id/1/12/David_Brendi.jpeg',
+        name: 'David',
+        chats: [
+          {
+            owner: true,
+            message: `Do you steal my pudding again? i'll tell mom`,
+            time: new Date('2024-03-02 12:12'),
+          }
+        ],
       },
 
       {
@@ -129,6 +148,55 @@
             owner: true,
             message: 'hi',
             time: new Date('2024-03-04 08:00'),
+          }
+        ],
+      },
+
+      {
+        id: id(),
+        profile: 'https://www.rollingstone.com/wp-content/uploads/2023/07/Logan-Paul-controversies.jpg?w=1581&h=1054&crop=1',
+        name: 'Pedo',
+        chats: [
+          {
+            owner: true,
+            message: 'WTF dude!',
+            time: new Date('2024-03-04 00:00'),
+          }
+        ]
+      },
+
+      {
+        id: id(),
+        profile: 'https://editorial.femaledaily.com/wp-content/uploads/2023/07/Haerin-2.png',
+        name: 'Rose',
+        chats: [
+          {
+            owner: currentUser.id,
+            message: `where R U punk?`,
+            time: new Date('2024-03-04 17:00'),
+          },
+          {
+            owner: true,
+            message: `I'm at gym`,
+            time: new Date('2024-03-04 18:00'),
+          },
+          {
+            owner: true,
+            message: `don't disturb`,
+            time: new Date('2024-03-04 18:01'),
+          },
+        ],
+      },
+
+      {
+        id: id(),
+        profile: 'https://cdn.idntimes.com/content-images/community/2020/04/instagram-tvndramaofficial-89070319-824286491369060-6099023370356552374-n-3b011a66f85deeedf4aaf9ae037e8e9e.jpg',
+        name: 'Caitlin',
+        chats: [
+          {
+            owner: currentUser.id,
+            message: 'have some time?',
+            time: new Date('2024-03-05 12:31'),
           }
         ],
       },
