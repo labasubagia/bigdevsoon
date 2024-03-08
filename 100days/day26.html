@@ -1,0 +1,327 @@
+<html>
+  <head>
+    <!-- Our unique tag to identify the solution -->
+    <bds />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BigDevSoon Challenge</title>
+
+    <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Add your external script links here, if any -->
+    <link rel="stylesheet" href="../style/font.css" />
+  </head>
+
+  <body class="poppins-regular w-full min-h-screen">
+    <!-- solution -->
+    <div class="min-h-screen min-w-full bg-gray-200">
+      <div
+        class="container mx-auto flex-col flex items-center p-3 justify-center"
+      >
+        <!-- search -->
+        <form
+          id="searchForm"
+          class="flex bg-gray-100 gap-2 p-3 rounded-lg w-full lg:max-w-[1000px]"
+        >
+          <div
+            class="bg-white flex items-center justify-start px-3 focus-within:ring-2 ring-pink-500 rounded-lg w-full"
+          >
+            <i data-lucide="search" class="size-5"></i>
+            <input
+              type="text"
+              name="search"
+              class="p-3 outline-none w-full"
+              placeholder="Find"
+            />
+          </div>
+          <button class="bg-pink-500 p-3 px-5 text-white rounded-lg">
+            Search
+          </button>
+        </form>
+
+        <!-- jobs -->
+        <div
+          id="jobBoard"
+          class="rounded-lg p-4 bg-gray-100 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:max-w-[1000px]"
+        ></div>
+
+        <!-- dialog -->
+        <div
+          id="dialog"
+          class="hidden w-full min-h-screen fixed top-0 left-0 items-center justify-center p-2 backdrop-blur-2xl"
+          onclick="closeDialog()"
+        ></div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/relativeTime.js"></script>
+
+    <script>
+      // date
+      dayjs().format();
+      dayjs.extend(window.dayjs_plugin_relativeTime);
+
+      // number
+      const numberFormat = Intl.NumberFormat("en", { notation: "compact" });
+
+      const searchFormDOM = document.querySelector("#searchForm");
+      const jobBoardDOM = document.querySelector("#jobBoard");
+      const dialogDOM = document.querySelector("#dialog");
+
+      let jobs = [
+        {
+          companyName: "Apple",
+          companyLogo: "https://i.ibb.co/PzKMGS8/apple.png",
+          position: "AR Engineer",
+          description:
+            "Amazon seeking for highly skilled and motivated Augmented Reality Engineer for Apple Vision Pro",
+          applicantCount: 5,
+          skills: ["Javascript", "Swift", "AR", "Python"],
+          salaryPerMonth: 22_000,
+          date: "2024-03-07 18:30",
+        },
+        {
+          companyName: "Amazon",
+          companyLogo: "https://i.ibb.co/MV55ncm/amazon.png",
+          position: "Software Engineer",
+          description:
+            "Amazon seeking for highly skilled and motivated software Engineer",
+          applicantCount: 100,
+          skills: ["C++", "Python"],
+          salaryPerMonth: 23_000,
+          date: "2024-03-06 18:30",
+        },
+        {
+          companyName: "Amazon",
+          companyLogo: "https://i.ibb.co/MV55ncm/amazon.png",
+          position: "Machine Learning Engineer",
+          description:
+            "Amazon seeking for highly skilled and motivated ML Engineer",
+          applicantCount: 80,
+          skills: ["ML", "DL", "AI", "Python"],
+          salaryPerMonth: 11_000,
+          date: "2024-03-08 12:30",
+        },
+        {
+          companyName: "Netflix",
+          companyLogo: "https://i.ibb.co/TW7bMwV/netflix.png",
+          position: "Software Engineer",
+          description:
+            "Netflix seeking for highly skilled and motivated software Engineer that able to work with C++, Go and Rust Codebase",
+          applicantCount: 100,
+          skills: ["C++", "Go", "Rust"],
+          salaryPerMonth: 25_000,
+          date: "2024-03-06 18:30",
+        },
+        {
+          companyName: "Netflix",
+          companyLogo: "https://i.ibb.co/TW7bMwV/netflix.png",
+          position: "Backend Engineer",
+          description:
+            "Netflix seeking for highly skilled and motivated backend Engineer that able to work with Go and Python",
+          applicantCount: 900,
+          skills: ["Go", "Python"],
+          salaryPerMonth: 10_000,
+          date: "2024-03-04 18:30",
+        },
+        {
+          companyName: "Google",
+          companyLogo: "https://i.ibb.co/0Q6FWFq/google.png",
+          position: "Frontend Engineer",
+          description:
+            "Google seeking for highly skilled and motivated Frontend that able to work with HTML, CSS, JS Codebase",
+          applicantCount: 200,
+          skills: ["HTML", "CSS", "JS", "Angular"],
+          salaryPerMonth: 20_000,
+          date: "2024-03-08 18:30",
+        },
+        {
+          companyName: "Google",
+          companyLogo: "https://i.ibb.co/0Q6FWFq/google.png",
+          position: "UI Designer",
+          description: "Google seeking for highly ambitious UI Designer",
+          applicantCount: 200,
+          skills: ["UI Research", "Figma"],
+          salaryPerMonth: 20_000,
+          date: "2024-03-08 18:30",
+        },
+        {
+          companyName: "Facebook",
+          companyLogo: "https://i.ibb.co/ZLJ7wFr/facebook.png",
+          position: "DevOps",
+          description: "Facebook is looking for professional Devops",
+          applicantCount: 240,
+          skills: ["Docker", "K8s", "Terraform", "Ansible", "Linux"],
+          salaryPerMonth: 14_000,
+          date: "2024-03-07 18:30",
+        },
+        {
+          companyName: "Facebook",
+          companyLogo: "https://i.ibb.co/ZLJ7wFr/facebook.png",
+          position: "Software Engineer",
+          description: "Facebook is looking for professional Software Engineer",
+          applicantCount: 80,
+          skills: ["Hack", "Rust", "Go", "C++"],
+          salaryPerMonth: 10_000,
+          date: "2024-03-01 18:30",
+        },
+      ];
+      jobs = jobs.sort((a, b) => dayjs(b.date).unix() - dayjs(a.date).unix());
+      jobs = jobs.map((job) => ({ ...job, id: id() }));
+
+      const jobMap = {};
+      jobs.forEach((job) => {
+        jobMap[job.id] = job;
+      });
+
+      document.addEventListener("DOMContentLoaded", (event) => {
+        refreshIcons();
+        refreshJobBoard();
+      });
+
+      searchFormDOM.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const search = formData.get("search");
+        refreshJobBoard(search);
+      });
+
+      function refreshJobBoard(search = "") {
+        search = search.toLowerCase();
+        let currentJobs = jobs;
+        if (search) {
+          currentJobs = currentJobs.filter(
+            (job) =>
+              job.position.toLocaleLowerCase().search(search) + 1 ||
+              job.companyName.toLocaleLowerCase().search(search) + 1
+          );
+        }
+
+        if (!currentJobs.length) {
+          jobBoardDOM.innerHTML = `
+          <div class="flex flex-col items-center justify-center gap-2 text-gray-300 p-6 sm:col-span-2 lg:col-span-3">
+            <i class="size-12" data-lucide="archive-x"></i>
+            <p class="text-xl">No Job found</p>
+          </div>
+        `;
+        } else {
+          jobBoardDOM.innerHTML = currentJobs.reduce(
+            (html, job) => html + jobCardComponent(job),
+            ""
+          );
+        }
+
+        refreshIcons();
+      }
+
+      function showDialog(id) {
+        const job = jobMap[id];
+        setDialog(job);
+        dialogDOM.classList.add("flex");
+        dialogDOM.classList.remove("hidden");
+      }
+
+      function closeDialog() {
+        dialogDOM.classList.add("hidden");
+        dialogDOM.classList.remove("flex");
+      }
+
+      function setDialog(job) {
+        const skills = job.skills.reduce(
+          (html, skill) => html + skillComponent(skill),
+          ""
+        );
+        dialogDOM.innerHTML = `
+        <div class="bg-white rounded-xl p-4 flex flex-col w-full shadow-xl border border-gray-100 max-w-[400px]" onclick="event.stopPropagation()">
+          <div class="size-14 rounded-lg p-2 bg-gray-200">
+            <img class="" src="${job.companyLogo}" alt="${job.companyName}">
+          </div>
+
+          <p class="poppins-semibold text-xl mt-4">${job.position}</p>
+          <p class="text-gray-500 mt-2">${job.companyName}</p>
+
+          <div class="bg-pink-200 p-1 px-3 text-xs w-fit rounded-full mt-2 text-pink-500">${
+            job.applicantCount
+          } applicants</div>
+
+          <hr class="mt-4">
+
+          <p class="text-lg poppins-semibold mt-4">Description</p>
+          <p class="line-clamp-5 mt-4">${job.description}</p>
+
+          <hr class="mt-4">
+
+          <p class="text-lg poppins-semibold mt-4">Skills</p>
+          <div class="flex gap-2 mt-2">${skills}</div>
+
+
+          <hr class="mt-4">
+
+          <p class="text-lg poppins-semibold mt-4">Based Salary</p>
+          <p class="mt-2 text-gray-500">${numberFormat.format(
+            job.salaryPerMonth
+          )}/month</p>
+
+          <button class="bg-pink-500 rounded-lg text-white p-3 px-4 mt-14">Apply Now</button>
+
+        </div>
+      `;
+      }
+
+      function jobCardComponent(job) {
+        const nSkillView = 3;
+        const skills = job.skills.reduce((html, skill, index) => {
+          if (index > nSkillView) return html;
+          if (index == nSkillView) return html + skillComponent("...");
+          return html + skillComponent(skill);
+        }, "");
+
+        return `
+        <div class="p-4 rounded-xl bg-white cursor-pointer" onclick="showDialog('${
+          job?.id
+        }')">
+          
+          <div class="flex items-center justify-start gap-4">
+            <div class="p-2 bg-gray-200 rounded-xl size-12">
+              <img class="rounded-xl object-cover" src="${
+                job.companyLogo
+              }" alt="${job.companyName}"/>
+            </div>
+            <div class="space-y-1">
+              <p class="text-sm">${job.position}</p> 
+              <p class="text-sm text-gray-500">${job.companyName}</p>
+            </div>
+          </div>
+
+          <div class="mt-4 flex gap-2">${skills}</div>
+
+          <div class="flex justify-between gap-2 mt-4">
+            <div class="flex items-center gap-2">
+              <i data-lucide="wallet" class="size-4 text-pink-500"></i>
+              <p class="text-sm">${numberFormat.format(
+                job.salaryPerMonth
+              )}/month</p>
+            </div>
+            <p class="text-xs text-gray-500">${dayjs(job.date).fromNow()}</p>
+          </div>
+        </div>
+      `;
+      }
+
+      function skillComponent(skill) {
+        return `<div class="p-1 px-2 flex-nowrap rounded-2xl text-xs bg-gray-200">${skill}</div>`;
+      }
+
+      function refreshIcons() {
+        lucide.createIcons();
+      }
+
+      function id() {
+        return (Math.random() + 1).toString(36).substring(7);
+      }
+    </script>
+  </body>
+</html>
