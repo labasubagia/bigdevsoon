@@ -11,6 +11,20 @@
 
     <!-- Add your external script links here, if any -->
     <link rel="stylesheet" href="../style/font.css" />
+
+    <style>
+      *::-webkit-scrollbar {
+        display: none;
+      }
+
+      .curved {
+        position: relative;
+        overflow: hidden;
+        /* background: red; */
+        border-bottom-left-radius: 100% 40%;
+        border-bottom-right-radius: 100% 40%;
+      }
+    </style>
   </head>
 
   <body class="poppins-regular w-full min-h-screen">
@@ -19,18 +33,20 @@
       class="min-h-screen min-w-full bg-green-400 p-4 flex justify-center md:items-center"
     >
       <!-- card -->
-      <div class="bg-gray-900 p-4 rounded-2xl text-white max-w-[500px] h-fit">
+      <div
+        class="bg-gray-900 rounded-2xl text-white max-w-[500px] h-fit shadow-md overflow-hidden"
+      >
         <!-- title -->
         <p class="text-lg text-center poppins-semibold mt-4">Leaderboard</p>
 
         <!-- time frame -->
         <div
           id="timeFrame"
-          class="flex gap-2 justify-center items-center mt-6 flex-wrap"
+          class="flex gap-2 justify-center items-center mt-6 flex-wrap px-4"
         ></div>
 
         <!-- leaderboard -->
-        <div id="leaderboard" class="mt-2 p-2"></div>
+        <div id="leaderboard" class="mt-2"></div>
       </div>
     </div>
 
@@ -158,6 +174,40 @@
             { point: 2000, date: dayjs().subtract(1, 'year') },
           ],
         },
+        {
+          id: id(),
+          name: 'Kazuha',
+          profile:
+            'https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/p1/916/2023/10/25/kpopchart-79-996623419.png',
+          scores: [
+            // this week
+            { point: 90, date: dayjs() },
+            { point: 120, date: dayjs().subtract(1, 'day') },
+
+            { point: 200, date: dayjs().subtract(1, 'week') },
+
+            { point: 700, date: dayjs().subtract(1, 'month') },
+
+            { point: 4000, date: dayjs().subtract(1, 'year') },
+          ],
+        },
+        {
+          id: id(),
+          name: 'Maria',
+          profile:
+            'https://kaltimtoday.co/wp-content/uploads/2024/02/maria-zhang-instagram-at-mariaxzhang-65e003fcbac1b.webp',
+          scores: [
+            // this week
+            { point: 50, date: dayjs() },
+            { point: 10, date: dayjs().subtract(1, 'day') },
+
+            { point: 100, date: dayjs().subtract(1, 'week') },
+
+            { point: 500, date: dayjs().subtract(1, 'month') },
+
+            { point: 5200, date: dayjs().subtract(1, 'year') },
+          ],
+        },
       ]
 
       document.addEventListener('DOMContentLoaded', () => {
@@ -225,14 +275,14 @@
         let rest = current.slice(3)
 
         leaderboardDOM.innerHTML = `
-            <div class="flex flex-wrap justify-between gap-6 items-end">
+            <div class="flex flex-wrap justify-between gap-6 items-end pt-4 px-6 curved">
               ${top3.reduce(
                 (html, user) => html + top3Component(user, top.totalScore),
                 ''
               )}
             </div>
 
-            <div class="mt-4">
+            <div class="mt-2 h-[250px] overflow-y-scroll">
               ${rest.reduce((html, user) => html + restComponent(user), '')}
             </div>
           `
@@ -240,7 +290,7 @@
         function top3Component(user, topScore) {
           const onTop = user.totalScore == topScore
           const percent = (user.totalScore / topScore) * 100
-          const barHeight = Math.floor((120 * percent) / 100) + 80
+          const barHeight = Math.floor((100 * percent) / 100) + 80
           return `
             <div class="flex flex-col gap-2 items-center">
               ${
@@ -261,7 +311,7 @@
 
               <div class="bg-green-500 min-w-[${
                 onTop ? '110' : '90'
-              }px] h-[${barHeight}px] rounded-xl mt-2 flex flex-col justify-start items-center text-black p-4">
+              }px] h-[${barHeight}px] rounded-t-xl mt-2 flex flex-col justify-start items-center text-black p-4">
                 <p class="poppins-semibold line-clamp-1">${user.name}</p>
                 <p class="text-2xl poppins-bold">${user.totalScore}</p>
               </div>
@@ -279,12 +329,12 @@
                   <p class="poppins-semibold">${user.pos}</p>
                   ${moveIndicatorComponent(user.pos, user.prevPos)}
                 </div>
-                <img class="size-14 object-cover rounded-full ring-2 ring-green-500" src="${
+                <img class="size-10 object-cover rounded-full ring-2 ring-green-500" src="${
                   user.profile
                 }" alt="${user.name}"/>
                 <p class="ml-2">${user.name}</p>
               </div>
-              <p class="poppins-bold text-3xl">${user.totalScore}</p>
+              <p class="poppins-bold text-2xl mr-2">${user.totalScore}</p>
             </div>
           `
         }
