@@ -230,6 +230,8 @@
       function playerDialogComponent(index) {
         const song = playlist.songs[index]
         const duration = durationSeconds(song.duration)
+
+        const playDuration = Math.floor((duration * 80) / 100) // just random for now
         return `
           <div
             class="h-[650px] p-8 bg-white rounded-t-3xl flex flex-col items-center text-black"
@@ -262,10 +264,10 @@
             <!-- timer -->
             <div class="w-full">
               <div class="w-full bg-gray-200 rounded-full mt-6">
-                <div class="py-1 bg-indigo-300 w-[200px] rounded-full"></div>
+                <div class="py-1 bg-indigo-300 w-[80%] rounded-full"></div>
               </div>
               <div class="w-full flex justify-between mt-2">
-                <p>3:42</p>
+                <p>${toDurationMinuteStr(playDuration)}</p>
                 <p>${song.duration}</p>
               </div>
             </div>
