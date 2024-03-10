@@ -2,6 +2,7 @@
   "recommendations": [
     "ritwickdey.liveserver",
     "bradlc.vscode-tailwindcss",
-    "esbenp.prettier-vscode"
+    "esbenp.prettier-vscode",
+    "editorconfig.editorconfig"
   ]
 }
