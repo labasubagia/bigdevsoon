@@ -250,15 +250,11 @@
       }
 
       function changeListVideo() {
-        listVideoDOM.innerHTML = Object.entries(player.videoMap).reduce(
-          (html, [id, video]) => {
-            if (id != player.currentId) {
-              html += listVideoItemComponent(video)
-            }
-            return html
-          },
-          ''
-        )
+        listVideoDOM.innerHTML = ''
+        for (const id in player.videoMap) {
+          if (id == player.currentId) continue
+          listVideoDOM.innerHTML += listVideoItemComponent(player.videoMap[id])
+        }
       }
 
       function listVideoItemComponent(video) {
