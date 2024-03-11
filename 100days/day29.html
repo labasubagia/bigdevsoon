@@ -64,8 +64,8 @@
       const listVideoDOM = document.querySelector('#listVideo')
 
       let player = {
-        currentIndex: 0,
-        videos: [
+        currentId: '_I-CSgoCgsk',
+        videoMap: [
           {
             id: '_I-CSgoCgsk',
             title: 'I think this is my dream language...',
@@ -138,23 +138,18 @@
               'https://yt3.ggpht.com/4NapxEtLcHQ6wN2zA_DMmkOk47RFb_gy6sjSmUZGg_ARHjlIUjFsrNFddrcKMkTYpBNxCp3J=s48-c-k-c0x00ffffff-no-rj',
             publishedAt: dayjs('2024-03-11 00:32').subtract(2, 'week'),
           },
-        ].map((video, index) => ({
-          ...video,
-          embedUrl: getEmbedUrl(video.id),
-          thumbnailUrl: getThumbnailUrl(video.id),
-          views: numberFormat.format(video.views),
-          likeSimply: numberFormat.format(video.likes),
-          channelSubs: numberFormat.format(video.channelSubs),
-          published: dayjs(video.publishedAt).fromNow(),
-          index,
-        })),
-
-        getCurrentVideo() {
-          return this.videos.find((video) => video.index == this.currentIndex)
-        },
-        getOtherVideos() {
-          return this.videos.filter((video) => video.index != this.currentIndex)
-        },
+        ].reduce((map, video) => {
+          map[video.id] = {
+            ...video,
+            embedUrl: getEmbedUrl(video.id),
+            thumbnailUrl: getThumbnailUrl(video.id),
+            views: numberFormat.format(video.views),
+            likeSimply: numberFormat.format(video.likes),
+            channelSubs: numberFormat.format(video.channelSubs),
+            published: dayjs(video.publishedAt).fromNow(),
+          }
+          return map
+        }, {}),
       }
 
       document.addEventListener('DOMContentLoaded', () => {
@@ -163,26 +158,28 @@
       })
 
       function likeVideo() {
-        if (player.videos[player.currentIndex].isLiked) {
-          player.videos[player.currentIndex].isLiked = false
-          player.videos[player.currentIndex].likes--
+        if (player.videoMap[player.currentId].isLiked) {
+          player.videoMap[player.currentId].isLiked = false
+          player.videoMap[player.currentId].likes--
         } else {
-          player.videos[player.currentIndex].isLiked = true
-          player.videos[player.currentIndex].likes++
+          player.videoMap[player.currentId].isLiked = true
+          player.videoMap[player.currentId].likes++
         }
         changePlayerInfo()
       }
 
-      function changePlayer(index = player.currentIndex) {
-        player.currentIndex = index
-        playerDOM.innerHTML = playerComponent(player.getCurrentVideo())
+      function changePlayer(id = player.currentId) {
+        player.currentId = id
+        playerDOM.innerHTML = playerComponent(player.videoMap[player.currentId])
         changePlayerInfo()
         changeListVideo()
         refreshIcons()
       }
 
       function changePlayerInfo() {
-        playerInfoDOM.innerHTML = playerInfoComponent(player.getCurrentVideo())
+        playerInfoDOM.innerHTML = playerInfoComponent(
+          player.videoMap[player.currentId]
+        )
         refreshIcons()
       }
 
@@ -253,14 +250,20 @@
       }
 
       function changeListVideo() {
-        listVideoDOM.innerHTML = player
-          .getOtherVideos()
-          .reduce((html, video) => html + listVideoItemComponent(video), '')
+        listVideoDOM.innerHTML = Object.entries(player.videoMap).reduce(
+          (html, [id, video]) => {
+            if (id != player.currentId) {
+              html += listVideoItemComponent(video)
+            }
+            return html
+          },
+          ''
+        )
       }
 
       function listVideoItemComponent(video) {
         return `
-          <div class="flex gap-4 cursor-pointer rounded-2xl" onclick="changePlayer(${video.index})"">
+          <div class="flex gap-4 cursor-pointer rounded-2xl" onclick="changePlayer('${video.id}')"">
             <img class="w-32 h-24 lg:w-48 lg:h-32 object-cover rounded-2xl" src="${video.thumbnailUrl}" alt="${video.title}"/>
             <div class="text-sm">
               <p class="line-clamp-2 poppins-semibold">${video.title}</p>
