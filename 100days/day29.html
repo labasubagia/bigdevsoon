@@ -1,0 +1,298 @@
+<html>
+  <head>
+    <!-- Our unique tag to identify the solution -->
+    <bds />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BigDevSoon Challenge</title>
+
+    <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Add your external script links here, if any -->
+    <link rel="stylesheet" href="../style/font.css" />
+
+    <style>
+      *::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body class="poppins-regular w-full min-h-screen">
+    <!-- solution -->
+    <div
+      class="min-h-screen min-w-full bg-gray-900 p-4 flex justify-center md:items-center"
+    >
+      <div
+        class="flex flex-col md:grid grid-cols-12 gap-4 md:items-start container"
+      >
+        <!-- player -->
+        <div
+          class="w-full md:min-w-[500px] lg:min-w-[800px] col-span-8 row-auto"
+        >
+          <div id="player"></div>
+          <div id="playerInfo"></div>
+        </div>
+
+        <!-- list -->
+        <div
+          class="bg-gray-800 text-white rounded-xl md:min-w-[300px] col-span-4"
+        >
+          <p class="text-xl poppins-semibold p-4">Related Videos</p>
+          <div
+            id="listVideo"
+            class="flex flex-col gap-4 p-4 md:overflow-auto md:max-h-[300px] lg:max-h-[500px] xl:max-h-[600px]"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest" flex></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/relativeTime.js"></script>
+
+    <script>
+      // date
+      dayjs().format()
+      dayjs.extend(window.dayjs_plugin_relativeTime)
+
+      const numberFormat = Intl.NumberFormat('en', { notation: 'compact' })
+
+      const playerDOM = document.querySelector('#player')
+      const playerInfoDOM = document.querySelector('#playerInfo')
+      const listVideoDOM = document.querySelector('#listVideo')
+
+      let player = {
+        currentIndex: 0,
+        videos: [
+          {
+            id: '_I-CSgoCgsk',
+            title: 'I think this is my dream language...',
+            views: 11_000,
+            likes: 1999,
+            channelSubs: 247_000,
+            isLiked: false,
+            channelName: 'Theo - t3.gg',
+            channelLogo:
+              'https://yt3.ggpht.com/4NapxEtLcHQ6wN2zA_DMmkOk47RFb_gy6sjSmUZGg_ARHjlIUjFsrNFddrcKMkTYpBNxCp3J=s48-c-k-c0x00ffffff-no-rj',
+            publishedAt: dayjs('2024-03-11 00:32'),
+          },
+          {
+            id: 'GjkQNAZbxKY',
+            title: 'The Pain Of Frontend Dev | Prime Reacts',
+            views: 96_000,
+            likes: 4100,
+            channelSubs: 346_000,
+            isLiked: false,
+            channelName: 'ThePrimeTime',
+            channelLogo:
+              'https://yt3.ggpht.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s48-c-k-c0x00ffffff-no-rj',
+            publishedAt: dayjs('2024-03-10'),
+          },
+          {
+            id: 'goy4lZfDtCE',
+            title: 'Reacting to Controversial Opinions of Software Engineers',
+            views: 1_950_000,
+            likes: 75_000,
+            channelSubs: 2_880_000,
+            isLiked: false,
+            channelName: 'Fireship',
+            channelLogo:
+              'https://yt3.ggpht.com/ytc/AIdro_ltOWCZT10fChupyd1atupxII0RoP97CwYGr0Gphw=s48-c-k-c0x00ffffff-no-rj',
+            publishedAt: dayjs('2024-03-11').subtract(2, 'year'),
+          },
+          {
+            id: '4ygaA_y1wvQ',
+            title: 'Become a bash scripting pro - full course',
+            views: 4500,
+            likes: 437,
+            channelSubs: 6630,
+            isLiked: false,
+            channelName: 'CODE IS EVERYTHING',
+            channelLogo:
+              'https://yt3.ggpht.com/ZslTzAsHoUHdDOpK1kJGTpsxasJ0zTbqVMPWPxac7No74BSI6qYf2WM2N5wc9fVqP809S_kQ=s48-c-k-c0x00ffffff-no-rj',
+            publishedAt: dayjs('2024-03-11').subtract(5, 'day'),
+          },
+          {
+            id: 'UrcwDOEBzZE',
+            title: 'Most Common Concepts for Coding Interviews',
+            views: 224_000,
+            likes: 9900,
+            channelSubs: 670_000,
+            isLiked: false,
+            channelName: 'NeetCode',
+            channelLogo:
+              'https://yt3.ggpht.com/FqiGBOsNpeWbNw20ULboW0jy88JdpqFO9a-YRJ0C2oc4lZ8uoHYJ38PWSkrjdC_zQgNW9pGU=s48-c-k-c0x00ffffff-no-rj',
+            publishedAt: dayjs('2024-03-11').subtract(4, 'month'),
+          },
+          {
+            id: 'UlY-Ixddjm0',
+            title: 'Panda CSS First Impressions | Theo Reacts',
+            views: 79_000,
+            likes: 1500,
+            channelSubs: 247_000,
+            isLiked: false,
+            channelName: 'Theo - t3.gg',
+            channelLogo:
+              'https://yt3.ggpht.com/4NapxEtLcHQ6wN2zA_DMmkOk47RFb_gy6sjSmUZGg_ARHjlIUjFsrNFddrcKMkTYpBNxCp3J=s48-c-k-c0x00ffffff-no-rj',
+            publishedAt: dayjs('2024-03-11 00:32').subtract(2, 'week'),
+          },
+        ].map((video, index) => ({
+          ...video,
+          embedUrl: getEmbedUrl(video.id),
+          thumbnailUrl: getThumbnailUrl(video.id),
+          views: numberFormat.format(video.views),
+          likeSimply: numberFormat.format(video.likes),
+          channelSubs: numberFormat.format(video.channelSubs),
+          published: dayjs(video.publishedAt).fromNow(),
+          index,
+        })),
+
+        getCurrentVideo() {
+          return this.videos.find((video) => video.index == this.currentIndex)
+        },
+        getOtherVideos() {
+          return this.videos.filter((video) => video.index != this.currentIndex)
+        },
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        changePlayer()
+        refreshIcons()
+      })
+
+      function likeVideo() {
+        if (player.videos[player.currentIndex].isLiked) {
+          player.videos[player.currentIndex].isLiked = false
+          player.videos[player.currentIndex].likes--
+        } else {
+          player.videos[player.currentIndex].isLiked = true
+          player.videos[player.currentIndex].likes++
+        }
+        changePlayerInfo()
+      }
+
+      function changePlayer(index = player.currentIndex) {
+        player.currentIndex = index
+        playerDOM.innerHTML = playerComponent(player.getCurrentVideo())
+        changePlayerInfo()
+        changeListVideo()
+        refreshIcons()
+      }
+
+      function changePlayerInfo() {
+        playerInfoDOM.innerHTML = playerInfoComponent(player.getCurrentVideo())
+        refreshIcons()
+      }
+
+      function playerComponent(video) {
+        return `
+          <iframe
+          class="w-full aspect-video rounded-xl"
+          src="${video.embedUrl}"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          ></iframe>
+        `
+      }
+
+      function playerInfoComponent(video) {
+        return `
+          <div
+            class="w-full mt-4 bg-slate-800 rounded-xl p-4 text-white flex gap-2 items-center justify-between"
+          >
+            <div class="flex gap-2 items-center">
+              <img
+                class="size-12 rounded-full"
+                src="${video.channelLogo}"
+                alt="${video.channelName}"
+              />
+              <div>
+                <p class="poppins-semibold">${video.channelName}</p>
+                <p class="text-sm">${video.channelSubs} subscribers</p>
+              </div>
+            </div>
+
+            <div class="gap-2 lg:gap-4 text-sm flex-wrap hidden md:flex justify-center items-center">
+              <div class="flex gap-1 items-center">
+                <i class="size-4" data-lucide="eye"></i>
+                <p>${video.views} views</p>
+              </div>
+              <div class="flex gap-1 items-center">
+                <i class="size-4" data-lucide="thumbs-up"></i>
+                <p>${
+                  video.likes > 10_000 ? video.likeSimply : video.likes
+                } likes</p>
+              </div>
+            </div>
+
+            <div class="flex gap-2">
+              <button
+                class="p-2 px-3 bg-gray-500 flex items-center gap-2 rounded text-sm"
+                onclick="shareVideo('${video.title}', '${video.id}')"
+              >
+                <i class="size-4" data-lucide="share"></i>
+                <p>Share</p>
+              </button>
+              <button
+                class="p-2 px-3 bg-purple-500 flex items-center gap-2 rounded text-sm"
+                onclick="likeVideo()"
+                id="buttonLike"
+              >
+                <i class="size-4 ${
+                  video.isLiked ? 'text-pink-500 fill-pink-500' : ''
+                }" data-lucide="heart"></i>
+                <p>Like</p>
+              </button>
+            </div>
+          </div>
+        `
+      }
+
+      function changeListVideo() {
+        listVideoDOM.innerHTML = player
+          .getOtherVideos()
+          .reduce((html, video) => html + listVideoItemComponent(video), '')
+      }
+
+      function listVideoItemComponent(video) {
+        return `
+          <div class="flex gap-4 cursor-pointer rounded-2xl" onclick="changePlayer(${video.index})"">
+            <img class="w-32 h-24 lg:w-48 lg:h-32 object-cover rounded-2xl" src="${video.thumbnailUrl}" alt="${video.title}"/>
+            <div class="text-sm">
+              <p class="line-clamp-2 poppins-semibold">${video.title}</p>
+              <p class="mt-1 md:mt-2">${video.channelName}</p>
+              <div class="flex gap-1 lg:gap-2 mt-2 text-xs flex-wrap">
+                <p>${video.views} views</p>
+                <p>•</p>
+                <p>${video.published}</p>
+              </div>
+            </div>
+          </div>
+        `
+      }
+
+      function getEmbedUrl(videoId) {
+        return `https://www.youtube.com/embed/${videoId}`
+      }
+
+      function getThumbnailUrl(videoId) {
+        return `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`
+      }
+
+      function shareVideo(title, videoId) {
+        navigator.clipboard.writeText(
+          `https://www.youtube.com/watch?v=${videoId}`
+        )
+        alert(`URL of Video "${title}" copied to clipboard`)
+      }
+
+      function refreshIcons() {
+        lucide.createIcons()
+      }
+    </script>
+  </body>
+</html>
