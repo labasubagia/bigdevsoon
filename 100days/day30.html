@@ -1,0 +1,312 @@
+<html>
+  <head>
+    <!-- Our unique tag to identify the solution -->
+    <bds />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BigDevSoon Challenge</title>
+
+    <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Add your external script links here, if any -->
+    <link rel="stylesheet" href="../style/font.css" />
+
+    <style>
+      th {
+        font-weight: 400;
+      }
+      th,
+      td {
+        padding: 0.9rem 1rem;
+      }
+    </style>
+  </head>
+
+  <body class="poppins-regular w-full min-h-screen">
+    <!-- solution -->
+    <div
+      class="min-h-screen min-w-full bg-gray-200 p-4 flex justify-center md:items-center"
+    >
+      <div class="container md:max-w-[700px] lg:max-w-[900px]">
+        <!-- info card -->
+        <div class="grid sm:grid-cols-2 gap-4">
+          <button
+            class="flex justify-between items-center bg-white w-full rounded-2xl p-5 shadow-lg"
+            onclick="changeListInvoices('paid')"
+          >
+            <div class="space-y-2">
+              <p class="poppins-medium">Balance</p>
+              <p class="text-xl poppins-semibold" id="balance">$0</p>
+            </div>
+          </button>
+          <button
+            class="flex justify-between items-center bg-gray-800 text-white w-full rounded-2xl p-5 shadow-lg"
+            onclick="changeListInvoices('pending')"
+          >
+            <div class="space-y-2">
+              <p class="poppins-medium">Pending</p>
+              <p class="text-xl poppins-semibold" id="pending">$0</p>
+            </div>
+            <div>
+              <div class="bg-black p-2">
+                <i data-lucide="chevron-right" class="text-white size-5"></i>
+              </div>
+            </div>
+          </button>
+        </div>
+
+        <!-- invoices -->
+        <div class="bg-white rounded-xl mt-6 p-4 shadow-lg">
+          <!-- title -->
+          <div class="flex justify-between gap-4 flex-wrap items-center">
+            <p class="poppins-semibold text-xl">Invoices</p>
+            <div class="flex flex-wrap gap-4">
+              <button
+                class="p-3 px-5 border-2 border-black rounded-xl"
+                onclick="changeListInvoices('all')"
+              >
+                View All Invoices
+              </button>
+              <button
+                class="p-3 px-5 bg-blue-500 rounded-xl text-white flex gap-2 items-center border-2 border-transparent"
+                onclick="toggleAddNewModal(true)"
+              >
+                <i data-lucide="plus" class="size-4"></i>
+                <p>New Invoice</p>
+              </button>
+            </div>
+          </div>
+
+          <!-- data -->
+          <div class="overflow-x-auto mt-4">
+            <table class="table-auto overflow-scroll w-full">
+              <thead>
+                <tr class="uppercase text-left text-gray-500">
+                  <th>Invoice</th>
+                  <th>Client</th>
+                  <th class="text-right">Amount</th>
+                  <th class="text-center">Status</th>
+                  <th class="text-center">Date</th>
+                </tr>
+              </thead>
+              <tbody id="listInvoices"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- form -->
+      <div
+        id="addNewModal"
+        class="fixed top-0 left-0 w-full min-h-screen backdrop-blur-xl flex items-center justify-center invisible"
+        onclick="toggleAddNewModal(false)"
+      >
+        <form
+          class="p-8 bg-white md:rounded-xl shadow-lg ring-1 ring-gray-100 h-screen w-full md:w-fit md:h-fit"
+          onclick="event.stopPropagation()"
+        >
+          <div class="flex items-center justify-between">
+            <button type="button" onclick="toggleAddNewModal(false)">
+              <i data-lucide="chevron-left" class="size-5"></i>
+            </button>
+            <p class="text-xl text-center poppins-medium">Add New Invoice</p>
+            <div></div>
+          </div>
+
+          <div class="mt-8 gap-4 flex flex-col">
+            <input
+              class="outline-none p-2 px-3 border-2 rounded-lg border-gray-100"
+              type="text"
+              name="name"
+              placeholder="Name"
+              required
+            />
+
+            <input
+              class="outline-none p-2 px-3 border-2 rounded-lg border-gray-100"
+              type="text"
+              name="client"
+              placeholder="Client"
+              required
+            />
+
+            <input
+              class="outline-none p-2 px-3 border-2 rounded-lg border-gray-100"
+              type="number"
+              min="1"
+              name="amount"
+              placeholder="Amount"
+              required
+            />
+
+            <select
+              name="status"
+              class="outline-none p-2 px-3 border-2 rounded-lg border-gray-100 bg-white"
+              required
+            >
+              <option value="" class="text-gray-500">-- Select --</option>
+              <option value="paid">Paid</option>
+              <option value="outstanding">Outstanding</option>
+              <option value="overdue">Overdue</option>
+            </select>
+
+            <input
+              class="outline-none p-2 px-3 border-2 rounded-lg border-gray-100"
+              type="date"
+              name="date"
+              placeholder="Date"
+              required
+            />
+          </div>
+
+          <button
+            class="p-3 px-4 bg-blue-500 rounded-xl text-white mt-6 w-full"
+          >
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest" flex></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+
+    <script>
+      // date
+      dayjs().format()
+
+      const balanceDOM = document.querySelector('#balance')
+      const pendingDOM = document.querySelector('#pending')
+      const listInvoicesDOM = document.querySelector('#listInvoices')
+      const addNewModalDOM = document.querySelector('#addNewModal')
+      const addNewFormDOM = addNewModalDOM.querySelector('form')
+
+      let data = {
+        status: {
+          paid: 'bg-green-500 text-white',
+          overdue: 'bg-red-500 text-white',
+          outstanding: 'bg-orange-500 text-white',
+        },
+        invoices: [
+          {
+            name: 'Aluminum',
+            client: 'Speedy Inc',
+            amount: 2400,
+            status: 'paid',
+            date: dayjs('2024-02-12'),
+          },
+          {
+            name: 'Steel',
+            client: 'Colony Labs',
+            amount: 3000,
+            status: 'paid',
+            date: dayjs('2024-02-31'),
+          },
+          {
+            name: 'Iron',
+            client: 'Coco Mobile',
+            amount: 2500,
+            status: 'outstanding',
+            date: dayjs('2024-02-01'),
+          },
+          {
+            name: 'Sand',
+            client: 'Same Ltd',
+            amount: 1500,
+            status: 'overdue',
+            date: dayjs('2024-02-29'),
+          },
+        ],
+        getSortedInvoices() {
+          return this.invoices.sort(
+            (a, b) => dayjs(b.date).unix() - dayjs(a.date).unix()
+          )
+        },
+        getBalance() {
+          return this.invoices.reduce(
+            (balance, invoice) =>
+              invoice.status == 'paid' ? balance + invoice.amount : balance,
+            0
+          )
+        },
+        getPending() {
+          return this.invoices.reduce(
+            (pending, invoice) =>
+              invoice.status != 'paid' ? pending + invoice.amount : pending,
+            0
+          )
+        },
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        changeInfo()
+        changeListInvoices()
+        refreshIcons()
+      })
+
+      addNewFormDOM.addEventListener('submit', (event) => {
+        event.preventDefault()
+        const formData = new FormData(event.target)
+        const invoice = {
+          name: formData.get('name'),
+          client: formData.get('client'),
+          amount: formData.get('amount'),
+          status: formData.get('status'),
+          date: dayjs(formData.get('date')),
+        }
+        data.invoices.push(invoice)
+        changeInfo()
+        changeListInvoices()
+        toggleAddNewModal(false)
+        addNewFormDOM.reset()
+      })
+
+      function toggleAddNewModal(isShow = true) {
+        addNewModalDOM.classList[isShow ? 'remove' : 'add']('invisible')
+      }
+
+      function changeInfo() {
+        balanceDOM.innerHTML = `$${data.getBalance()}`
+        pendingDOM.innerHTML = `$${data.getPending()}`
+      }
+
+      function changeListInvoices(view = 'all') {
+        listInvoicesDOM.innerHTML = data
+          .getSortedInvoices()
+          .reduce((html, invoice, index) => {
+            const isAll = view == 'all'
+            const isPaid = view == 'paid' && invoice.status == 'paid'
+            const isPending = view == 'pending' && invoice.status != 'paid'
+            if (isAll || isPaid || isPending) {
+              html += invoiceItemComponent(invoice, index)
+            }
+            return html
+          }, '')
+      }
+
+      function invoiceItemComponent(invoice, index) {
+        return `
+          <tr class="capitalize p-2 text-sm">
+            <td>${invoice.name}</td>
+            <td>${invoice.client}</td>
+            <td class="text-right">$${invoice.amount}</td>
+            <td class="flex justify-center text-xs">
+              <span class="${data.status[invoice.status]} p-1 px-2 rounded-xl">
+                ${invoice.status}
+              </span>
+            </td>
+            <td class="text-center">${dayjs(invoice.date).format(
+              'DD MMMM YYYY'
+            )}</td>
+          </tr>
+        `
+      }
+
+      function refreshIcons() {
+        changeInfo()
+        lucide.createIcons()
+      }
+    </script>
+  </body>
+</html>
