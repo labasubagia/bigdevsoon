@@ -1,112 +1,115 @@
 <html>
+  <head>
+    <!-- Our unique tag to identify the solution -->
+    <bds />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BigDevSoon Challenge</title>
 
-<head>
-  <!-- Our unique tag to identify the solution -->
-  <bds />
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BigDevSoon Challenge</title>
+    <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Add your external script links here, if any -->
+    <link rel="stylesheet" href="../style/font.css" />
 
-  <!-- Add your external script links here, if any -->
-  <link rel="stylesheet" href="../style/font.css">
+    <style>
+      *::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
 
-  <style>
-    *::-webkit-scrollbar {
-      display: none;
-    }
-  </style>
-</head>
-
-<body class="poppins-regular w-full min-h-screen">
-
-  <!-- solution -->
-  <div class="min-h-screen min-w-screen bg-indigo-100 bg-cover flex sm:p-3 sm:items-center sm:justify-center text-gray-800">
-
-    <!-- card -->
-    <div class="w-full min-h-screen sm:w-[500px] sm:min-h-full sm:rounded-lg md:p-6 bg-white p-4">
-      
-      <p class="poppins-semibold">Upload Photo</p>
-
-      <!-- dropzone -->
-      <div 
-        id="dropzone" 
-        ondrop="onDrop(event)" 
-        ondragover="onDragOver(event)"
-        ondragleave="this.classList.remove('bg-indigo-100')"
-        class="rounded-xl border-dashed border-2 border-gray-900 flex items-center justify-center p-6 mt-6"
+  <body class="poppins-regular w-full min-h-screen">
+    <!-- solution -->
+    <div
+      class="min-h-screen min-w-screen bg-indigo-100 bg-cover flex sm:p-3 sm:items-center sm:justify-center text-gray-800"
+    >
+      <!-- card -->
+      <div
+        class="w-full min-h-screen sm:w-[500px] sm:min-h-full sm:rounded-lg md:p-6 bg-white p-4"
       >
-        <div class="text-center flex items-center flex-col gap-3">
-          <i data-lucide="images" class="size-24 mx-0 text-indigo-500"></i>
-          <p>
-            Drop your image here or  <label for="fileInput" class="cursor-pointer text-indigo-500">Browse</label>
-            <input type="file" class="hidden" id="fileInput" multiple>
-          </p>
-          <p class="uppercase poppins-light">PNG, JPG, JPEG</p>
+        <p class="poppins-semibold">Upload Photo</p>
+
+        <!-- dropzone -->
+        <div
+          id="dropzone"
+          ondrop="onDrop(event)"
+          ondragover="onDragOver(event)"
+          ondragleave="this.classList.remove('bg-indigo-100')"
+          class="rounded-xl border-dashed border-2 border-gray-900 flex items-center justify-center p-6 mt-6"
+        >
+          <div class="text-center flex items-center flex-col gap-3">
+            <i data-lucide="images" class="size-24 mx-0 text-indigo-500"></i>
+            <p>
+              Drop your image here or
+              <label for="fileInput" class="cursor-pointer text-indigo-500"
+                >Browse</label
+              >
+              <input type="file" class="hidden" id="fileInput" multiple />
+            </p>
+            <p class="uppercase poppins-light">PNG, JPG, JPEG</p>
+          </div>
         </div>
+
+        <!-- files -->
+        <div class="flex flex-col gap-2" id="files"></div>
       </div>
-
-      <!-- files -->
-      <div class="flex flex-col gap-2" id="files"></div>
-
     </div>
 
-  </div>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      const dropzoneDOM = document.querySelector('#dropzone')
+      const filesDOM = document.querySelector('#files')
+      const filesInputDOM = document.querySelector('#fileInput')
 
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script>
-    const dropzoneDOM = document.querySelector('#dropzone')
-    const filesDOM = document.querySelector('#files')
-    const filesInputDOM = document.querySelector('#fileInput')
+      let files = []
 
-    let files = []
+      document.addEventListener('DOMContentLoaded', (event) => {
+        lucide.createIcons()
+      })
 
-    document.addEventListener('DOMContentLoaded', event => {
-      lucide.createIcons();
-    })
+      filesInputDOM.addEventListener('change', (event) => {
+        files.push(...event.target.files)
+        changeFiles()
+      })
 
-    filesInputDOM.addEventListener('change', event => {
-      files.push(...event.target.files)
-      changeFiles()
-    })
+      function onDrop(event) {
+        event.preventDefault()
 
-    function onDrop(event) {
-      event.preventDefault()
+        let uploadFiles = []
 
-      let uploadFiles = []
-      
-      if(event?.dataTransfer?.items) {
-        uploadFiles = [...event.dataTransfer.items]
-          .filter(item => item.kind === 'file')
-          .map(item => item.getAsFile())
-      } else {
-        uploadFiles = [...ev.dataTransfer.files]
+        if (event?.dataTransfer?.items) {
+          uploadFiles = [...event.dataTransfer.items]
+            .filter((item) => item.kind === 'file')
+            .map((item) => item.getAsFile())
+        } else {
+          uploadFiles = [...ev.dataTransfer.files]
+        }
+
+        files.push(...uploadFiles)
+        changeFiles()
       }
 
-      files.push(...uploadFiles)
-      changeFiles()
-    }
+      function onDragOver(event) {
+        event.preventDefault()
+        dropzoneDOM.classList.add('bg-indigo-100')
+      }
 
-    function onDragOver(event) {
-      event.preventDefault()
-      dropzoneDOM.classList.add('bg-indigo-100')
-    }
+      function deleteFile(index) {
+        files.splice(index, 1)
+        changeFiles()
+      }
 
-    function deleteFile(index) {
-      files.splice(index, 1)
-      changeFiles()
-    }
-
-    function changeFiles() {
-      filesDOM.innerHTML = files.reduce((htmlStr, file, index) => {
-        if (!isValidFile(file.type)) {
-          return htmlStr
-        }
-        const src = URL.createObjectURL(file)
-        const size = formatFileSize(file.size)
-        return htmlStr + `
+      function changeFiles() {
+        filesDOM.innerHTML = files.reduce((htmlStr, file, index) => {
+          if (!isValidFile(file.type)) {
+            return htmlStr
+          }
+          const src = URL.createObjectURL(file)
+          const size = formatFileSize(file.size)
+          return (
+            htmlStr +
+            `
           <div class="flex border-2 border-indigo-100 p-2 rounded-lg gap-2 items-center justify-between">
 
             <div class="flex items-center gap-2">
@@ -129,29 +132,28 @@
             </div>
           </div>
         `
-      }, '')
+          )
+        }, '')
 
-      filesDOM.classList[files.length ? 'add': 'remove']('mt-4')
+        filesDOM.classList[files.length ? 'add' : 'remove']('mt-4')
 
-      // refresh icons
-      lucide.createIcons();
+        // refresh icons
+        lucide.createIcons()
 
-      // clear dropzone
-      dropzoneDOM.classList.remove('bg-indigo-100')
-    }
+        // clear dropzone
+        dropzoneDOM.classList.remove('bg-indigo-100')
+      }
 
-    function formatFileSize(bytes) {
-      const suffixes = ['B', 'kB', 'MB', 'GB', 'TB']
-      const i = Math.floor(Math.log(bytes) / Math.log(1024))
-      return `${(bytes / Math.pow(1024, i)).toFixed(2)} ${suffixes[i]}`
-    };
+      function formatFileSize(bytes) {
+        const suffixes = ['B', 'kB', 'MB', 'GB', 'TB']
+        const i = Math.floor(Math.log(bytes) / Math.log(1024))
+        return `${(bytes / Math.pow(1024, i)).toFixed(2)} ${suffixes[i]}`
+      }
 
-    function isValidFile(type) {
-      const allowed = ['image/jpeg', 'image/png']
-      return allowed.includes(type)
-    }
-
-  </script>
-</body>
-
+      function isValidFile(type) {
+        const allowed = ['image/jpeg', 'image/png']
+        return allowed.includes(type)
+      }
+    </script>
+  </body>
 </html>

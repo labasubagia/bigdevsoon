@@ -1,309 +1,257 @@
 <html>
+  <head>
+    <!-- Our unique tag to identify the solution -->
+    <bds />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BigDevSoon Challenge</title>
 
-<head>
-  <!-- Our unique tag to identify the solution -->
-  <bds />
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BigDevSoon Challenge</title>
+    <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Add your external script links here, if any -->
+    <link rel="stylesheet" href="../style/font.css" />
+  </head>
 
-  <!-- Add your external script links here, if any -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <body class="poppins-regular">
+    <div class="w-full h-full flex items-center justify-center bg-purple-100">
+      <!-- card -->
+      <div class="bg-gray-900 text-gray-400 p-8 py-10 rounded-xl min-w-[500px]">
+        <!-- title -->
+        <p class="poppins-semibold text-white text-3xl">Generate Password</p>
 
-  <style>
-    .poppins-thin {
-      font-family: "Poppins", sans-serif;
-      font-weight: 100;
-      font-style: normal;
-    }
-
-    .poppins-thin-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 100;
-      font-style: italic;
-    }
-
-    .poppins-extralight {
-      font-family: "Poppins", sans-serif;
-      font-weight: 200;
-      font-style: normal;
-    }
-
-    .poppins-extralight-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 200;
-      font-style: italic;
-    }
-
-    .poppins-light {
-      font-family: "Poppins", sans-serif;
-      font-weight: 300;
-      font-style: normal;
-    }
-
-    .poppins-light-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 300;
-      font-style: italic;
-    }
-
-    .poppins-regular {
-      font-family: "Poppins", sans-serif;
-      font-weight: 400;
-      font-style: normal;
-    }
-
-    .poppins-regular-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 400;
-      font-style: italic;
-    }
-
-    .poppins-medium {
-      font-family: "Poppins", sans-serif;
-      font-weight: 500;
-      font-style: normal;
-    }
-
-    .poppins-medium-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 500;
-      font-style: italic;
-    }
-
-    .poppins-semibold {
-      font-family: "Poppins", sans-serif;
-      font-weight: 600;
-      font-style: normal;
-    }
-
-    .poppins-semibold-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 600;
-      font-style: italic;
-    }
-
-    .poppins-bold {
-      font-family: "Poppins", sans-serif;
-      font-weight: 700;
-      font-style: normal;
-    }
-
-    .poppins-bold-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 700;
-      font-style: italic;
-    }
-
-    .poppins-extrabold {
-      font-family: "Poppins", sans-serif;
-      font-weight: 800;
-      font-style: normal;
-    }
-
-    .poppins-extrabold-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 800;
-      font-style: italic;
-    }
-
-    .poppins-black {
-      font-family: "Poppins", sans-serif;
-      font-weight: 900;
-      font-style: normal;
-    }
-
-    .poppins-black-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 900;
-      font-style: italic;
-    }
-  </style>
-</head>
-
-<body class="poppins-regular">
-  <div class="w-full h-full flex items-center justify-center bg-purple-100">
-
-    <!-- card -->
-    <div class="bg-gray-900 text-gray-400 p-8 py-10 rounded-xl min-w-[500px]">
-
-      <!-- title -->
-      <p class="poppins-semibold text-white text-3xl ">Generate Password</p>
-
-      <!-- password -->
-      <p class="uppercase mt-8">generated password</p>
-      <div class="flex bg-gray-800 justify-between items-center p-5 py-3 mt-2 rounded-lg gap-4">
-        <p id="password" class="text-white text-xl"></p>
-        <div class="flex gap-4">
-          <button type="button" id="copy">
-            <i data-lucide="copy" class="w-6 h-6 text-purple-500 hover:text-purple-400"></i>
-          </button>
-          <button type="button" id="generate">
-            <i data-lucide="rotate-cw" class="w-6 h-6 text-purple-500 hover:text-purple-400"></i>
-          </button>
+        <!-- password -->
+        <p class="uppercase mt-8">generated password</p>
+        <div
+          class="flex bg-gray-800 justify-between items-center p-5 py-3 mt-2 rounded-lg gap-4"
+        >
+          <p id="password" class="text-white text-xl"></p>
+          <div class="flex gap-4">
+            <button type="button" id="copy">
+              <i
+                data-lucide="copy"
+                class="w-6 h-6 text-purple-500 hover:text-purple-400"
+              ></i>
+            </button>
+            <button type="button" id="generate">
+              <i
+                data-lucide="rotate-cw"
+                class="w-6 h-6 text-purple-500 hover:text-purple-400"
+              ></i>
+            </button>
+          </div>
         </div>
+        <p class="mt-2 text-center hidden text-white" id="notify-copied">
+          Password Copied!
+        </p>
+
+        <!-- char length -->
+        <p class="uppercase mt-8 flex items-center justify-between">
+          character length:
+          <span class="text-purple-500 poppins-bold text-2xl" id="char-len-view"
+            >12</span
+          >
+        </p>
+        <div
+          class="flex justify-between gap-5 bg-gray-800 p-5 py-3 mt-2 rounded-lg"
+        >
+          <p class="text-white">12</p>
+          <input
+            type="range"
+            min="12"
+            max="32"
+            id="char-len"
+            value="12"
+            class="w-full bg-gray-500 accent-purple-500"
+          />
+          <p class="text-white">32</p>
+        </div>
+
+        <!-- settings -->
+        <p class="uppercase mt-8">settings</p>
+        <div class="flex flex-col gap-4 mt-2">
+          <div
+            class="flex justify-between gap-5 bg-gray-800 p-5 py-3 rounded-lg"
+          >
+            <p class="capitalize text-white">Include uppercase letters</p>
+
+            <label class="inline-flex items-center cursor-pointer">
+              <input
+                id="include-uppercase"
+                type="checkbox"
+                value=""
+                checked
+                class="sr-only peer"
+              />
+              <div
+                class="relative w-11 h-6 bg-gray-600 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-purple-500"
+              ></div>
+            </label>
+          </div>
+
+          <div
+            class="flex justify-between gap-5 bg-gray-800 p-5 py-3 rounded-lg"
+          >
+            <p class="capitalize text-white">Include lowercase letters</p>
+
+            <label class="inline-flex items-center cursor-pointer">
+              <input
+                id="include-lowercase"
+                type="checkbox"
+                value=""
+                checked
+                class="sr-only peer"
+              />
+              <div
+                class="relative w-11 h-6 bg-gray-600 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-purple-500"
+              ></div>
+            </label>
+          </div>
+
+          <div
+            class="flex justify-between gap-5 bg-gray-800 p-5 py-3 rounded-lg"
+          >
+            <p class="capitalize text-white">Include numbers</p>
+
+            <label class="inline-flex items-center cursor-pointer">
+              <input
+                id="include-number"
+                type="checkbox"
+                value=""
+                checked
+                class="sr-only peer"
+              />
+              <div
+                class="relative w-11 h-6 bg-gray-600 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-purple-500"
+              ></div>
+            </label>
+          </div>
+
+          <div
+            class="flex justify-between gap-5 bg-gray-800 p-5 py-3 rounded-lg"
+          >
+            <p class="capitalize text-white">Include symbols</p>
+
+            <label class="inline-flex items-center cursor-pointer">
+              <input
+                id="include-symbols"
+                type="checkbox"
+                value=""
+                class="sr-only peer"
+              />
+              <div
+                class="relative w-11 h-6 bg-gray-600 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-purple-500"
+              ></div>
+            </label>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          onclick="generatePassword()"
+          class="mt-16 p-3 text-lg rounded-xl text-white poppins-semibold text-center w-full bg-purple-500"
+        >
+          Generate Password
+        </button>
       </div>
-      <p class="mt-2 text-center hidden text-white" id="notify-copied">Password Copied!</p>
-
-      <!-- char length -->
-      <p class="uppercase mt-8 flex items-center justify-between">
-        character length:
-        <span class="text-purple-500 poppins-bold text-2xl" id="char-len-view">12</span>
-      </p>
-      <div class="flex justify-between gap-5 bg-gray-800 p-5 py-3 mt-2 rounded-lg">
-        <p class="text-white">12</p>
-        <input type="range" min="12" max="32" id="char-len" value="12" class="w-full bg-gray-500 accent-purple-500">
-        <p class="text-white">32</p>
-      </div>
-
-      <!-- settings -->
-      <p class="uppercase mt-8">settings</p>
-      <div class="flex flex-col gap-4 mt-2">
-
-        <div class="flex justify-between gap-5 bg-gray-800 p-5 py-3 rounded-lg">
-          <p class="capitalize text-white">Include uppercase letters</p>
-
-          <label class="inline-flex items-center cursor-pointer">
-            <input id="include-uppercase" type="checkbox" value="" checked class="sr-only peer">
-            <div class="relative w-11 h-6 bg-gray-600  rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-purple-500"></div>
-          </label>
-        </div>
-
-        <div class="flex justify-between gap-5 bg-gray-800 p-5 py-3 rounded-lg">
-          <p class="capitalize text-white">Include lowercase letters</p>
-
-          <label class="inline-flex items-center cursor-pointer">
-            <input id="include-lowercase" type="checkbox" value="" checked class="sr-only peer">
-            <div class="relative w-11 h-6 bg-gray-600  rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-purple-500"></div>
-          </label>
-        </div>
-
-        <div class="flex justify-between gap-5 bg-gray-800 p-5 py-3 rounded-lg">
-          <p class="capitalize text-white">Include numbers</p>
-
-          <label class="inline-flex items-center cursor-pointer">
-            <input id="include-number" type="checkbox" value="" checked class="sr-only peer">
-            <div class="relative w-11 h-6 bg-gray-600  rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-purple-500"></div>
-          </label>
-        </div>
-
-        <div class="flex justify-between gap-5 bg-gray-800 p-5 py-3 rounded-lg">
-          <p class="capitalize text-white">Include symbols</p>
-
-          <label class="inline-flex items-center cursor-pointer">
-            <input id="include-symbols" type="checkbox" value="" class="sr-only peer">
-            <div class="relative w-11 h-6 bg-gray-600  rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-purple-500"></div>
-          </label>
-        </div>
-
-      </div>
-
-      <button type="button" onclick="generatePassword()" class="mt-16 p-3 text-lg rounded-xl text-white poppins-semibold text-center w-full bg-purple-500">Generate Password</button>
-
     </div>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons()
+    </script>
 
-  </div>
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script>
-    lucide.createIcons();
-  </script>
+    <script>
+      const includeUppercaseDOM = document.getElementById('include-uppercase')
+      const includeLowercaseDOM = document.getElementById('include-lowercase')
+      const includeNumberDOM = document.getElementById('include-number')
+      const includeSymbolDOM = document.getElementById('include-symbols')
 
-  <script>
-    const includeUppercaseDOM = document.getElementById('include-uppercase')
-    const includeLowercaseDOM = document.getElementById('include-lowercase')
-    const includeNumberDOM = document.getElementById('include-number')
-    const includeSymbolDOM = document.getElementById('include-symbols')
+      const charLenInputDOM = document.getElementById('char-len')
+      const charLenViewDOM = document.getElementById('char-len-view')
 
-    const charLenInputDOM = document.getElementById('char-len')
-    const charLenViewDOM = document.getElementById('char-len-view')
+      const passwordCopyDOM = document.getElementById('copy')
+      const passwordCopyNotifyDOM = document.getElementById('notify-copied')
+      const passwordGenerateDOM = document.getElementById('generate')
+      const passwordViewDOM = document.getElementById('password')
 
-    const passwordCopyDOM = document.getElementById('copy')
-    const passwordCopyNotifyDOM = document.getElementById('notify-copied')
-    const passwordGenerateDOM = document.getElementById('generate')
-    const passwordViewDOM = document.getElementById('password')
+      let includeUpperCase = includeUppercaseDOM.checked
+      let includeLowerCase = includeLowercaseDOM.checked
+      let includeNumber = includeNumberDOM.checked
+      let includeSymbol = includeSymbolDOM.checked
+      let charLen = Number(charLenViewDOM.innerText)
+      charLenInputDOM.value = charLen
 
-    let includeUpperCase = includeUppercaseDOM.checked
-    let includeLowerCase = includeLowercaseDOM.checked
-    let includeNumber = includeNumberDOM.checked
-    let includeSymbol = includeSymbolDOM.checked
-    let charLen = Number(charLenViewDOM.innerText)
-    charLenInputDOM.value = charLen
+      document.addEventListener('DOMContentLoaded', () => {
+        generatePassword()
+      })
 
-    document.addEventListener('DOMContentLoaded', () => {
-      generatePassword()
-    })
+      includeUppercaseDOM.addEventListener('change', (event) => {
+        includeUpperCase = event.target.checked
+      })
 
-    includeUppercaseDOM.addEventListener('change', (event) => {
-      includeUpperCase = event.target.checked
-    })
+      includeLowercaseDOM.addEventListener('change', (event) => {
+        includeLowerCase = event.target.checked
+      })
 
-    includeLowercaseDOM.addEventListener('change', (event) => {
-      includeLowerCase = event.target.checked
-    })
+      includeNumberDOM.addEventListener('change', (event) => {
+        includeNumber = event.target.checked
+      })
 
-    includeNumberDOM.addEventListener('change', (event) => {
-      includeNumber = event.target.checked
-    })
+      includeSymbolDOM.addEventListener('change', (event) => {
+        includeSymbol = event.target.checked
+      })
 
-    includeSymbolDOM.addEventListener('change', (event) => {
-      includeSymbol = event.target.checked
-    })
+      charLenInputDOM.addEventListener('change', (event) => {
+        const value = Number(event.target.value)
+        charLenViewDOM.innerText = value
+        charLen = value
+      })
 
-    charLenInputDOM.addEventListener('change', event => {
-      const value = Number(event.target.value)
-      charLenViewDOM.innerText = value
-      charLen = value
-    })
+      passwordCopyDOM.addEventListener('click', (event) => {
+        navigator.clipboard.writeText(passwordViewDOM.innerText)
+        passwordCopyNotifyDOM.style.display = 'block'
+        setTimeout(() => {
+          passwordCopyNotifyDOM.style.display = 'none'
+        }, 2000)
+      })
 
-    passwordCopyDOM.addEventListener('click', event => {
-      navigator.clipboard.writeText(passwordViewDOM.innerText)
-      passwordCopyNotifyDOM.style.display = 'block'
-      setTimeout(() => {
-        passwordCopyNotifyDOM.style.display = 'none'
-      }, 2000)
-    })
+      passwordGenerateDOM.addEventListener('click', generatePassword)
 
-    passwordGenerateDOM.addEventListener('click', generatePassword)
-
-    function generatePassword() {
-      passwordViewDOM.innerText = getRandomPassword(charLen)
-    }
-
-    function getRandomPassword(n = charLen) {
-      const charset = getCharset()
-      return Array(n).fill(null).map((_) => {
-        const randomIndex = Math.floor(Math.random() * charset.length)
-        return charset[randomIndex]
-      }).join('')
-    }
-
-    function getCharset() {
-      const lowerCase = 'abcdefghijklmnopqrstuvwxyz'
-      const upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-      const numbers = '0123456789'
-      const symbols = `!@#$%^&*()_+\\|]}[{'";:/?.>,<\`~`
-      let charset = ''
-      if (includeLowerCase) {
-        charset += lowerCase
+      function generatePassword() {
+        passwordViewDOM.innerText = getRandomPassword(charLen)
       }
-      if (includeUpperCase) {
-        charset += upperCase
-      }
-      if (includeNumber) {
-        charset += numbers
-      }
-      if (includeSymbol) {
-        charset += symbols
-      }
-      return charset
-    }
-  </script>
-</body>
 
+      function getRandomPassword(n = charLen) {
+        const charset = getCharset()
+        return Array(n)
+          .fill(null)
+          .map((_) => {
+            const randomIndex = Math.floor(Math.random() * charset.length)
+            return charset[randomIndex]
+          })
+          .join('')
+      }
 
+      function getCharset() {
+        const lowerCase = 'abcdefghijklmnopqrstuvwxyz'
+        const upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        const numbers = '0123456789'
+        const symbols = `!@#$%^&*()_+\\|]}[{'";:/?.>,<\`~`
+        let charset = ''
+        if (includeLowerCase) {
+          charset += lowerCase
+        }
+        if (includeUpperCase) {
+          charset += upperCase
+        }
+        if (includeNumber) {
+          charset += numbers
+        }
+        if (includeSymbol) {
+          charset += symbols
+        }
+        return charset
+      }
+    </script>
+  </body>
 </html>

@@ -1,201 +1,233 @@
 <html>
+  <head>
+    <!-- Our unique tag to identify the solution -->
+    <bds />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BigDevSoon Challenge</title>
 
-<head>
-  <!-- Our unique tag to identify the solution -->
-  <bds />
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BigDevSoon Challenge</title>
+    <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Add your external script links here, if any -->
+    <link rel="stylesheet" href="../style/font.css" />
+  </head>
 
-  <!-- Add your external script links here, if any -->
-  <link rel="stylesheet" href="../style/font.css">
+  <body class="poppins-regular w-full min-h-screen">
+    <!-- solution -->
+    <div
+      class="absolute left-0 top-0 min-h-screen min-w-full bg-gradient-to-br from-orange-200 from-10% via-white via-50% to-fuchsia-200 to-80% sm:p-2 md:p-3 flex sm:items-center sm:justify-center text-gray-800 z-20"
+    >
+      <!-- card -->
+      <div
+        class="bg-white w-fit h-screen sm:h-full sm:rounded-xl p-6 sm:p-12 md:p-16 md:rounded-3xl border border-gray-100 shadow-xl relative"
+      >
+        <!-- decorations -->
+        <div
+          class="hidden lg:block size-14 rounded-full left-10 top-28 bg-orange-400 absolute"
+        ></div>
+        <div
+          class="hidden lg:block size-16 rounded-full right-8 -top-5 bg-pink-200 absolute"
+        ></div>
+        <div
+          class="hidden lg:block size-24 rounded-full bottom-8 -right-8 bg-indigo-500 absolute"
+        ></div>
+        <!-- end of decorations -->
 
-</head>
+        <p class="text-center poppins-semibold">Find Ideal Plan</p>
 
-<body class="poppins-regular w-full min-h-screen">
+        <p class="mt-12 text-4xl poppins-semibold text-center">
+          Unlock
+          <span class="text-indigo-500 underline">Your Best-Fit</span> Plan
+          Today
+        </p>
 
-  <!-- solution -->
-  <div class="absolute left-0 top-0 min-h-screen min-w-full bg-gradient-to-br from-orange-200 from-10% via-white via-50%  to-fuchsia-200 to-80% sm:p-2 md:p-3 flex sm:items-center sm:justify-center text-gray-800 z-20">
-    
-    <!-- card -->
-    <div class="bg-white w-fit h-screen sm:h-full sm:rounded-xl p-6 sm:p-12 md:p-16 md:rounded-3xl border border-gray-100 shadow-xl relative">
-      
-      <!-- decorations -->
-      <div class="hidden lg:block size-14 rounded-full left-10 top-28 bg-orange-400 absolute"></div>
-      <div class="hidden lg:block size-16 rounded-full right-8 -top-5 bg-pink-200 absolute"></div>
-      <div class="hidden lg:block size-24 rounded-full bottom-8 -right-8 bg-indigo-500 absolute"></div>
-      <!-- end of decorations -->
-
-
-      <p class="text-center poppins-semibold">
-        Find Ideal Plan
-      </p>
-
-      <p class="mt-12 text-4xl poppins-semibold text-center">
-        Unlock <span class="text-indigo-500 underline">Your Best-Fit</span> Plan Today
-      </p>
-
-      <label class="flex items-center justify-center cursor-pointer mt-10 capitalize space-x-3 text-gray-500 poppins-semibold text-sm">
-        <span id="text-billed-annually">Billed Annually</span>
-
-        <div>
-          <input type="checkbox" id="pricingType" value="monthly" class="sr-only peer" checked>
-          <div class="relative w-11 h-6 bg-gray-200  rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-500"></div>
-        </div>
-
-        <span id="text-billed-monthly" class="text-black">Billed Monthly</span>
-      </label>
-
-      <!-- plans -->
-      <div id="plan-container" class="mt-8 sm:mt-12 md:mt-20 grid grid-cols-1 gap-4 md:gap-6 sm:grid-cols-2 md:grid-cols-3 p-4">
-
-        <!-- item 1 -->
-        <div class="rounded-2xl p-8 bg-indigo-500 text-gray-200 relative overflow-hidden shadow-xl border border-gray-200 flex flex-col justify-between">
+        <label
+          class="flex items-center justify-center cursor-pointer mt-10 capitalize space-x-3 text-gray-500 poppins-semibold text-sm"
+        >
+          <span id="text-billed-annually">Billed Annually</span>
 
           <div>
-            <!-- mark -->
-            <div class="p-1 px-12 text-sm absolute rotate-45  top-7 -right-12 text-center text-black bg-orange-300">Best value</div>
-  
-            <!-- short desc -->
-            <p class="poppins-semibold text-white">All in One</p>
-  
-            <!-- title -->
-            <p class="poppins-semibold text-white text-3xl mt-4">Professional</p>
-  
-            <!-- price -->
-            <p class="mt-2">
-              <span class="poppins-semibold text-white price">$39.99</span>/month
-            </p>
-  
-            <!-- features -->
-            <ul class="mt-6 list-disc ml-5">
-              <li>All core features</li>
-              <li>Priority support</li>
-              <li>Quarterly reviews</li>
-              <li>Custom branding</li>
-              <li>10GB storage</li>
-            </ul>
+            <input
+              type="checkbox"
+              id="pricingType"
+              value="monthly"
+              class="sr-only peer"
+              checked
+            />
+            <div
+              class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-500"
+            ></div>
           </div>
 
-          <!-- button -->
-          <button class="w-full p-3 px-5 bg-white text-black rounded-xl mt-16">
-            Try tree for 30 days
-          </button>
+          <span id="text-billed-monthly" class="text-black"
+            >Billed Monthly</span
+          >
+        </label>
 
-        </div>
+        <!-- plans -->
+        <div
+          id="plan-container"
+          class="mt-8 sm:mt-12 md:mt-20 grid grid-cols-1 gap-4 md:gap-6 sm:grid-cols-2 md:grid-cols-3 p-4"
+        >
+          <!-- item 1 -->
+          <div
+            class="rounded-2xl p-8 bg-indigo-500 text-gray-200 relative overflow-hidden shadow-xl border border-gray-200 flex flex-col justify-between"
+          >
+            <div>
+              <!-- mark -->
+              <div
+                class="p-1 px-12 text-sm absolute rotate-45 top-7 -right-12 text-center text-black bg-orange-300"
+              >
+                Best value
+              </div>
 
-        <!-- item 2 -->
-        <div class="rounded-2xl p-8 bg-white text-gray-900 relative overflow-hidden shadow-xl border border-gray-200 flex flex-col justify-between">
+              <!-- short desc -->
+              <p class="poppins-semibold text-white">All in One</p>
 
-          <div>
-            <!-- short desc -->
-            <p class="poppins-semibold">Basic</p>
-  
-            <!-- title -->
-            <p class="poppins-semibold text-3xl mt-4">Standard </p>
-  
-            <!-- price -->
-            <p class="mt-2">
-              <span class="poppins-semibold price">$29.99</span>/month
-            </p>
-  
-            <!-- features -->
-            <ul class="mt-6 list-disc ml-5">
-              <li>Most core features</li>
-              <li>Email support</li>
-              <li>Annual reviews</li>
-              <li>Limited branding</li>
-              <li>5GB storage</li>
-            </ul>
+              <!-- title -->
+              <p class="poppins-semibold text-white text-3xl mt-4">
+                Professional
+              </p>
+
+              <!-- price -->
+              <p class="mt-2">
+                <span class="poppins-semibold text-white price">$39.99</span
+                >/month
+              </p>
+
+              <!-- features -->
+              <ul class="mt-6 list-disc ml-5">
+                <li>All core features</li>
+                <li>Priority support</li>
+                <li>Quarterly reviews</li>
+                <li>Custom branding</li>
+                <li>10GB storage</li>
+              </ul>
+            </div>
+
+            <!-- button -->
+            <button
+              class="w-full p-3 px-5 bg-white text-black rounded-xl mt-16"
+            >
+              Try tree for 30 days
+            </button>
           </div>
 
-          <!-- button -->
-          <button class="w-full p-3 px-5 bg-orange-400 text-black rounded-xl mt-16">
-            Try tree for 30 days
-          </button>
+          <!-- item 2 -->
+          <div
+            class="rounded-2xl p-8 bg-white text-gray-900 relative overflow-hidden shadow-xl border border-gray-200 flex flex-col justify-between"
+          >
+            <div>
+              <!-- short desc -->
+              <p class="poppins-semibold">Basic</p>
 
-        </div>
+              <!-- title -->
+              <p class="poppins-semibold text-3xl mt-4">Standard</p>
 
-        <!-- item 3 -->
-        <div class="rounded-2xl p-8 bg-white text-gray-900 relative overflow-hidden shadow-xl border border-gray-200 flex flex-col justify-between">
+              <!-- price -->
+              <p class="mt-2">
+                <span class="poppins-semibold price">$29.99</span>/month
+              </p>
 
-          <div>
-            <!-- short desc -->
-            <p class="poppins-semibold">Better results</p>
-  
-            <!-- title -->
-            <p class="poppins-semibold text-3xl mt-4">Ultimate</p>
-  
-            <!-- price -->
-            <p class="mt-2">
-              <span class="poppins-semibold price">$49.99</span>/month
-            </p>
-  
-            <!-- features -->
-            <ul class="mt-6 list-disc ml-5">
-              <li>All features, including premium</li>
-              <li>24/7 priority support</li>
-              <li>Dedicated account manager</li>
-              <li>Fully Customizable branding</li>
-              <li>Unlimited storage</li>
-            </ul>
+              <!-- features -->
+              <ul class="mt-6 list-disc ml-5">
+                <li>Most core features</li>
+                <li>Email support</li>
+                <li>Annual reviews</li>
+                <li>Limited branding</li>
+                <li>5GB storage</li>
+              </ul>
+            </div>
+
+            <!-- button -->
+            <button
+              class="w-full p-3 px-5 bg-orange-400 text-black rounded-xl mt-16"
+            >
+              Try tree for 30 days
+            </button>
           </div>
 
-          <!-- button -->
-          <button class="w-full p-3 px-5 bg-indigo-500 text-white rounded-xl mt-16">
-            Try tree for 30 days
-          </button>
+          <!-- item 3 -->
+          <div
+            class="rounded-2xl p-8 bg-white text-gray-900 relative overflow-hidden shadow-xl border border-gray-200 flex flex-col justify-between"
+          >
+            <div>
+              <!-- short desc -->
+              <p class="poppins-semibold">Better results</p>
 
+              <!-- title -->
+              <p class="poppins-semibold text-3xl mt-4">Ultimate</p>
+
+              <!-- price -->
+              <p class="mt-2">
+                <span class="poppins-semibold price">$49.99</span>/month
+              </p>
+
+              <!-- features -->
+              <ul class="mt-6 list-disc ml-5">
+                <li>All features, including premium</li>
+                <li>24/7 priority support</li>
+                <li>Dedicated account manager</li>
+                <li>Fully Customizable branding</li>
+                <li>Unlimited storage</li>
+              </ul>
+            </div>
+
+            <!-- button -->
+            <button
+              class="w-full p-3 px-5 bg-indigo-500 text-white rounded-xl mt-16"
+            >
+              Try tree for 30 days
+            </button>
+          </div>
         </div>
-
       </div>
-
     </div>
 
-  </div>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      let billedMonthly = true
 
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script>
-    
-    let billedMonthly = true
+      const pricingTypeDOM = document.querySelector('#pricingType')
+      const textPricingAnnuallyDOM = document.querySelector(
+        '#text-billed-annually'
+      )
+      const textPricingMonthlyDOM = document.querySelector(
+        '#text-billed-monthly'
+      )
+      const planContainerDOM = document.querySelector('#plan-container')
+      const planPricesDOM = planContainerDOM.querySelectorAll('.price')
 
-    const pricingTypeDOM = document.querySelector('#pricingType')
-    const textPricingAnnuallyDOM = document.querySelector('#text-billed-annually')
-    const textPricingMonthlyDOM = document.querySelector('#text-billed-monthly')
-    const planContainerDOM = document.querySelector('#plan-container')
-    const planPricesDOM = planContainerDOM.querySelectorAll('.price')
+      const pricing = [
+        // annually, monthly
+        [29.99, 39.99],
+        [19.99, 29.99],
+        [39.99, 49.99],
+      ]
 
-
-    const pricing = [
-      // annually, monthly
-      [29.99, 39.99],
-      [19.99, 29.99],
-      [39.99, 49.99],
-    ]
-
-    document.addEventListener('DOMContentLoaded', event => {
-      refreshIcons()
-    })
-
-    pricingTypeDOM.addEventListener('change', event => {
-      const isMonthly = pricingTypeDOM.checked
-      
-      textPricingMonthlyDOM.classList[isMonthly ? 'add' : 'remove']('text-black')
-      textPricingAnnuallyDOM.classList[isMonthly ? 'remove' : 'add']('text-black')
-
-      planPricesDOM.forEach((priceDOM, index) => {
-        priceDOM.innerHTML = `$${pricing[index][Number(isMonthly)]}`
+      document.addEventListener('DOMContentLoaded', (event) => {
+        refreshIcons()
       })
-    })
 
-    function refreshIcons() {
-      lucide.createIcons()
-    }
+      pricingTypeDOM.addEventListener('change', (event) => {
+        const isMonthly = pricingTypeDOM.checked
 
-  </script>
-</body>
+        textPricingMonthlyDOM.classList[isMonthly ? 'add' : 'remove'](
+          'text-black'
+        )
+        textPricingAnnuallyDOM.classList[isMonthly ? 'remove' : 'add'](
+          'text-black'
+        )
 
+        planPricesDOM.forEach((priceDOM, index) => {
+          priceDOM.innerHTML = `$${pricing[index][Number(isMonthly)]}`
+        })
+      })
+
+      function refreshIcons() {
+        lucide.createIcons()
+      }
+    </script>
+  </body>
 </html>

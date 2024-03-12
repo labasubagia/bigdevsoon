@@ -1,343 +1,279 @@
 <html>
+  <head>
+    <!-- Our unique tag to identify the solution -->
+    <bds />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BigDevSoon Challenge</title>
 
-<head>
-  <!-- Our unique tag to identify the solution -->
-  <bds />
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BigDevSoon Challenge</title>
+    <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Add your external script links here, if any -->
+    <link rel="stylesheet" href="../style/font.css" />
+  </head>
 
-  <!-- Add your external script links here, if any -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-  <style>
-    .poppins-thin {
-      font-family: "Poppins", sans-serif;
-      font-weight: 100;
-      font-style: normal;
-    }
-
-    .poppins-thin-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 100;
-      font-style: italic;
-    }
-
-    .poppins-extralight {
-      font-family: "Poppins", sans-serif;
-      font-weight: 200;
-      font-style: normal;
-    }
-
-    .poppins-extralight-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 200;
-      font-style: italic;
-    }
-
-    .poppins-light {
-      font-family: "Poppins", sans-serif;
-      font-weight: 300;
-      font-style: normal;
-    }
-
-    .poppins-light-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 300;
-      font-style: italic;
-    }
-
-    .poppins-regular {
-      font-family: "Poppins", sans-serif;
-      font-weight: 400;
-      font-style: normal;
-    }
-
-    .poppins-regular-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 400;
-      font-style: italic;
-    }
-
-    .poppins-medium {
-      font-family: "Poppins", sans-serif;
-      font-weight: 500;
-      font-style: normal;
-    }
-
-    .poppins-medium-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 500;
-      font-style: italic;
-    }
-
-    .poppins-semibold {
-      font-family: "Poppins", sans-serif;
-      font-weight: 600;
-      font-style: normal;
-    }
-
-    .poppins-semibold-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 600;
-      font-style: italic;
-    }
-
-    .poppins-bold {
-      font-family: "Poppins", sans-serif;
-      font-weight: 700;
-      font-style: normal;
-    }
-
-    .poppins-bold-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 700;
-      font-style: italic;
-    }
-
-    .poppins-extrabold {
-      font-family: "Poppins", sans-serif;
-      font-weight: 800;
-      font-style: normal;
-    }
-
-    .poppins-extrabold-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 800;
-      font-style: italic;
-    }
-
-    .poppins-black {
-      font-family: "Poppins", sans-serif;
-      font-weight: 900;
-      font-style: normal;
-    }
-
-    .poppins-black-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 900;
-      font-style: italic;
-    }
-  </style>
-</head>
-
-<body class="poppins-regular w-full min-h-screen">
-
-  <!-- solution -->
-  <div class="min-h-screen min-w-screen bg-gray-100 bg-cover flex md:items-center md:justify-center text-gray-700">
-  
-    <!-- container -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 p-4 mx-auto">
-
-      <!-- left -->
-      <div class="bg-white w-[400px] rounded-xl p-8 shadow-md">
-
-        <!-- title -->
-        <div class="flex gap-4 items-center">
-          <div class="bg-black rounded-full p-2">
-            <i data-lucide="dog" class="size-7 text-white"></i>
-          </div>
-          <p class="poppins-bold text-xl"> FurEver Friends</p>
-        </div>
-
-        <!-- search -->
-        <div class="bg-gray-200 p-3 rounded-lg flex gap-2 items-center mt-6">
-          <div>
-            <i data-lucide="search" class="size-5 text-gray-600"></i>
-          </div>
-          <input type="text" placeholder="search fo a friend" class="bg-inherit outline-none overflow-hidden placeholder:text-gray-600 placeholder:capitalize">
-        </div>
-
-        <!-- pets -->
-        <div class="flex-col flex gap-4 mt-6">
-
-          <!-- pet1 -->
-          <div class="bg-white shadow rounded-2xl overflow-hidden flex justify-between gap-4">
-            <div class="flex items-center gap-2">
-              <img class="object-cover size-24 rounded-2xl" src="https://atlantick9.com/wp-content/uploads/2019/06/1699.jpg" alt="">
-              <div class="p-2">
-                <div class="flex items-center gap-2">
-                  <p class="text-xl poppins-semibold">Lola</p>
-                  <img src="https://cdn-icons-png.flaticon.com/512/4086/4086123.png" class="size-4" alt="">
-                </div>
-
-                <p class="poppins-light mt-1 text-sm">Jack Russel Terrier</p>
-
-                <div class="flex mt-2 text-sm gap-2 items-center">
-                  <i data-lucide="map-pin" class="text-pink-700 size-4"></i>
-                  2.3 miles
-                </div>
-              </div>
-            </div>
-
-            <button class="mr-4">
-              <i class="size-5" data-lucide="heart"></i>
-            </button>
-          </div>
-
-          <!-- pet2 -->
-          <div class="bg-white shadow rounded-2xl overflow-hidden flex justify-between gap-4">
-            <div class="flex items-center gap-2">
-              <img class="object-cover size-24 rounded-2xl" src="https://hips.hearstapps.com/hmg-prod/images/labrador-puppy-royalty-free-image-1626252338.jpg?crop=0.667xw:1.00xh;0.173xw,0&resize=2048:*" alt="">
-              <div class="p-2">
-                <div class="flex items-center gap-2">
-                  <p class="text-xl poppins-semibold">Bailey</p>
-                  <img src="https://cdn-icons-png.flaticon.com/512/44/44483.png" class="size-4" alt="">
-                </div>
-
-                <p class="poppins-light mt-1 text-sm">Labrador Retriever</p>
-
-                <div class="flex mt-2 text-sm gap-2 items-center">
-                  <i data-lucide="map-pin" class="text-pink-700 size-4"></i>
-                  8.0 miles
-                </div>
-              </div>
-            </div>
-
-            <button class="mr-4">
-              <i class="size-5 fill-red-500 text-red-500" data-lucide="heart"></i>
-            </button>
-          </div>
-
-          <!-- pet3 -->
-          <div class="bg-white shadow rounded-2xl overflow-hidden flex justify-between gap-4">
-            <div class="flex items-center gap-2">
-              <img class="object-cover size-24 rounded-2xl" src="https://dogtime.com/wp-content/uploads/sites/12/2023/09/GettyImages-164855910-1-e1694532950609.jpg" alt="">
-              <div class="p-2">
-                <div class="flex items-center gap-2">
-                  <p class="text-xl poppins-semibold">Buddy</p>
-                  <img src="https://cdn-icons-png.flaticon.com/512/44/44483.png" class="size-4" alt="">
-                </div>
-
-                <p class="poppins-light mt-1 text-sm">Border Collie</p>
-
-                <div class="flex mt-2 text-sm gap-2 items-center">
-                  <i data-lucide="map-pin" class="text-pink-700 size-4"></i>
-                  2.3 miles
-                </div>
-              </div>
-            </div>
-
-            <button class="mr-4">
-              <i class="size-5" data-lucide="heart"></i>
-            </button>
-          </div>
-
-          <!-- pet4 -->
-          <div class="bg-white shadow rounded-2xl overflow-hidden flex justify-between gap-4">
-            <div class="flex items-center gap-2">
-              <img class="object-cover size-24 rounded-2xl" src="https://cdn.sanity.io/images/4ij0poqn/production/c81ca1e96c220c7642425f9069bdc786132d8411-1200x700.jpg" alt="">
-              <div class="p-2">
-                <div class="flex items-center gap-2">
-                  <p class="text-xl poppins-semibold">Tucker</p>
-                  <img src="https://cdn-icons-png.flaticon.com/512/44/44483.png" class="size-4" alt="">
-                </div>
-
-                <p class="poppins-light mt-1 text-sm">German Shepherd</p>
-
-                <div class="flex mt-2 text-sm gap-2 items-center">
-                  <i data-lucide="map-pin" class="text-pink-700 size-4"></i>
-                  5.1 miles
-                </div>
-              </div>
-            </div>
-
-            <button class="mr-4">
-              <i class="size-5" data-lucide="heart"></i>
-            </button>
-          </div>
-
-
-        </div>
-      </div>
-
-      <!-- right -->
-      <div class="bg-white shadow-md rounded-2xl w-[400px] overflow-hidden">
-
-        <!-- img -->
-        <div class="bg-[url(https://hips.hearstapps.com/hmg-prod/images/labrador-puppy-royalty-free-image-1626252338.jpg?crop=0.667xw:1.00xh;0.173xw,0&resize=2048:*)] w-full h-[350px] bg-cover rounded-2xl">
-
-          <div class="flex justify-between w-full items-center p-6">
-            <button> 
-              <i data-lucide="arrow-left" class="size-6 text-white drop-shadow"></i>
-            </button>
-            <button>
-              <i data-lucide="heart" class="size-6 text-red-500 fill-red-500 drop-shadow"></i>
-            </button>
-          </div>
-        </div>
-        
-        <div class="p-4">
-          
+  <body class="poppins-regular w-full min-h-screen">
+    <!-- solution -->
+    <div
+      class="min-h-screen min-w-screen bg-gray-100 bg-cover flex md:items-center md:justify-center text-gray-700"
+    >
+      <!-- container -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 p-4 mx-auto">
+        <!-- left -->
+        <div class="bg-white w-[400px] rounded-xl p-8 shadow-md">
           <!-- title -->
-          <div class="flex justify-between gap-4">
+          <div class="flex gap-4 items-center">
+            <div class="bg-black rounded-full p-2">
+              <i data-lucide="dog" class="size-7 text-white"></i>
+            </div>
+            <p class="poppins-bold text-xl">FurEver Friends</p>
+          </div>
+
+          <!-- search -->
+          <div class="bg-gray-200 p-3 rounded-lg flex gap-2 items-center mt-6">
             <div>
-              <div class="flex gap-3 items-center">
-                <p class="poppins-bold text-2xl">Bailey</p>
-                <img src="https://cdn-icons-png.flaticon.com/512/44/44483.png" class="size-4" alt="">
+              <i data-lucide="search" class="size-5 text-gray-600"></i>
+            </div>
+            <input
+              type="text"
+              placeholder="search fo a friend"
+              class="bg-inherit outline-none overflow-hidden placeholder:text-gray-600 placeholder:capitalize"
+            />
+          </div>
+
+          <!-- pets -->
+          <div class="flex-col flex gap-4 mt-6">
+            <!-- pet1 -->
+            <div
+              class="bg-white shadow rounded-2xl overflow-hidden flex justify-between gap-4"
+            >
+              <div class="flex items-center gap-2">
+                <img
+                  class="object-cover size-24 rounded-2xl"
+                  src="https://atlantick9.com/wp-content/uploads/2019/06/1699.jpg"
+                  alt=""
+                />
+                <div class="p-2">
+                  <div class="flex items-center gap-2">
+                    <p class="text-xl poppins-semibold">Lola</p>
+                    <img
+                      src="https://cdn-icons-png.flaticon.com/512/4086/4086123.png"
+                      class="size-4"
+                      alt=""
+                    />
+                  </div>
+
+                  <p class="poppins-light mt-1 text-sm">Jack Russel Terrier</p>
+
+                  <div class="flex mt-2 text-sm gap-2 items-center">
+                    <i data-lucide="map-pin" class="text-pink-700 size-4"></i>
+                    2.3 miles
+                  </div>
+                </div>
               </div>
-              <p>Labrador Retriever</p>
+
+              <button class="mr-4">
+                <i class="size-5" data-lucide="heart"></i>
+              </button>
             </div>
 
-            <div class="flex mt-2 text-sm gap-2 items-center">
-              <i data-lucide="map-pin" class="text-pink-700 size-5"></i>
-              5.1 miles
+            <!-- pet2 -->
+            <div
+              class="bg-white shadow rounded-2xl overflow-hidden flex justify-between gap-4"
+            >
+              <div class="flex items-center gap-2">
+                <img
+                  class="object-cover size-24 rounded-2xl"
+                  src="https://hips.hearstapps.com/hmg-prod/images/labrador-puppy-royalty-free-image-1626252338.jpg?crop=0.667xw:1.00xh;0.173xw,0&resize=2048:*"
+                  alt=""
+                />
+                <div class="p-2">
+                  <div class="flex items-center gap-2">
+                    <p class="text-xl poppins-semibold">Bailey</p>
+                    <img
+                      src="https://cdn-icons-png.flaticon.com/512/44/44483.png"
+                      class="size-4"
+                      alt=""
+                    />
+                  </div>
+
+                  <p class="poppins-light mt-1 text-sm">Labrador Retriever</p>
+
+                  <div class="flex mt-2 text-sm gap-2 items-center">
+                    <i data-lucide="map-pin" class="text-pink-700 size-4"></i>
+                    8.0 miles
+                  </div>
+                </div>
+              </div>
+
+              <button class="mr-4">
+                <i
+                  class="size-5 fill-red-500 text-red-500"
+                  data-lucide="heart"
+                ></i>
+              </button>
             </div>
-          </div>
 
-          <!-- info -->
-          <div class="flex items-center justify-between mt-4">
+            <!-- pet3 -->
+            <div
+              class="bg-white shadow rounded-2xl overflow-hidden flex justify-between gap-4"
+            >
+              <div class="flex items-center gap-2">
+                <img
+                  class="object-cover size-24 rounded-2xl"
+                  src="https://dogtime.com/wp-content/uploads/sites/12/2023/09/GettyImages-164855910-1-e1694532950609.jpg"
+                  alt=""
+                />
+                <div class="p-2">
+                  <div class="flex items-center gap-2">
+                    <p class="text-xl poppins-semibold">Buddy</p>
+                    <img
+                      src="https://cdn-icons-png.flaticon.com/512/44/44483.png"
+                      class="size-4"
+                      alt=""
+                    />
+                  </div>
 
-            <div class="text-center bg-gray-200 p-3 px-4 rounded-xl">
-              <p class="poppins-semibold">Age</p>
-              <p class="text-sm">3 months</p>
+                  <p class="poppins-light mt-1 text-sm">Border Collie</p>
+
+                  <div class="flex mt-2 text-sm gap-2 items-center">
+                    <i data-lucide="map-pin" class="text-pink-700 size-4"></i>
+                    2.3 miles
+                  </div>
+                </div>
+              </div>
+
+              <button class="mr-4">
+                <i class="size-5" data-lucide="heart"></i>
+              </button>
             </div>
 
-            <div class="text-center bg-gray-200 p-3 px-4 rounded-xl">
-              <p class="poppins-semibold">Height</p>
-              <p class="text-sm">20 inch</p>
+            <!-- pet4 -->
+            <div
+              class="bg-white shadow rounded-2xl overflow-hidden flex justify-between gap-4"
+            >
+              <div class="flex items-center gap-2">
+                <img
+                  class="object-cover size-24 rounded-2xl"
+                  src="https://cdn.sanity.io/images/4ij0poqn/production/c81ca1e96c220c7642425f9069bdc786132d8411-1200x700.jpg"
+                  alt=""
+                />
+                <div class="p-2">
+                  <div class="flex items-center gap-2">
+                    <p class="text-xl poppins-semibold">Tucker</p>
+                    <img
+                      src="https://cdn-icons-png.flaticon.com/512/44/44483.png"
+                      class="size-4"
+                      alt=""
+                    />
+                  </div>
+
+                  <p class="poppins-light mt-1 text-sm">German Shepherd</p>
+
+                  <div class="flex mt-2 text-sm gap-2 items-center">
+                    <i data-lucide="map-pin" class="text-pink-700 size-4"></i>
+                    5.1 miles
+                  </div>
+                </div>
+              </div>
+
+              <button class="mr-4">
+                <i class="size-5" data-lucide="heart"></i>
+              </button>
             </div>
-            
-            <div class="text-center bg-gray-200 p-3 px-4 rounded-xl">
-              <p class="poppins-semibold">Weight</p>
-              <p class="text-sm">20 gram</p>
-            </div>
-
-          </div>
-
-          <p class="mt-6 line-clamp-3">
-            Bailey is cheerful and active dog, who can play with you and can buy you food.
-            He also stole some food from his owner sometime.
-          </p>
-
-
-          <div class="grid grid-cols-3 poppins-semibold mt-6 gap-4">
-            <button class="flex items-center justify-center gap-2 bg-gray-300 p-3 rounded-xl col-span-1">
-              Donate
-              <i data-lucide="circle-dollar-sign" class="size-4"></i>
-            </button>
-
-            <button class="flex items-center justify-center gap-2 bg-red-500 p-3 rounded-xl col-span-2 text-white">
-              Adopt
-              <i data-lucide="paw-print" class="size-4"></i>
-            </button>
           </div>
         </div>
 
+        <!-- right -->
+        <div class="bg-white shadow-md rounded-2xl w-[400px] overflow-hidden">
+          <!-- img -->
+          <div
+            class="bg-[url(https://hips.hearstapps.com/hmg-prod/images/labrador-puppy-royalty-free-image-1626252338.jpg?crop=0.667xw:1.00xh;0.173xw,0&resize=2048:*)] w-full h-[350px] bg-cover rounded-2xl"
+          >
+            <div class="flex justify-between w-full items-center p-6">
+              <button>
+                <i
+                  data-lucide="arrow-left"
+                  class="size-6 text-white drop-shadow"
+                ></i>
+              </button>
+              <button>
+                <i
+                  data-lucide="heart"
+                  class="size-6 text-red-500 fill-red-500 drop-shadow"
+                ></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="p-4">
+            <!-- title -->
+            <div class="flex justify-between gap-4">
+              <div>
+                <div class="flex gap-3 items-center">
+                  <p class="poppins-bold text-2xl">Bailey</p>
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/44/44483.png"
+                    class="size-4"
+                    alt=""
+                  />
+                </div>
+                <p>Labrador Retriever</p>
+              </div>
+
+              <div class="flex mt-2 text-sm gap-2 items-center">
+                <i data-lucide="map-pin" class="text-pink-700 size-5"></i>
+                5.1 miles
+              </div>
+            </div>
+
+            <!-- info -->
+            <div class="flex items-center justify-between mt-4">
+              <div class="text-center bg-gray-200 p-3 px-4 rounded-xl">
+                <p class="poppins-semibold">Age</p>
+                <p class="text-sm">3 months</p>
+              </div>
+
+              <div class="text-center bg-gray-200 p-3 px-4 rounded-xl">
+                <p class="poppins-semibold">Height</p>
+                <p class="text-sm">20 inch</p>
+              </div>
+
+              <div class="text-center bg-gray-200 p-3 px-4 rounded-xl">
+                <p class="poppins-semibold">Weight</p>
+                <p class="text-sm">20 gram</p>
+              </div>
+            </div>
+
+            <p class="mt-6 line-clamp-3">
+              Bailey is cheerful and active dog, who can play with you and can
+              buy you food. He also stole some food from his owner sometime.
+            </p>
+
+            <div class="grid grid-cols-3 poppins-semibold mt-6 gap-4">
+              <button
+                class="flex items-center justify-center gap-2 bg-gray-300 p-3 rounded-xl col-span-1"
+              >
+                Donate
+                <i data-lucide="circle-dollar-sign" class="size-4"></i>
+              </button>
+
+              <button
+                class="flex items-center justify-center gap-2 bg-red-500 p-3 rounded-xl col-span-2 text-white"
+              >
+                Adopt
+                <i data-lucide="paw-print" class="size-4"></i>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-
     </div>
-  </div>
 
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script>
-    lucide.createIcons();
-  </script>
-</body>
-
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons()
+    </script>
+  </body>
 </html>

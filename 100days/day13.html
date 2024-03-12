@@ -1,386 +1,367 @@
 <html>
+  <head>
+    <!-- Our unique tag to identify the solution -->
+    <bds />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BigDevSoon Challenge</title>
 
-<head>
-  <!-- Our unique tag to identify the solution -->
-  <bds />
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BigDevSoon Challenge</title>
+    <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Add your external script links here, if any -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Add your external script links here, if any -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style/font.css" />
+  </head>
 
-  <style>
-    .poppins-thin {
-      font-family: "Poppins", sans-serif;
-      font-weight: 100;
-      font-style: normal;
-    }
+  <body class="poppins-regular w-full min-h-screen bg-blue-50">
+    <!-- solution -->
+    <div
+      class="container mx-auto flex items-center justify-start md:justify-center"
+    >
+      <div class="w-full min-h-screen flex flex-col justify-start p-4 md:p-8">
+        <!-- title -->
+        <p class="text-2xl poppins-bold">Board</p>
 
-    .poppins-thin-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 100;
-      font-style: italic;
-    }
+        <!-- boards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-4 gap-6">
+          <!-- board -->
+          <div>
+            <!-- board title -->
+            <div class="flex gap-2 items-center">
+              <p class="text-xl poppins-bold">To do</p>
+              <i data-lucide="plus" class="size-6"></i>
+            </div>
 
-    .poppins-extralight {
-      font-family: "Poppins", sans-serif;
-      font-weight: 200;
-      font-style: normal;
-    }
+            <!-- tasks -->
+            <div class="flex flex-col mt-4 gap-4">
+              <!-- task card -->
+              <div class="bg-white w-full p-4 rounded-xl">
+                <!-- tags -->
+                <div class="flex justify-between items-center">
+                  <div
+                    class="bg-red-500 p-2 py-1 rounded-lg uppercase text-white text-sm"
+                  >
+                    high
+                  </div>
 
-    .poppins-extralight-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 200;
-      font-style: italic;
-    }
-
-    .poppins-light {
-      font-family: "Poppins", sans-serif;
-      font-weight: 300;
-      font-style: normal;
-    }
-
-    .poppins-light-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 300;
-      font-style: italic;
-    }
-
-    .poppins-regular {
-      font-family: "Poppins", sans-serif;
-      font-weight: 400;
-      font-style: normal;
-    }
-
-    .poppins-regular-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 400;
-      font-style: italic;
-    }
-
-    .poppins-medium {
-      font-family: "Poppins", sans-serif;
-      font-weight: 500;
-      font-style: normal;
-    }
-
-    .poppins-medium-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 500;
-      font-style: italic;
-    }
-
-    .poppins-semibold {
-      font-family: "Poppins", sans-serif;
-      font-weight: 600;
-      font-style: normal;
-    }
-
-    .poppins-semibold-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 600;
-      font-style: italic;
-    }
-
-    .poppins-bold {
-      font-family: "Poppins", sans-serif;
-      font-weight: 700;
-      font-style: normal;
-    }
-
-    .poppins-bold-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 700;
-      font-style: italic;
-    }
-
-    .poppins-extrabold {
-      font-family: "Poppins", sans-serif;
-      font-weight: 800;
-      font-style: normal;
-    }
-
-    .poppins-extrabold-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 800;
-      font-style: italic;
-    }
-
-    .poppins-black {
-      font-family: "Poppins", sans-serif;
-      font-weight: 900;
-      font-style: normal;
-    }
-
-    .poppins-black-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 900;
-      font-style: italic;
-    }
-  </style>
-</head>
-
-<body class="poppins-regular w-full min-h-screen bg-blue-50">
-
-  <!-- solution -->
-  <div class="container mx-auto flex items-center justify-start md:justify-center">
-
-    <div class="w-full min-h-screen flex flex-col justify-start p-4 md:p-8">
-  
-      <!-- title -->
-      <p class="text-2xl poppins-bold">Board</p>
-  
-      <!-- boards -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-4 gap-6">
-  
-        <!-- board -->
-        <div>
-          <!-- board title -->
-          <div class="flex gap-2 items-center">
-            <p class="text-xl poppins-bold">To do</p>
-            <i data-lucide="plus" class="size-6"></i>
-          </div>
-  
-          <!-- tasks -->
-          <div class="flex flex-col mt-4 gap-4">
-  
-            <!-- task card -->
-            <div class="bg-white w-full p-4 rounded-xl">
-  
-              <!-- tags -->
-              <div class="flex justify-between items-center">
-  
-                <div class="bg-red-500 p-2 py-1 rounded-lg uppercase text-white text-sm">high</div>
-  
-                <!-- date -->
-                <p class="text-sm">25/2/2024</p>
-              </div>
-  
-              <!-- image -->
-              <img class="w-full h-[200px] mt-6 object-cover rounded-xl" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV1mpYi1Gfgt_jHGxOFQnITjXnYgFAqhBW1g&usqp=CAU" alt="">
-  
-              <p class="poppins-semibold text-lg mt-6">Update Website Homepage</p>
-  
-              <p class="mt-4">Revise the content and layout of the homepage to highlight new features and improve user engagement.</p>
-  
-              <!-- people -->
-              <div class="mt-6 flex -space-x-4">
-                <div class="flex -space-x-4 z-20">
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2TtVsWDJZyhm35Vuj5nPXtFNQPhubwrS06g&usqp=CAU" class="size-14 rounded-full border-2 object-cover bg-white" alt="">
-                  <img src="https://asianwiki.com/images/7/7a/Minami_Hamabe-2000-p1.jpg" class="size-14 rounded-full border-2 object-cover bg-white" alt="">
+                  <!-- date -->
+                  <p class="text-sm">25/2/2024</p>
                 </div>
-                <div class="size-14 border border-dashed border-gray-400 flex items-center justify-center rounded-full z-10">
-                  <i data-lucide="plus" class="size-5"></i>
+
+                <!-- image -->
+                <img
+                  class="w-full h-[200px] mt-6 object-cover rounded-xl"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV1mpYi1Gfgt_jHGxOFQnITjXnYgFAqhBW1g&usqp=CAU"
+                  alt=""
+                />
+
+                <p class="poppins-semibold text-lg mt-6">
+                  Update Website Homepage
+                </p>
+
+                <p class="mt-4">
+                  Revise the content and layout of the homepage to highlight new
+                  features and improve user engagement.
+                </p>
+
+                <!-- people -->
+                <div class="mt-6 flex -space-x-4">
+                  <div class="flex -space-x-4 z-20">
+                    <img
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2TtVsWDJZyhm35Vuj5nPXtFNQPhubwrS06g&usqp=CAU"
+                      class="size-14 rounded-full border-2 object-cover bg-white"
+                      alt=""
+                    />
+                    <img
+                      src="https://asianwiki.com/images/7/7a/Minami_Hamabe-2000-p1.jpg"
+                      class="size-14 rounded-full border-2 object-cover bg-white"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="size-14 border border-dashed border-gray-400 flex items-center justify-center rounded-full z-10"
+                  >
+                    <i data-lucide="plus" class="size-5"></i>
+                  </div>
                 </div>
               </div>
             </div>
-  
           </div>
-        </div>
-  
-        <!-- board -->
-        <div>
-          <!-- board title -->
-          <div class="flex gap-2 items-center">
-            <p class="text-xl poppins-bold">In Progress</p>
-            <i data-lucide="plus" class="size-6"></i>
-          </div>
-  
-          <!-- tasks -->
-          <div class="flex flex-col mt-4 gap-4">
-  
-            <!-- task card -->
-            <div class="bg-white w-full p-4 rounded-xl">
-  
-              <!-- tags -->
-              <div class="flex justify-between items-center">
-  
-                <div class="bg-green-500 p-2 py-1 rounded-lg uppercase text-white text-sm">low</div>
-  
-                <!-- date -->
-                <p class="text-sm">26/2/2024</p>
-              </div>
-  
-              <p class="poppins-semibold text-lg mt-6">Bug Fix - User Registration</p>
-  
-              <p class="mt-4">Investigate and resolve the reported bug in the user registration process where some users are unable to sign up.</p>
-  
-              <!-- people -->
-              <div class="mt-6 flex -space-x-4">
-                <div class="flex -space-x-4 z-20">
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2TtVsWDJZyhm35Vuj5nPXtFNQPhubwrS06g&usqp=CAU" class="size-14 rounded-full border-2 object-cover bg-white" alt="">
+
+          <!-- board -->
+          <div>
+            <!-- board title -->
+            <div class="flex gap-2 items-center">
+              <p class="text-xl poppins-bold">In Progress</p>
+              <i data-lucide="plus" class="size-6"></i>
+            </div>
+
+            <!-- tasks -->
+            <div class="flex flex-col mt-4 gap-4">
+              <!-- task card -->
+              <div class="bg-white w-full p-4 rounded-xl">
+                <!-- tags -->
+                <div class="flex justify-between items-center">
+                  <div
+                    class="bg-green-500 p-2 py-1 rounded-lg uppercase text-white text-sm"
+                  >
+                    low
+                  </div>
+
+                  <!-- date -->
+                  <p class="text-sm">26/2/2024</p>
                 </div>
-                <div class="size-14 border border-dashed border-gray-400 flex items-center justify-center rounded-full z-10">
-                  <i data-lucide="plus" class="size-5"></i>
+
+                <p class="poppins-semibold text-lg mt-6">
+                  Bug Fix - User Registration
+                </p>
+
+                <p class="mt-4">
+                  Investigate and resolve the reported bug in the user
+                  registration process where some users are unable to sign up.
+                </p>
+
+                <!-- people -->
+                <div class="mt-6 flex -space-x-4">
+                  <div class="flex -space-x-4 z-20">
+                    <img
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2TtVsWDJZyhm35Vuj5nPXtFNQPhubwrS06g&usqp=CAU"
+                      class="size-14 rounded-full border-2 object-cover bg-white"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="size-14 border border-dashed border-gray-400 flex items-center justify-center rounded-full z-10"
+                  >
+                    <i data-lucide="plus" class="size-5"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- task card -->
+              <div class="bg-white w-full p-4 rounded-xl">
+                <!-- tags -->
+                <div class="flex justify-between items-center">
+                  <div
+                    class="bg-orange-500 p-2 py-1 rounded-lg uppercase text-white text-sm"
+                  >
+                    medium
+                  </div>
+
+                  <!-- date -->
+                  <p class="text-sm">26/2/2024</p>
+                </div>
+
+                <!-- image -->
+                <img
+                  class="w-full h-[200px] mt-6 object-cover rounded-xl"
+                  src="https://hotdogmarketing.net/wp-content/uploads/2021/11/110321-HDM-Social-Media-Marketing-02-1024x576.png"
+                  alt=""
+                />
+
+                <p class="poppins-semibold text-lg mt-6">
+                  Social Media Campaign
+                </p>
+
+                <p class="mt-4">
+                  Investigate and resolve the reported bug in the user
+                  registration process where some users are unable to sign up.
+                </p>
+
+                <!-- people -->
+                <div class="mt-6 flex -space-x-4">
+                  <div class="flex -space-x-4 z-20">
+                    <img
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2TtVsWDJZyhm35Vuj5nPXtFNQPhubwrS06g&usqp=CAU"
+                      class="size-14 rounded-full border-2 object-cover bg-white"
+                      alt=""
+                    />
+                    <img
+                      src="https://asianwiki.com/images/7/7a/Minami_Hamabe-2000-p1.jpg"
+                      class="size-14 rounded-full border-2 object-cover bg-white"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="size-14 border border-dashed border-gray-400 flex items-center justify-center rounded-full z-10"
+                  >
+                    <i data-lucide="plus" class="size-5"></i>
+                  </div>
                 </div>
               </div>
             </div>
-  
-            <!-- task card -->
-            <div class="bg-white w-full p-4 rounded-xl">
-  
-              <!-- tags -->
-              <div class="flex justify-between items-center">
-  
-                <div class="bg-orange-500 p-2 py-1 rounded-lg uppercase text-white text-sm">medium</div>
-  
-                <!-- date -->
-                <p class="text-sm">26/2/2024</p>
-              </div>
-  
-              <!-- image -->
-              <img class="w-full h-[200px] mt-6 object-cover rounded-xl" src="https://hotdogmarketing.net/wp-content/uploads/2021/11/110321-HDM-Social-Media-Marketing-02-1024x576.png" alt="">
-  
-              <p class="poppins-semibold text-lg mt-6">Social Media Campaign</p>
-  
-              <p class="mt-4">Investigate and resolve the reported bug in the user registration process where some users are unable to sign up.</p>
-  
-              <!-- people -->
-              <div class="mt-6 flex -space-x-4">
-                <div class="flex -space-x-4 z-20">
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2TtVsWDJZyhm35Vuj5nPXtFNQPhubwrS06g&usqp=CAU" class="size-14 rounded-full border-2 object-cover bg-white" alt="">
-                  <img src="https://asianwiki.com/images/7/7a/Minami_Hamabe-2000-p1.jpg" class="size-14 rounded-full border-2 object-cover bg-white" alt="">
+          </div>
+
+          <!-- board -->
+          <div>
+            <!-- board title -->
+            <div class="flex gap-2 items-center">
+              <p class="text-xl poppins-bold">Under Review</p>
+              <i data-lucide="plus" class="size-6"></i>
+            </div>
+
+            <!-- tasks -->
+            <div class="flex flex-col mt-4 gap-4">
+              <!-- task card -->
+              <div class="bg-white w-full p-4 rounded-xl">
+                <!-- tags -->
+                <div class="flex justify-between items-center">
+                  <div
+                    class="bg-red-500 p-2 py-1 rounded-lg uppercase text-white text-sm"
+                  >
+                    high
+                  </div>
+
+                  <!-- date -->
+                  <p class="text-sm">26/2/2024</p>
                 </div>
-                <div class="size-14 border border-dashed border-gray-400 flex items-center justify-center rounded-full z-10">
-                  <i data-lucide="plus" class="size-5"></i>
+
+                <p class="poppins-semibold text-lg mt-6">
+                  Mobile App Feature - Push Notifications
+                </p>
+
+                <p class="mt-4">
+                  Implement push notification features for mobile app to enhance
+                  user engagement. Ensure compatibility with both iOS and
+                  Android platforms.
+                </p>
+
+                <!-- people -->
+                <div class="mt-6 flex -space-x-4">
+                  <div class="flex -space-x-4 z-20">
+                    <img
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2TtVsWDJZyhm35Vuj5nPXtFNQPhubwrS06g&usqp=CAU"
+                      class="size-14 rounded-full border-2 object-cover bg-white"
+                      alt=""
+                    />
+                    <img
+                      src="https://asianwiki.com/images/7/7a/Minami_Hamabe-2000-p1.jpg"
+                      class="size-14 rounded-full border-2 object-cover bg-white"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="size-14 border border-dashed border-gray-400 flex items-center justify-center rounded-full z-10"
+                  >
+                    <i data-lucide="plus" class="size-5"></i>
+                  </div>
                 </div>
               </div>
             </div>
-  
           </div>
-        </div>
-  
-        <!-- board -->
-        <div>
-          <!-- board title -->
-          <div class="flex gap-2 items-center">
-            <p class="text-xl poppins-bold">Under Review</p>
-            <i data-lucide="plus" class="size-6"></i>
-          </div>
-  
-          <!-- tasks -->
-          <div class="flex flex-col mt-4 gap-4">
-  
-            <!-- task card -->
-            <div class="bg-white w-full p-4 rounded-xl">
-  
-              <!-- tags -->
-              <div class="flex justify-between items-center">
-  
-                <div class="bg-red-500 p-2 py-1 rounded-lg uppercase text-white text-sm">high</div>
-  
-                <!-- date -->
-                <p class="text-sm">26/2/2024</p>
-              </div>
-  
-              <p class="poppins-semibold text-lg mt-6">Mobile App Feature - Push Notifications</p>
-  
-              <p class="mt-4">Implement push notification features for mobile app to enhance user engagement. Ensure compatibility with both iOS and Android platforms.</p>
-  
-              <!-- people -->
-              <div class="mt-6 flex -space-x-4">
-                <div class="flex -space-x-4 z-20">
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2TtVsWDJZyhm35Vuj5nPXtFNQPhubwrS06g&usqp=CAU" class="size-14 rounded-full border-2 object-cover bg-white" alt="">
-                  <img src="https://asianwiki.com/images/7/7a/Minami_Hamabe-2000-p1.jpg" class="size-14 rounded-full border-2 object-cover bg-white" alt="">
+
+          <!-- board -->
+          <div>
+            <!-- board title -->
+            <div class="flex gap-2 items-center">
+              <p class="text-xl poppins-bold">Done</p>
+              <i data-lucide="plus" class="size-6"></i>
+            </div>
+
+            <!-- tasks -->
+            <div class="flex flex-col mt-4 gap-4">
+              <!-- task card -->
+              <div class="bg-white w-full p-4 rounded-xl">
+                <!-- tags -->
+                <div class="flex justify-between items-center">
+                  <div
+                    class="bg-green-500 p-2 py-1 rounded-lg uppercase text-white text-sm"
+                  >
+                    low
+                  </div>
+
+                  <!-- date -->
+                  <p class="text-sm">26/2/2024</p>
                 </div>
-                <div class="size-14 border border-dashed border-gray-400 flex items-center justify-center rounded-full z-10">
-                  <i data-lucide="plus" class="size-5"></i>
+
+                <p class="poppins-semibold text-lg mt-6">
+                  Content Creation - Blog Post
+                </p>
+
+                <p class="mt-4">
+                  Write and publish a blog post about industry trends and their
+                  impact to our products/services. Include relevant visuals and
+                  SEO optimization.
+                </p>
+
+                <!-- people -->
+                <div class="mt-6 flex -space-x-4">
+                  <div class="flex -space-x-4 z-20">
+                    <img
+                      src="https://asianwiki.com/images/7/7a/Minami_Hamabe-2000-p1.jpg"
+                      class="size-14 rounded-full border-2 object-cover bg-white"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="size-14 border border-dashed border-gray-400 flex items-center justify-center rounded-full z-10"
+                  >
+                    <i data-lucide="plus" class="size-5"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- task card -->
+              <div class="bg-white w-full p-4 rounded-xl">
+                <!-- tags -->
+                <div class="flex justify-between items-center">
+                  <div
+                    class="bg-red-500 p-2 py-1 rounded-lg uppercase text-white text-sm"
+                  >
+                    high
+                  </div>
+
+                  <!-- date -->
+                  <p class="text-sm">26/2/2024</p>
+                </div>
+
+                <!-- image -->
+                <img
+                  class="w-full h-[200px] mt-6 object-cover rounded-xl"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvx-o6LL8XXTrmxShJ-cAh_LjQUBK839EJesYIUes_wXhm6Df-k6GwHQtbS3D_y5QRQhw&usqp=CAU"
+                  alt=""
+                />
+
+                <p class="poppins-semibold text-lg mt-6">IT Security Audit</p>
+
+                <p class="mt-4">
+                  Testing networks, access controls, and policies to identify
+                  threats, allowing for improved cybersecurity and regulatory
+                  compliance.
+                </p>
+
+                <!-- people -->
+                <div class="mt-6 flex -space-x-4">
+                  <div class="flex -space-x-4 z-20">
+                    <img
+                      src="https://asianwiki.com/images/7/7a/Minami_Hamabe-2000-p1.jpg"
+                      class="size-14 rounded-full border-2 object-cover bg-white"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="size-14 border border-dashed border-gray-400 flex items-center justify-center rounded-full z-10"
+                  >
+                    <i data-lucide="plus" class="size-5"></i>
+                  </div>
                 </div>
               </div>
             </div>
-  
-          </div>
-        </div>
-  
-        <!-- board -->
-        <div>
-          <!-- board title -->
-          <div class="flex gap-2 items-center">
-            <p class="text-xl poppins-bold">Done</p>
-            <i data-lucide="plus" class="size-6"></i>
-          </div>
-  
-          <!-- tasks -->
-          <div class="flex flex-col mt-4 gap-4">
-  
-            <!-- task card -->
-            <div class="bg-white w-full p-4 rounded-xl">
-  
-              <!-- tags -->
-              <div class="flex justify-between items-center">
-  
-                <div class="bg-green-500 p-2 py-1 rounded-lg uppercase text-white text-sm">low</div>
-  
-                <!-- date -->
-                <p class="text-sm">26/2/2024</p>
-              </div>
-  
-              <p class="poppins-semibold text-lg mt-6">Content Creation - Blog Post</p>
-  
-              <p class="mt-4">Write and publish a blog post about industry trends and their impact to our products/services. Include relevant visuals and SEO optimization.</p>
-  
-              <!-- people -->
-              <div class="mt-6 flex -space-x-4">
-                <div class="flex -space-x-4 z-20">
-                  <img src="https://asianwiki.com/images/7/7a/Minami_Hamabe-2000-p1.jpg" class="size-14 rounded-full border-2 object-cover bg-white" alt="">
-                </div>
-                <div class="size-14 border border-dashed border-gray-400 flex items-center justify-center rounded-full z-10">
-                  <i data-lucide="plus" class="size-5"></i>
-                </div>
-              </div>
-            </div>
-  
-            <!-- task card -->
-            <div class="bg-white w-full p-4 rounded-xl">
-  
-              <!-- tags -->
-              <div class="flex justify-between items-center">
-  
-                <div class="bg-red-500 p-2 py-1 rounded-lg uppercase text-white text-sm">high</div>
-  
-                <!-- date -->
-                <p class="text-sm">26/2/2024</p>
-              </div>
-  
-              <!-- image -->
-              <img class="w-full h-[200px] mt-6 object-cover rounded-xl" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvx-o6LL8XXTrmxShJ-cAh_LjQUBK839EJesYIUes_wXhm6Df-k6GwHQtbS3D_y5QRQhw&usqp=CAU" alt="">
-  
-              <p class="poppins-semibold text-lg mt-6">IT Security Audit</p>
-  
-              <p class="mt-4">
-                Testing networks, access controls, and policies to identify threats, allowing for improved cybersecurity and regulatory compliance.
-              </p>
-  
-              <!-- people -->
-              <div class="mt-6 flex -space-x-4">
-                <div class="flex -space-x-4 z-20">
-                  <img src="https://asianwiki.com/images/7/7a/Minami_Hamabe-2000-p1.jpg" class="size-14 rounded-full border-2 object-cover bg-white" alt="">
-                </div>
-                <div class="size-14 border border-dashed border-gray-400 flex items-center justify-center rounded-full z-10">
-                  <i data-lucide="plus" class="size-5"></i>
-                </div>
-              </div>
-            </div>
-  
           </div>
         </div>
       </div>
-  
     </div>
-  
-  </div>
 
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script>
-    lucide.createIcons();
-  </script>
-</body>
-
-
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons()
+    </script>
+  </body>
 </html>

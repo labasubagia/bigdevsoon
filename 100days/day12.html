@@ -1,242 +1,169 @@
 <html>
+  <head>
+    <!-- Our unique tag to identify the solution -->
+    <bds />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BigDevSoon Challenge</title>
 
-<head>
-  <!-- Our unique tag to identify the solution -->
-  <bds />
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BigDevSoon Challenge</title>
+    <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Add your external script links here, if any -->
+    <link rel="stylesheet" href="../style/font.css" />
+  </head>
 
-  <!-- Add your external script links here, if any -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-  <style>
-    .poppins-thin {
-      font-family: "Poppins", sans-serif;
-      font-weight: 100;
-      font-style: normal;
-    }
-
-    .poppins-thin-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 100;
-      font-style: italic;
-    }
-
-    .poppins-extralight {
-      font-family: "Poppins", sans-serif;
-      font-weight: 200;
-      font-style: normal;
-    }
-
-    .poppins-extralight-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 200;
-      font-style: italic;
-    }
-
-    .poppins-light {
-      font-family: "Poppins", sans-serif;
-      font-weight: 300;
-      font-style: normal;
-    }
-
-    .poppins-light-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 300;
-      font-style: italic;
-    }
-
-    .poppins-regular {
-      font-family: "Poppins", sans-serif;
-      font-weight: 400;
-      font-style: normal;
-    }
-
-    .poppins-regular-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 400;
-      font-style: italic;
-    }
-
-    .poppins-medium {
-      font-family: "Poppins", sans-serif;
-      font-weight: 500;
-      font-style: normal;
-    }
-
-    .poppins-medium-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 500;
-      font-style: italic;
-    }
-
-    .poppins-semibold {
-      font-family: "Poppins", sans-serif;
-      font-weight: 600;
-      font-style: normal;
-    }
-
-    .poppins-semibold-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 600;
-      font-style: italic;
-    }
-
-    .poppins-bold {
-      font-family: "Poppins", sans-serif;
-      font-weight: 700;
-      font-style: normal;
-    }
-
-    .poppins-bold-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 700;
-      font-style: italic;
-    }
-
-    .poppins-extrabold {
-      font-family: "Poppins", sans-serif;
-      font-weight: 800;
-      font-style: normal;
-    }
-
-    .poppins-extrabold-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 800;
-      font-style: italic;
-    }
-
-    .poppins-black {
-      font-family: "Poppins", sans-serif;
-      font-weight: 900;
-      font-style: normal;
-    }
-
-    .poppins-black-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 900;
-      font-style: italic;
-    }
-  </style>
-</head>
-
-<body class="poppins-regular">
-
-  <!-- solution -->
-  <div class="size-full bg-orange-200 flex justify-center items-center">
-    
-    <!-- card -->
-    <div class="bg-white relative rounded-xl overflow-hidden w-[450px]">
-      <!-- top -->
-      <div>
-        <img id="image" class="w-full h-[300px] object-cover" src="https://images.unsplash.com/photo-1592861956120-e524fc739696?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cmVzdGF1cmFudHxlbnwwfDB8MHx8fDA%3D" alt="">
-        <div id="point" class="flex gap-2 items-center justify-center relative -top-8">
-          <div data-img="https://images.unsplash.com/photo-1592861956120-e524fc739696?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cmVzdGF1cmFudHxlbnwwfDB8MHx8fDA%3D" class="bg-white border-2 border-white size-3 rounded-full"></div>
-          <div data-img="https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHJlc3RhdXJhbnR8ZW58MHwwfDB8fHww" class="border-2 border-white size-3 rounded-full"></div>
-          <div data-img="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHJlc3RhdXJhbnR8ZW58MHwwfDB8fHww" class="border-2 border-white size-3 rounded-full"></div>
-          <div data-img="https://plus.unsplash.com/premium_photo-1670984940113-f3aa1cd1309a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHJlc3RhdXJhbnR8ZW58MHwwfDB8fHww" class="border-2 border-white size-3 rounded-full"></div>
-          <div data-img="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cmVzdGF1cmFudHxlbnwwfDB8MHx8fDA%3D" class="border-2 border-white size-3 rounded-full"></div>
-        </div>
-      </div>
-
-
-      <!-- center -->
-      <div class="p-3 pt-0">
-        <!-- title -->
-        <div class="flex justify-between">
-          <!-- name -->
-          <div>
-            <p class="poppins-semibold text-xl">Gramercy Tavern</p>
-            <p>20th St New York</p>
+  <body class="poppins-regular">
+    <!-- solution -->
+    <div class="size-full bg-orange-200 flex justify-center items-center">
+      <!-- card -->
+      <div class="bg-white relative rounded-xl overflow-hidden w-[450px]">
+        <!-- top -->
+        <div>
+          <img
+            id="image"
+            class="w-full h-[300px] object-cover"
+            src="https://images.unsplash.com/photo-1592861956120-e524fc739696?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cmVzdGF1cmFudHxlbnwwfDB8MHx8fDA%3D"
+            alt=""
+          />
+          <div
+            id="point"
+            class="flex gap-2 items-center justify-center relative -top-8"
+          >
+            <div
+              data-img="https://images.unsplash.com/photo-1592861956120-e524fc739696?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cmVzdGF1cmFudHxlbnwwfDB8MHx8fDA%3D"
+              class="bg-white border-2 border-white size-3 rounded-full"
+            ></div>
+            <div
+              data-img="https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHJlc3RhdXJhbnR8ZW58MHwwfDB8fHww"
+              class="border-2 border-white size-3 rounded-full"
+            ></div>
+            <div
+              data-img="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHJlc3RhdXJhbnR8ZW58MHwwfDB8fHww"
+              class="border-2 border-white size-3 rounded-full"
+            ></div>
+            <div
+              data-img="https://plus.unsplash.com/premium_photo-1670984940113-f3aa1cd1309a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHJlc3RhdXJhbnR8ZW58MHwwfDB8fHww"
+              class="border-2 border-white size-3 rounded-full"
+            ></div>
+            <div
+              data-img="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cmVzdGF1cmFudHxlbnwwfDB8MHx8fDA%3D"
+              class="border-2 border-white size-3 rounded-full"
+            ></div>
           </div>
-  
-          <!-- icon -->
-          <button id="love">
-            <i data-lucide="heart" class="size-7 icon"></i>
-          </button>
         </div>
 
-        <!-- review -->
-        <div class="flex gap-4 items-center justify-start mt-2">
-          <!-- starts -->
-          <div class="flex justify-start gap-2">
-            <i data-lucide="star" class="size-5 fill-orange-500 text-orange-500"></i>
-            <i data-lucide="star" class="size-5 fill-orange-500 text-orange-500"></i>
-            <i data-lucide="star" class="size-5 fill-orange-500 text-orange-500"></i>
-            <i data-lucide="star" class="size-5 fill-orange-500 text-orange-500"></i>
-            <i data-lucide="star" class="size-5 fill-yellow-200 text-yellow-200"></i>
+        <!-- center -->
+        <div class="p-3 pt-0">
+          <!-- title -->
+          <div class="flex justify-between">
+            <!-- name -->
+            <div>
+              <p class="poppins-semibold text-xl">Gramercy Tavern</p>
+              <p>20th St New York</p>
+            </div>
+
+            <!-- icon -->
+            <button id="love">
+              <i data-lucide="heart" class="size-7 icon"></i>
+            </button>
           </div>
-          <p class="text-sm">(231 reviews)</p>
+
+          <!-- review -->
+          <div class="flex gap-4 items-center justify-start mt-2">
+            <!-- starts -->
+            <div class="flex justify-start gap-2">
+              <i
+                data-lucide="star"
+                class="size-5 fill-orange-500 text-orange-500"
+              ></i>
+              <i
+                data-lucide="star"
+                class="size-5 fill-orange-500 text-orange-500"
+              ></i>
+              <i
+                data-lucide="star"
+                class="size-5 fill-orange-500 text-orange-500"
+              ></i>
+              <i
+                data-lucide="star"
+                class="size-5 fill-orange-500 text-orange-500"
+              ></i>
+              <i
+                data-lucide="star"
+                class="size-5 fill-yellow-200 text-yellow-200"
+              ></i>
+            </div>
+            <p class="text-sm">(231 reviews)</p>
+          </div>
+
+          <!-- desc -->
+          <p class="my-8">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi ex
+            unde nobis dolorem? Atque adipisci repellendus itaque eveniet
+            inventore quos explicabo dolorum incidunt ex autem, voluptatibus
+            temporibus assumenda fugiat sint eaque harum iste libero iure at
+            ratione? Autem, ex veniam?
+          </p>
         </div>
 
-        <!-- desc -->
-        <p class="my-8">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi ex unde nobis dolorem? Atque adipisci repellendus itaque eveniet inventore quos explicabo dolorum incidunt ex autem, voluptatibus temporibus assumenda fugiat sint eaque harum iste libero iure at ratione? Autem, ex veniam?
-        </p>
+        <!-- bottom -->
+        <button class="bg-black w-full text-center p-3 text-white">
+          Make a Reservation
+        </button>
       </div>
-
-
-      <!-- bottom -->
-      <button class="bg-black w-full text-center p-3 text-white">Make a Reservation</button>
     </div>
 
-  </div>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons()
+    </script>
 
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script>
-    lucide.createIcons();
-  </script>
+    <script>
+      const imageDOM = document.getElementById('image')
+      const pointDOM = document.querySelectorAll('#point div')
+      pointDOM.forEach((image, index) =>
+        image.addEventListener('click', (e) => changeImageView(index))
+      )
 
-  <script>
-    const imageDOM = document.getElementById('image')
-    const pointDOM = document.querySelectorAll('#point div')
-    pointDOM.forEach((image, index) => image.addEventListener('click', e => changeImageView(index)))
+      let currentIndex = 0
+      let previousIndex = 0
 
-    let currentIndex = 0
-    let previousIndex = 0
+      document.addEventListener('DOMContentLoaded', () => {
+        setInterval(() => {
+          changeImageView(currentIndex + 1)
+        }, 3000)
+      })
 
-    document.addEventListener('DOMContentLoaded', () => {
-      setInterval(() => {
-        changeImageView(currentIndex+1)
-      }, 3000)
-    })
-
-    function changeImageView(index) {
-      previousIndex = currentIndex
-      currentIndex = getIndex(index)
-      imageDOM.src = pointDOM[currentIndex].getAttribute('data-img')
-      pointDOM[previousIndex].classList.remove('bg-white')
-      pointDOM[currentIndex].classList.add('bg-white')
-    }
-
-    function getIndex(index) {
-      const firstIndex = 0
-      const lastIndex = pointDOM.length - 1
-      if (index < firstIndex) return lastIndex
-      if (index > lastIndex) return firstIndex
-      return index
-    }
-
-
-    const loveDOM = document.getElementById('love')
-    loveDOM.addEventListener('click', () => {
-      const iconLoveDOM = loveDOM.querySelector('.icon')
-      const activeClasses = ['fill-red-500', 'text-red-500']
-      const currentClasses = [...iconLoveDOM.classList]
-      if (activeClasses.every(className => currentClasses.includes(className))) {
-        iconLoveDOM.classList.remove(...activeClasses)
-      } else{
-        iconLoveDOM.classList.add(...activeClasses)
+      function changeImageView(index) {
+        previousIndex = currentIndex
+        currentIndex = getIndex(index)
+        imageDOM.src = pointDOM[currentIndex].getAttribute('data-img')
+        pointDOM[previousIndex].classList.remove('bg-white')
+        pointDOM[currentIndex].classList.add('bg-white')
       }
-    })
-  </script>
-</body>
 
+      function getIndex(index) {
+        const firstIndex = 0
+        const lastIndex = pointDOM.length - 1
+        if (index < firstIndex) return lastIndex
+        if (index > lastIndex) return firstIndex
+        return index
+      }
 
+      const loveDOM = document.getElementById('love')
+      loveDOM.addEventListener('click', () => {
+        const iconLoveDOM = loveDOM.querySelector('.icon')
+        const activeClasses = ['fill-red-500', 'text-red-500']
+        const currentClasses = [...iconLoveDOM.classList]
+        if (
+          activeClasses.every((className) => currentClasses.includes(className))
+        ) {
+          iconLoveDOM.classList.remove(...activeClasses)
+        } else {
+          iconLoveDOM.classList.add(...activeClasses)
+        }
+      })
+    </script>
+  </body>
 </html>

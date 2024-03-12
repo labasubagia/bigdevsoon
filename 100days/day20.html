@@ -1,291 +1,367 @@
 <html>
+  <head>
+    <!-- Our unique tag to identify the solution -->
+    <bds />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BigDevSoon Challenge</title>
 
-<head>
-  <!-- Our unique tag to identify the solution -->
-  <bds />
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BigDevSoon Challenge</title>
+    <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Add your external script links here, if any -->
+    <link rel="stylesheet" href="../style/font.css" />
 
-  <!-- Add your external script links here, if any -->
-  <link rel="stylesheet" href="../style/font.css">
+    <style>
+      *::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
 
-  <style>
-    *::-webkit-scrollbar {
-      display: none;
-    }
-  </style>
+  <body class="poppins-regular w-full min-h-screen">
+    <!-- solution -->
+    <div
+      class="min-h-screen min-w-screen bg-gray-100 bg-cover flex sm:p-3 sm:items-center sm:justify-center text-gray-800"
+    >
+      <!-- home -->
+      <div
+        class="w-full bg-white shadow-lg overflow-hidden sm:w-[425px] sm:h-[740px] sm:rounded-xl"
+      >
+        <!-- top -->
+        <div class="w-full p-6 bg-black text-white sm:rounded-xl">
+          <p class="text-sm">Welcome</p>
 
-</head>
+          <p id="card-name" class="text-3xl mt-4 poppins-semobold">My Cards</p>
 
-<body class="poppins-regular w-full min-h-screen">
+          <!-- cards -->
+          <div
+            id="card-container"
+            class="my-6 p-1 space-x-4 whitespace-nowrap overflow-y-hidden overflow-x-scroll scroll-smooth"
+          ></div>
 
-  <!-- solution -->
-  <div class="min-h-screen min-w-screen bg-gray-100 bg-cover flex sm:p-3 sm:items-center sm:justify-center text-gray-800">
-    
+          <!-- indicator -->
+          <div
+            id="indicator-container"
+            class="flex items-center justify-center gap-2 mt-2"
+          ></div>
 
-    <!-- home -->
-    <div class="w-full bg-white shadow-lg overflow-hidden sm:w-[425px] sm:h-[740px] sm:rounded-xl">
-      
-      <!-- top -->
-      <div class="w-full p-6 bg-black text-white sm:rounded-xl">
-        <p class="text-sm">Welcome</p>
-        
-        <p id="card-name" class="text-3xl mt-4 poppins-semobold">My Cards</p>
-        
-        <!-- cards -->
-        <div id="card-container" class="my-6 p-1 space-x-4 whitespace-nowrap overflow-y-hidden overflow-x-scroll scroll-smooth">
+          <div class="flex items-center justify-center relative mt-4">
+            <button
+              type="button"
+              onclick="openForm()"
+              class="p-2 rounded-full bg-black absolute text-center -bottom-12"
+            >
+              <i data-lucide="plus" class="size-8 text-white"></i>
+            </button>
+          </div>
         </div>
 
-        <!-- indicator -->
-        <div id="indicator-container" class="flex items-center justify-center gap-2 mt-2"></div>
-
-        <div class="flex items-center justify-center relative mt-4">
-          <button type="button" onclick="openForm()" class="p-2 rounded-full bg-black absolute text-center -bottom-12">
-            <i data-lucide="plus" class="size-8 text-white"></i>
-          </button>
+        <!-- transactions -->
+        <div class="p-4">
+          <p class="poppins-semibold">Transactions</p>
+          <div
+            id="transaction-container"
+            class="flex-col my-4 flex gap-3 sm:h-[260px] overflow-y-scroll"
+          ></div>
         </div>
       </div>
 
-      <!-- transactions -->
-      <div class="p-4">
-        <p class="poppins-semibold">Transactions</p>
-        <div id="transaction-container" class="flex-col my-4 flex gap-3 sm:h-[260px] overflow-y-scroll"></div>
-      </div>
-    </div>
-
-
-    <!-- form bg -->
-    <div id="form-container" class="absolute h-screen w-screen hidden items-center justify-center sm:p-2">
-
-      <form id="form-add-card" class="w-full h-screen bg-white text-black sm:rounded-xl p-6 sm:w-[425px] sm:h-[760px] shadow-lg flex flex-col justify-between">
-
-        <div>
+      <!-- form bg -->
+      <div
+        id="form-container"
+        class="absolute h-screen w-screen hidden items-center justify-center sm:p-2"
+      >
+        <form
+          id="form-add-card"
+          class="w-full h-screen bg-white text-black sm:rounded-xl p-6 sm:w-[425px] sm:h-[760px] shadow-lg flex flex-col justify-between"
+        >
           <div>
-            <button type="button" onclick="closeForm()"><i data-lucide="arrow-left" class="size-7"></i></button>
+            <div>
+              <button type="button" onclick="closeForm()">
+                <i data-lucide="arrow-left" class="size-7"></i>
+              </button>
+            </div>
+
+            <p class="text-2xl mt-4 poppins-semibold">Add Card</p>
+
+            <input
+              type="text"
+              placeholder="Card Name"
+              name="name"
+              class="outline-none p-2 px-3 border-2 rounded-lg mt-4 w-full"
+              required
+            />
+            <input
+              type="text"
+              placeholder="Card Number"
+              name="number"
+              class="outline-none p-2 px-3 border-2 rounded-lg mt-4 w-full"
+              required
+            />
+
+            <div class="flex gap-2">
+              <input
+                type="text"
+                placeholder="Expires"
+                name="expires"
+                class="outline-none p-2 px-3 border-2 rounded-lg mt-4 w-full"
+                required
+              />
+              <input
+                type="text"
+                placeholder="CVC Code"
+                name="cvc"
+                class="outline-none p-2 px-3 border-2 rounded-lg mt-4 w-full"
+              />
+            </div>
+
+            <label
+              class="inline-flex items-center cursor-pointer mt-6 uppercase text-gray-700"
+            >
+              <input
+                type="checkbox"
+                name="is_main"
+                value="ok"
+                class="sr-only peer"
+              />
+              <div
+                class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-purple-500"
+              ></div>
+
+              <span class="ml-4">set as default card</span>
+            </label>
           </div>
-          
-          <p class="text-2xl mt-4 poppins-semibold">Add Card</p>
-  
-          <input type="text" placeholder="Card Name" name="name" class="outline-none p-2 px-3 border-2 rounded-lg mt-4 w-full" required>
-          <input type="text" placeholder="Card Number" name="number" class="outline-none p-2 px-3 border-2 rounded-lg mt-4 w-full" required>
-  
-          <div class="flex gap-2">
-            <input type="text" placeholder="Expires" name="expires" class="outline-none p-2 px-3 border-2 rounded-lg mt-4 w-full" required>
-            <input type="text" placeholder="CVC Code" name="cvc" class="outline-none p-2 px-3 border-2 rounded-lg mt-4 w-full">
-          </div>
-  
-          <label class="inline-flex items-center cursor-pointer mt-6 uppercase text-gray-700">
-            <input type="checkbox" name="is_main" value="ok" class="sr-only peer">
-            <div class="relative w-11 h-6 bg-gray-200  rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-purple-500"></div>
-  
-            <span class="ml-4">set as default card</span>
-          </label>
-        </div>
 
-        <button class="w-full rounded-lg text-center text-white bg-purple-500 p-2 px-3">Add New Card</button>
-
-      </form>
-
+          <button
+            class="w-full rounded-lg text-center text-white bg-purple-500 p-2 px-3"
+          >
+            Add New Card
+          </button>
+        </form>
+      </div>
     </div>
 
-  </div>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      const cardNameDOM = document.querySelector('#card-name')
+      const cardContainerDOM = document.querySelector('#card-container')
+      const cardIndicatorContainerDOM = document.querySelector(
+        '#indicator-container'
+      )
+      const transactionContainerDOM = document.querySelector(
+        '#transaction-container'
+      )
 
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script>
+      const formContainerDOM = document.querySelector('#form-container')
+      const formAddCardDOM = document.querySelector('#form-add-card')
 
-    const cardNameDOM = document.querySelector('#card-name')
-    const cardContainerDOM = document.querySelector('#card-container')
-    const cardIndicatorContainerDOM = document.querySelector('#indicator-container')
-    const transactionContainerDOM = document.querySelector('#transaction-container')
+      let cards = [
+        {
+          isMain: true,
+          name: 'Main Card',
+          balance: 4000,
+          number: '1111 2222 333 1234',
+          expires: '04/28',
+          colorClass:
+            'bg-gradient-to-br from-blue-500 from-10% via-indigo-600 via-25% to-purple-500 to-100%',
+          transactions: [
+            {
+              kind: 'invest',
+              name: 'Buy AAPL stock',
+              time: '1 days ago',
+              amount: -1500,
+            },
+            {
+              kind: 'travel',
+              name: 'Back to Jakarta',
+              time: '1 days ago',
+              amount: -200,
+            },
+            {
+              kind: 'eat',
+              name: 'Try Fried Chicken',
+              time: '2 days ago',
+              amount: -200,
+            },
+            {
+              kind: 'travel',
+              name: 'Go to Bali',
+              time: '3 days ago',
+              amount: -200,
+            },
+            {
+              kind: 'eat',
+              name: 'Dinner',
+              time: '3 days ago',
+              amount: -200,
+            },
+            {
+              kind: 'income',
+              name: 'Payment',
+              time: '3 days ago',
+              amount: 200,
+            },
+          ],
+        },
+        {
+          isMain: false,
+          name: 'Shopping Card',
+          balance: 2500,
+          number: '1111 2222 333 3123',
+          expires: '04/28',
+          colorClass:
+            'bg-gradient-to-br from-pink-500 from-20% via-orange-600 via-60% to-yellow-500 to-100%',
+          transactions: [
+            {
+              kind: 'income',
+              name: 'Payslip',
+              time: '1 days ago',
+              amount: 900,
+            },
+            {
+              kind: 'travel',
+              name: 'Go to Bali',
+              time: '3 days ago',
+              amount: -200,
+            },
+            {
+              kind: 'eat',
+              name: 'Dinner',
+              time: '3 days ago',
+              amount: -200,
+            },
+          ],
+        },
+        {
+          isMain: false,
+          name: 'Child Card',
+          balance: 3200,
+          number: '1111 2222 333 4432',
+          expires: '01/25',
+          colorClass:
+            'bg-gradient-to-br from-blue-500 from-20% via-green-600 via-60% to-yellow-500 to-100%',
+          transactions: [],
+        },
+      ]
 
-    const formContainerDOM = document.querySelector('#form-container')
-    const formAddCardDOM = document.querySelector('#form-add-card')
+      let currentIndex = 0
+      let previousIndex = 0
 
-    let cards = [
-      {
-        isMain: true,
-        name: 'Main Card',
-        balance: 4000,
-        number: '1111 2222 333 1234',
-        expires: '04/28',
-        colorClass: 'bg-gradient-to-br from-blue-500 from-10% via-indigo-600 via-25% to-purple-500 to-100%',
-        transactions: [
-          {
-            kind: 'invest',
-            name: 'Buy AAPL stock',
-            time: '1 days ago',
-            amount: -1500,
-          },
-          {
-            kind: 'travel',
-            name: 'Back to Jakarta',
-            time: '1 days ago',
-            amount: -200,
-          },
-          {
-            kind: 'eat',
-            name: 'Try Fried Chicken',
-            time: '2 days ago',
-            amount: -200,
-          },
-          {
-            kind: 'travel',
-            name: 'Go to Bali',
-            time: '3 days ago',
-            amount: -200,
-          },
-          {
-            kind: 'eat',
-            name: 'Dinner',
-            time: '3 days ago',
-            amount: -200,
-          },
-          {
-            kind: 'income',
-            name: 'Payment',
-            time: '3 days ago',
-            amount: 200,
-          },
-        ],
-      },
-      {
-        isMain: false,
-        name: 'Shopping Card',
-        balance: 2500,
-        number: '1111 2222 333 3123',
-        expires: '04/28',
-        colorClass: 'bg-gradient-to-br from-pink-500 from-20% via-orange-600 via-60% to-yellow-500 to-100%',
-        transactions: [
-          {
-            kind: 'income',
-            name: 'Payslip',
-            time: '1 days ago',
-            amount: 900,
-          },
-          {
-            kind: 'travel',
-            name: 'Go to Bali',
-            time: '3 days ago',
-            amount: -200,
-          },
-          {
-            kind: 'eat',
-            name: 'Dinner',
-            time: '3 days ago',
-            amount: -200,
-          },
-        ],
-      },
-      {
-        isMain: false,
-        name: 'Child Card',
-        balance: 3200,
-        number: '1111 2222 333 4432',
-        expires: '01/25',
-        colorClass: 'bg-gradient-to-br from-blue-500 from-20% via-green-600 via-60% to-yellow-500 to-100%',
-        transactions: [],
-      }
-    ]
-
-    let currentIndex = 0
-    let previousIndex = 0
-
-    document.addEventListener('DOMContentLoaded', event => {
-      refreshIcons()
-      changeSelection()
-    })
-
-    formAddCardDOM.addEventListener('submit', event => {
-      event.preventDefault()
-      const formData = new FormData(event.target)
-      const data = {
-        name: formData.get('name'),
-        number: formData.get('number'),
-        expires: formData.get('expires'),
-        cvc: formData.get('cvc'),
-        isMain: formData.get('is_main') == 'ok',
-        colorClass: 'bg-gradient-to-br from-red-500 from-20% via-purple-600 via-60% to-blue-500 to-100%',
-        balance: 0,
-        transactions: [],
-      }
-      if (!data.isMain) {
-        cards.push(data)
-        changeSelection(currentIndex)
-      } else {
-        cards = cards.map(card => ({ ...card, isMain: false }))
-        cards.unshift(data)
-        changeSelection(0)
-      }
-
-      closeForm()
-      formAddCardDOM.reset()
-    })
-
-    function closeForm() {
-      formContainerDOM.classList.remove('flex')
-      formContainerDOM.classList.add('hidden')
-    }
-
-    function openForm() {
-      formContainerDOM.classList.add('flex')
-      formContainerDOM.classList.remove('hidden')
-    }
-
-    function changeSelection(index=0, withScroll=true) {
-      previousIndex = currentIndex
-      currentIndex = getIndex(index)
-
-      cardNameDOM.innerHTML = cards[index].name;
-
-      cardContainerDOM.innerHTML = cards
-        .reduce((htmlStr, card, index) => htmlStr + cardComponent(card, index, currentIndex), '')
-      cardContainerDOM.querySelectorAll('.card-item').forEach((cardDOM, index) => {
-        cardDOM.addEventListener('click', () => changeSelection(index, false))
+      document.addEventListener('DOMContentLoaded', (event) => {
+        refreshIcons()
+        changeSelection()
       })
 
-      cardIndicatorContainerDOM.innerHTML = cards
-        .reduce((htmlStr, card, index) => htmlStr + indicatorComponent(index, currentIndex), '')  
+      formAddCardDOM.addEventListener('submit', (event) => {
+        event.preventDefault()
+        const formData = new FormData(event.target)
+        const data = {
+          name: formData.get('name'),
+          number: formData.get('number'),
+          expires: formData.get('expires'),
+          cvc: formData.get('cvc'),
+          isMain: formData.get('is_main') == 'ok',
+          colorClass:
+            'bg-gradient-to-br from-red-500 from-20% via-purple-600 via-60% to-blue-500 to-100%',
+          balance: 0,
+          transactions: [],
+        }
+        if (!data.isMain) {
+          cards.push(data)
+          changeSelection(currentIndex)
+        } else {
+          cards = cards.map((card) => ({ ...card, isMain: false }))
+          cards.unshift(data)
+          changeSelection(0)
+        }
 
-      cardIndicatorContainerDOM.querySelectorAll('.indicator-item').forEach((indicatorItemDOM, index) => {
-        indicatorItemDOM.addEventListener('click', () => changeSelection(index))
+        closeForm()
+        formAddCardDOM.reset()
       })
 
-      const transactionHtmlStr = cards[currentIndex].transactions
-      .reduce((htmlStr, transaction) => htmlStr + transactionComponent(transaction), '')
-      transactionContainerDOM.innerHTML = transactionHtmlStr || (`
+      function closeForm() {
+        formContainerDOM.classList.remove('flex')
+        formContainerDOM.classList.add('hidden')
+      }
+
+      function openForm() {
+        formContainerDOM.classList.add('flex')
+        formContainerDOM.classList.remove('hidden')
+      }
+
+      function changeSelection(index = 0, withScroll = true) {
+        previousIndex = currentIndex
+        currentIndex = getIndex(index)
+
+        cardNameDOM.innerHTML = cards[index].name
+
+        cardContainerDOM.innerHTML = cards.reduce(
+          (htmlStr, card, index) =>
+            htmlStr + cardComponent(card, index, currentIndex),
+          ''
+        )
+        cardContainerDOM
+          .querySelectorAll('.card-item')
+          .forEach((cardDOM, index) => {
+            cardDOM.addEventListener('click', () =>
+              changeSelection(index, false)
+            )
+          })
+
+        cardIndicatorContainerDOM.innerHTML = cards.reduce(
+          (htmlStr, card, index) =>
+            htmlStr + indicatorComponent(index, currentIndex),
+          ''
+        )
+
+        cardIndicatorContainerDOM
+          .querySelectorAll('.indicator-item')
+          .forEach((indicatorItemDOM, index) => {
+            indicatorItemDOM.addEventListener('click', () =>
+              changeSelection(index)
+            )
+          })
+
+        const transactionHtmlStr = cards[currentIndex].transactions.reduce(
+          (htmlStr, transaction) => htmlStr + transactionComponent(transaction),
+          ''
+        )
+        transactionContainerDOM.innerHTML =
+          transactionHtmlStr ||
+          `
         <div class="w-full h-full flex justify-center items-center">
           <p class="text-xl text-center text-gray-400 capitalize">No transactions</p>
         </div>
-      `)
+      `
 
-      refreshIcons()
+        refreshIcons()
 
-      if (previousIndex == currentIndex) return
-      const cardWidth = cardContainerDOM.querySelector('.card-item').offsetWidth + 20; // just assume gap is 20
-      const cardScroll = cardWidth * currentIndex
-      cardContainerDOM.scrollTo({ left: cardScroll, behavior: 'smooth'})
-    }
+        if (previousIndex == currentIndex) return
+        const cardWidth =
+          cardContainerDOM.querySelector('.card-item').offsetWidth + 20 // just assume gap is 20
+        const cardScroll = cardWidth * currentIndex
+        cardContainerDOM.scrollTo({ left: cardScroll, behavior: 'smooth' })
+      }
 
-    function refreshIcons() {
-      lucide.createIcons()
-    }
+      function refreshIcons() {
+        lucide.createIcons()
+      }
 
-    function getIndex(index) {
-      const firstIndex = 0
-      const lastIndex = cards.length - 1
-      if (index < firstIndex) return firstIndex
-      if (index > lastIndex) return lastIndex
-      return index
-    }
+      function getIndex(index) {
+        const firstIndex = 0
+        const lastIndex = cards.length - 1
+        if (index < firstIndex) return firstIndex
+        if (index > lastIndex) return lastIndex
+        return index
+      }
 
-    function cardComponent(card, index, currentIndex) {
-      const isCurrent = index == currentIndex
-      return `
-        <div class="card-item inline-block bg-white w-full p-6 rounded-xl ${card.colorClass} ${isCurrent ? 'ring-4 ring-white' : ''}">
+      function cardComponent(card, index, currentIndex) {
+        const isCurrent = index == currentIndex
+        return `
+        <div class="card-item inline-block bg-white w-full p-6 rounded-xl ${
+          card.colorClass
+        } ${isCurrent ? 'ring-4 ring-white' : ''}">
           <p class="text-sm">Balance</p>
           <p class="text-2xl mt-2 poppins-semibold">$${card.balance}</p>
           <p class="mt-4">${hideCardNumber(card.number)}</p>
@@ -300,67 +376,75 @@
           </div>
         </div>
       `
-    }
+      }
 
-    function transactionComponent(transaction) {
-      return `
+      function transactionComponent(transaction) {
+        return `
         <div class="flex justify-between items-center gap-2">
           ${transactionIconComponent(transaction.kind)}
           <div class="flex-1">
             <p class="poppins-semibold">${transaction.name}</p>
             <p class="text-sm text-gray-600">${transaction.time}</p>
           </div>
-          <p class="p-1 px-2 rounded-xl text-white ${transaction.amount >= 0 ? 'bg-green-500' : 'bg-red-500'}">
-            ${transaction.amount >= 0 ? '+' : '-'} $${Math.abs(transaction.amount)}
+          <p class="p-1 px-2 rounded-xl text-white ${
+            transaction.amount >= 0 ? 'bg-green-500' : 'bg-red-500'
+          }">
+            ${transaction.amount >= 0 ? '+' : '-'} $${Math.abs(
+          transaction.amount
+        )}
           </p>
         </div>
-      `;
-    }
+      `
+      }
 
-    function transactionIconComponent(kind) {
-      switch(kind.toLowerCase()) {
-        case 'travel':
-          return `
+      function transactionIconComponent(kind) {
+        switch (kind.toLowerCase()) {
+          case 'travel':
+            return `
             <div class="bg-blue-500 text-white rounded-xl p-3">
               <i data-lucide="plane" class="size-8"></i>
             </div>
           `
-        case 'eat':
-          return `
+          case 'eat':
+            return `
             <div class="bg-orange-500 text-white rounded-xl p-3">
               <i data-lucide="pizza" class="size-8"></i>
             </div>
           `
-        case 'invest':
-          return `
+          case 'invest':
+            return `
             <div class="bg-purple-500 text-white rounded-xl p-3">
               <i data-lucide="area-chart" class="size-8"></i>
             </div>
           `
-        case 'income':
-          return `
+          case 'income':
+            return `
             <div class="bg-green-500 text-white rounded-xl p-3">
               <i data-lucide="briefcase" class="size-8"></i>
             </div>
           `
-        default:
-          return `
+          default:
+            return `
             <div class="bg-gray-200 text-black rounded-xl p-3">
               <i data-lucide="circle" class="size-8"></i>
             </div>
           `
+        }
       }
-    }
 
-    function indicatorComponent(index, currentIndex) {
-      return `<div class="indicator-item cursor-pointer m size-3 rounded-full ${index == currentIndex ? 'bg-purple-500 ring-2 ring-white' : 'bg-gray-500'}"></div>`
-    }
+      function indicatorComponent(index, currentIndex) {
+        return `<div class="indicator-item cursor-pointer m size-3 rounded-full ${
+          index == currentIndex
+            ? 'bg-purple-500 ring-2 ring-white'
+            : 'bg-gray-500'
+        }"></div>`
+      }
 
-    function hideCardNumber(num='') {
-      return [...num].map((v, index) => index < 14  && v != ' ' ? '*': v).join('')
-    }
-
-  </script>
-</body>
-
+      function hideCardNumber(num = '') {
+        return [...num]
+          .map((v, index) => (index < 14 && v != ' ' ? '*' : v))
+          .join('')
+      }
+    </script>
+  </body>
 </html>

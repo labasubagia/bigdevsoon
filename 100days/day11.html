@@ -1,224 +1,150 @@
 <html>
+  <head>
+    <!-- Our unique tag to identify the solution -->
+    <bds />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BigDevSoon Challenge</title>
 
-<head>
-  <!-- Our unique tag to identify the solution -->
-  <bds />
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BigDevSoon Challenge</title>
+    <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Add your external script links here, if any -->
+    <link rel="stylesheet" href="../style/font.css" />
+  </head>
 
-  <!-- Add your external script links here, if any -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-  <style>
-    .poppins-thin {
-      font-family: "Poppins", sans-serif;
-      font-weight: 100;
-      font-style: normal;
-    }
-
-    .poppins-thin-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 100;
-      font-style: italic;
-    }
-
-    .poppins-extralight {
-      font-family: "Poppins", sans-serif;
-      font-weight: 200;
-      font-style: normal;
-    }
-
-    .poppins-extralight-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 200;
-      font-style: italic;
-    }
-
-    .poppins-light {
-      font-family: "Poppins", sans-serif;
-      font-weight: 300;
-      font-style: normal;
-    }
-
-    .poppins-light-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 300;
-      font-style: italic;
-    }
-
-    .poppins-regular {
-      font-family: "Poppins", sans-serif;
-      font-weight: 400;
-      font-style: normal;
-    }
-
-    .poppins-regular-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 400;
-      font-style: italic;
-    }
-
-    .poppins-medium {
-      font-family: "Poppins", sans-serif;
-      font-weight: 500;
-      font-style: normal;
-    }
-
-    .poppins-medium-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 500;
-      font-style: italic;
-    }
-
-    .poppins-semibold {
-      font-family: "Poppins", sans-serif;
-      font-weight: 600;
-      font-style: normal;
-    }
-
-    .poppins-semibold-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 600;
-      font-style: italic;
-    }
-
-    .poppins-bold {
-      font-family: "Poppins", sans-serif;
-      font-weight: 700;
-      font-style: normal;
-    }
-
-    .poppins-bold-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 700;
-      font-style: italic;
-    }
-
-    .poppins-extrabold {
-      font-family: "Poppins", sans-serif;
-      font-weight: 800;
-      font-style: normal;
-    }
-
-    .poppins-extrabold-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 800;
-      font-style: italic;
-    }
-
-    .poppins-black {
-      font-family: "Poppins", sans-serif;
-      font-weight: 900;
-      font-style: normal;
-    }
-
-    .poppins-black-italic {
-      font-family: "Poppins", sans-serif;
-      font-weight: 900;
-      font-style: italic;
-    }
-  </style>
-</head>
-
-<body class="poppins-regular">
-
-  <!-- solution -->
-  <div class="size-full bg-orange-200 flex justify-center items-center">
-    
-    <!-- card -->
-    <div class="bg-white p-8 rounded-lg flex gap-8">
-
-      <!-- form -->
-      <div class="w-[400px] flex flex-col justify-between items-center">
-
-        <!-- input -->
-        <div>
+  <body class="poppins-regular">
+    <!-- solution -->
+    <div class="size-full bg-orange-200 flex justify-center items-center">
+      <!-- card -->
+      <div class="bg-white p-8 rounded-lg flex gap-8">
+        <!-- form -->
+        <div class="w-[400px] flex flex-col justify-between items-center">
+          <!-- input -->
           <div>
-            <p class="text-bold poppins-semibold">Check In</p>
-            <div class="border-2 flex focus-within:border-orange-500 rounded-md overflow-hidden items-center justify-between mt-2">
-              <input type="date" class="p-2 outline-none rounded-md w-full" placeholder="Start Date">
-            </div>
-          </div>
-  
-          <div class="mt-8">
-            <p class="text-bold poppins-semibold">Check Out</p>
-            <div class="border-2 flex focus-within:border-orange-500 rounded-md overflow-hidden items-center justify-between mt-2">
-              <input type="date" class="p-2 outline-none rounded-md w-full" placeholder="Start Date">
-            </div>
-          </div>
-  
-          <div class="mt-8 flex gap-4">
             <div>
-              <p class="text-bold poppins-semibold">Adult</p>
-              <div class="border-2 flex focus-within:border-orange-500 rounded-md overflow-hidden items-center justify-between mt-2">
-                <input type="number" class="p-2 outline-none rounded-md w-full" placeholder="1">
+              <p class="text-bold poppins-semibold">Check In</p>
+              <div
+                class="border-2 flex focus-within:border-orange-500 rounded-md overflow-hidden items-center justify-between mt-2"
+              >
+                <input
+                  type="date"
+                  class="p-2 outline-none rounded-md w-full"
+                  placeholder="Start Date"
+                />
               </div>
             </div>
-  
-            <div>
-              <p class="text-bold poppins-semibold">Children</p>
-              <div class="border-2 flex focus-within:border-orange-500 rounded-md overflow-hidden items-center justify-between mt-2">
-                <input type="number" class="p-2 outline-none rounded-md w-full" placeholder="1">
+
+            <div class="mt-8">
+              <p class="text-bold poppins-semibold">Check Out</p>
+              <div
+                class="border-2 flex focus-within:border-orange-500 rounded-md overflow-hidden items-center justify-between mt-2"
+              >
+                <input
+                  type="date"
+                  class="p-2 outline-none rounded-md w-full"
+                  placeholder="Start Date"
+                />
               </div>
             </div>
-          </div> 
+
+            <div class="mt-8 flex gap-4">
+              <div>
+                <p class="text-bold poppins-semibold">Adult</p>
+                <div
+                  class="border-2 flex focus-within:border-orange-500 rounded-md overflow-hidden items-center justify-between mt-2"
+                >
+                  <input
+                    type="number"
+                    class="p-2 outline-none rounded-md w-full"
+                    placeholder="1"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <p class="text-bold poppins-semibold">Children</p>
+                <div
+                  class="border-2 flex focus-within:border-orange-500 rounded-md overflow-hidden items-center justify-between mt-2"
+                >
+                  <input
+                    type="number"
+                    class="p-2 outline-none rounded-md w-full"
+                    placeholder="1"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button
+            class="w-full bg-orange-500 p-3 px-4 text-white poppins-semibold rounded-full"
+          >
+            Book a room
+          </button>
         </div>
-        
 
-        <button class="w-full bg-orange-500 p-3 px-4 text-white poppins-semibold rounded-full">Book a room</button>
-      </div>
+        <!-- image -->
+        <div class="flex flex-col w-[610px]">
+          <img
+            id="imageView"
+            class="object-cover h-[400px] w-full bg-contain mx-auto"
+            src="https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YmFsaXxlbnwwfDB8MHx8fDA%3D"
+            alt=""
+          />
 
-      <!-- image -->
-      <div class="flex flex-col w-[610px]">
-        <img id="imageView" class="object-cover h-[400px] w-full bg-contain mx-auto" src="https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YmFsaXxlbnwwfDB8MHx8fDA%3D" alt="">
-      
-        <div id="images" class="mx-auto flex gap-4 mt-6">
-          <img class="object-cover cursor-pointer w-48 h-32 ring-4 ring-orange-500" src="https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YmFsaXxlbnwwfDB8MHx8fDA%3D" alt="">
-          <img class="object-cover cursor-pointer w-48 h-32" src="https://images.unsplash.com/photo-1558005530-a7958896ec60?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YmFsaXxlbnwwfDB8MHx8fDA%3D" alt="">
-          <img class="object-cover cursor-pointer w-48 h-32" src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YmFsaXxlbnwwfDB8MHx8fDA%3D" alt="">
+          <div id="images" class="mx-auto flex gap-4 mt-6">
+            <img
+              class="object-cover cursor-pointer w-48 h-32 ring-4 ring-orange-500"
+              src="https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YmFsaXxlbnwwfDB8MHx8fDA%3D"
+              alt=""
+            />
+            <img
+              class="object-cover cursor-pointer w-48 h-32"
+              src="https://images.unsplash.com/photo-1558005530-a7958896ec60?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YmFsaXxlbnwwfDB8MHx8fDA%3D"
+              alt=""
+            />
+            <img
+              class="object-cover cursor-pointer w-48 h-32"
+              src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YmFsaXxlbnwwfDB8MHx8fDA%3D"
+              alt=""
+            />
+          </div>
         </div>
       </div>
     </div>
 
-  </div>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons()
+    </script>
 
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script>
-    lucide.createIcons();
-  </script>
+    <script>
+      const imageViewDOM = document.getElementById('imageView')
+      const imagesDOM = document.querySelectorAll('#images img')
+      imagesDOM.forEach((image, index) =>
+        image.addEventListener('click', (e) => changeImageView(index))
+      )
 
-  <script>
-    const imageViewDOM = document.getElementById('imageView')
-    const imagesDOM = document.querySelectorAll('#images img')
-    imagesDOM.forEach((image, index) => image.addEventListener('click', e => changeImageView(index)))
+      let currentIndex = 0
+      let previousIndex = 0
 
+      function changeImageView(index) {
+        previousIndex = currentIndex
+        currentIndex = getIndex(index)
+        imageViewDOM.src = imagesDOM[currentIndex].src
+        imagesDOM[previousIndex].className = 'cursor-pointer w-48 h-32'
+        imagesDOM[currentIndex].className =
+          'cursor-pointer w-48 h-32 ring-4 ring-orange-500'
+      }
 
-    let currentIndex = 0
-    let previousIndex = 0
-
-    function changeImageView(index) {
-      previousIndex = currentIndex
-      currentIndex = getIndex(index)
-      imageViewDOM.src = imagesDOM[currentIndex].src
-      imagesDOM[previousIndex].className = 'cursor-pointer w-48 h-32'
-      imagesDOM[currentIndex].className = 'cursor-pointer w-48 h-32 ring-4 ring-orange-500'
-    }
-
-    function getIndex(index) {
-      const firstIndex = 0
-      const lastIndex = imagesDOM.length - 1
-      if (index < firstIndex) return firstIndex
-      if (index > lastIndex) return lastIndex
-      return index
-    }
-  </script>
-</body>
-
-
+      function getIndex(index) {
+        const firstIndex = 0
+        const lastIndex = imagesDOM.length - 1
+        if (index < firstIndex) return firstIndex
+        if (index > lastIndex) return lastIndex
+        return index
+      }
+    </script>
+  </body>
 </html>
