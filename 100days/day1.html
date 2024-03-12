@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <!-- Our unique tag to identify the solution -->
+    <bds />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BigDevSoon Challenge</title>
+
+    <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Add your external script links here, if any -->
+    <link rel="stylesheet" href="../style/font.css" />
+  </head>
+
+  <body class="poppins-regular w-full min-h-screen">
+    <!-- solution -->
+    <div
+      class="min-h-screen min-w-full bg-yellow-100 sm:p-4 flex justify-center sm:items-center"
+    >
+      <!-- card -->
+      <div
+        class="w-full sm:max-w-[425px] sm:rounded-2xl bg-white overflow-hidden shadow-xl"
+      >
+        <!-- top -->
+        <div
+          class="flex items-center h-48 justify-center bg-[url('https://cdn.glitch.global/18aef075-4776-47e2-99ee-6a4c351c6088/curve.svg?v=1707736650895')]"
+        >
+          <img
+            class="size-24 my-4 rounded-full object-cover ring ring-white"
+            src="https://cdn.idntimes.com/content-images/community/2021/11/fromandroid-cba5e857eb0ddd391fc1f7c3c55dda70_600x400.jpg"
+            alt="profile"
+          />
+        </div>
+
+        <div class="text-center p-4 sm:p-6 md:p-8">
+          <p class="poppins-medium text-2xl">Minami Hamabe</p>
+          <p class="text-gray-300 mt-1">@minami_hamabe.official</p>
+
+          <div class="mt-4 flex items-center justify-center gap-2">
+            <a href="https://www.instagram.com/minami_hamabe.official/"
+              ><i class="size-6" data-lucide="instagram"></i
+            ></a>
+            <a href="https://twitter.com/MINAMI373HAMABE"
+              ><i class="size-6" data-lucide="twitter"></i
+            ></a>
+            <a href="https://minamihamabe.futureartist.net/"
+              ><i class="size-6" data-lucide="globe"></i
+            ></a>
+          </div>
+
+          <p class="mt-4">
+            Minami Hamabe (浜辺 美波, Hamabe Minami, born August 29, 2000) is a
+            Japanese actress. Having starred in various blockbusters and popular
+            television shows since her teenage years, she is one of Japan's most
+            prominent figures in the modern-day entertainment industry.
+          </p>
+
+          <div class="flex justify-around gap-6 items-center mt-8">
+            <button class="w-full p-3 px-5 rounded-3xl bg-[e03f8d] text-white">
+              Follow
+            </button>
+            <button
+              class="w-full p-3 px-5 rounded-3xl border text-gray-300 border-gray-200"
+            >
+              Message
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest" flex></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        refreshIcons()
+      })
+
+      function refreshIcons() {
+        lucide.createIcons()
+      }
+    </script>
+  </body>
+</html>
