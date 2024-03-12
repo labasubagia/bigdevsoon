@@ -248,7 +248,7 @@
         const invoice = {
           name: formData.get('name'),
           client: formData.get('client'),
-          amount: formData.get('amount'),
+          amount: Number(formData.get('amount')),
           status: formData.get('status'),
           date: dayjs(formData.get('date')),
         }
