@@ -144,12 +144,7 @@
               name="status"
               class="outline-none p-2 px-3 border-2 rounded-lg border-gray-100 bg-white"
               required
-            >
-              <option value="" class="text-gray-500">-- Select --</option>
-              <option value="paid">Paid</option>
-              <option value="outstanding">Outstanding</option>
-              <option value="overdue">Overdue</option>
-            </select>
+            ></select>
 
             <input
               class="outline-none p-2 px-3 border-2 rounded-lg border-gray-100"
@@ -181,6 +176,7 @@
       const listInvoicesDOM = document.querySelector('#listInvoices')
       const addNewModalDOM = document.querySelector('#addNewModal')
       const addNewFormDOM = addNewModalDOM.querySelector('form')
+      const selectStatusDOM = addNewFormDOM.querySelector('select[name=status]')
 
       let data = {
         status: {
@@ -243,6 +239,7 @@
         changeInfo()
         changeListInvoices()
         refreshIcons()
+        initSelectStatusForm()
       })
 
       addNewFormDOM.addEventListener('submit', (event) => {
@@ -269,6 +266,17 @@
       function changeInfo() {
         balanceDOM.innerHTML = `$${data.getBalance()}`
         pendingDOM.innerHTML = `$${data.getPending()}`
+      }
+
+      function initSelectStatusForm() {
+        selectStatusDOM.innerHTML = `
+          <option value="" class="text-gray-500">-- Select --</option> 
+        `
+        for (const label in data.status) {
+          selectStatusDOM.innerHTML += `
+            <option value="${label}" class="capitalize">${label}</option>
+          `
+        }
       }
 
       function changeListInvoices(view = 'all') {
