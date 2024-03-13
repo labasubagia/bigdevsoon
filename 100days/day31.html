@@ -1,0 +1,398 @@
+<html>
+  <head>
+    <!-- Our unique tag to identify the solution -->
+    <bds />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BigDevSoon Challenge</title>
+
+    <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Add your external script links here, if any -->
+    <link rel="stylesheet" href="../style/font.css" />
+  </head>
+
+  <body class="poppins-regular w-full min-h-screen">
+    <!-- solution -->
+    <div
+      class="min-h-screen min-w-full bg-gray-800 p-4 flex justify-center md:items-center text-white"
+    >
+      <div class="container grid md:grid-cols-12 gap-4 md:flex-row">
+        <!-- nav -->
+        <nav
+          class="bg-gray-900 p-4 md:p-6 rounded-xl w-full flex md:flex-col justify-between gap-2 flex-wrap h-fit md:col-span-4"
+        >
+          <!-- title -->
+          <div class="flex items-center gap-2 md:gap-4">
+            <div class="bg-pink-500 p-2 rounded-lg">
+              <i class="size-7" data-lucide="fan"></i>
+            </div>
+            <p class="poppins-semibold text-xl">Initech</p>
+          </div>
+
+          <!-- mobile menu -->
+          <button
+            class="p-2 px-3 md:hidden rounded-lg bg-gray-800"
+            onclick="toggleMobileMenu(true)"
+          >
+            <i class="size-5" data-lucide="ellipsis-vertical"></i>
+          </button>
+
+          <!-- web menu -->
+          <div id="webMenu" class="hidden md:block mt-4">
+            <div class="content"></div>
+            <button
+              class="flex items-center justify-start gap-2 p-3 px-4 rounded-lg w-full mt-10"
+            >
+              <i class="size-4" data-lucide="log-out"></i>
+              <p>Logout</p>
+            </button>
+          </div>
+
+          <div
+            id="mobileMenu"
+            class="fixed flex invisible flex-col justify-between bg-gray-900 md:hidden top-0 left-0 w-full min-h-screen p-8"
+          >
+            <div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2 md:gap-4">
+                  <div class="bg-pink-500 p-2 rounded-lg">
+                    <i class="size-7" data-lucide="fan"></i>
+                  </div>
+                  <p class="poppins-semibold text-xl">Initech</p>
+                </div>
+
+                <button
+                  class="p-2 px-3 md:hidden rounded-lg bg-gray-800"
+                  onclick="toggleMobileMenu(false)"
+                >
+                  <i class="size-5" data-lucide="x"></i>
+                </button>
+              </div>
+
+              <div class="content mt-12"></div>
+            </div>
+
+            <button
+              class="flex items-center justify-start gap-2 p-3 px-4 rounded-lg w-full"
+            >
+              <i class="size-4" data-lucide="log-out"></i>
+              <p>Logout</p>
+            </button>
+          </div>
+        </nav>
+
+        <!-- dashboard -->
+        <div class="w-full md:col-span-8">
+          <!-- header -->
+          <div
+            class="w-full flex justify-between items-center p-4 md:p-6 gap-4 flex-wrap resize-xl bg-gray-900 rounded-xl"
+          >
+            <p class="poppins-medium md:text-xl">Dashboard</p>
+            <div class="flex gap-3 flex-wrap items-center">
+              <button class="p-3 rounded-full bg-gray-800">
+                <i data-lucide="bell" class="size-5"></i>
+              </button>
+              <img
+                class="size-10 md:size-14 ring-2 ring-gray-800 rounded-full object-cover"
+                src="https://dl.kaskus.id/1.bp.blogspot.com/-Fw8ncA7L52s/Xqs7zmzrw6I/AAAAAAAABfo/n8uNWY5AJ9ITPjoDZcxp8mUTnprVT6apQCLcBGAsYHQ/s1600/minami%2Bhamabe%2Bdrama%2Bindonesia%2Bbali.jpg"
+                alt=""
+              />
+              <button class="rounded p-1 bg-gray-800">
+                <i class="size-4" data-lucide="chevron-down"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- content -->
+          <div class="rounded-xl p-4 md:p-8 w-full bg-gray-900 mt-4">
+            <p class="text-2xl md:text-4xl poppins-semibold">Welcome Jane</p>
+
+            <!-- menu -->
+            <div
+              class="flex justify-between items-center gap-4 flex-wrap mt-4 md:mt-8 text-sm md:text-base"
+            >
+              <div class="flex gap-4 items-center capitalize">
+                <button class="p-1 px-2 md:p-2 md:px-3 rounded-lg bg-gray-800">
+                  Overview
+                </button>
+                <button class="p-1 px-2 md:p-2 md:px-3 rounded-lg">
+                  Partner Network
+                </button>
+              </div>
+              <div class="flex gap-4 items-center">
+                <select
+                  id="overviewRange"
+                  class="bg-gray-800 p-1 px-2 md:p-2 md:px-3 rounded-lg outline-none cursor-pointer"
+                ></select>
+
+                <button
+                  class="p-1 px-2 md:p-2 md:px-3 rounded-lg bg-gray-800 flex gap-1 items-center"
+                >
+                  <i data-lucide="filter" class="size-4"></i>
+                  <p>Filter</p>
+                </button>
+              </div>
+            </div>
+
+            <!-- cards -->
+            <div
+              id="overview"
+              class="grid md:grid-cols-2 mt-6 md:mt-10 gap-4"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest" flex></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+
+    <script>
+      const overviewDOM = document.querySelector('#overview')
+      const overviewRangeDOM = document.querySelector('#overviewRange')
+      const webMenuDOM = document.querySelector('#webMenu')
+      const mobileMenuDOM = document.querySelector('#mobileMenu')
+
+      const data = {
+        menu: [
+          {
+            icon: 'layout-dashboard',
+            name: 'Dashboard',
+            isActive: true,
+          },
+          {
+            icon: 'clipboard-minus',
+            name: 'Report',
+            isSecondary: true,
+          },
+          {
+            icon: 'database',
+            name: 'Data Sources',
+          },
+          {
+            icon: 'badge-dollar-sign',
+            name: 'Monetize',
+            child: [
+              { name: 'Adds', link: true },
+              { name: 'Subscription', notification: 2 },
+              { name: 'Partner Program', link: true },
+            ],
+          },
+          {
+            icon: 'sliders-horizontal',
+            name: 'Filters',
+          },
+          {
+            icon: 'settings',
+            name: 'Settings',
+          },
+        ],
+        overview: [
+          {
+            start: dayjs('2024-01-01'),
+            end: dayjs('2024-01-31'),
+            kind: {
+              referral: {
+                name: 'Referral Traffic',
+                icon: 'users-round',
+                value: 732,
+                updated: dayjs('2024-01-31'),
+              },
+              pending: {
+                name: 'Pending',
+                icon: 'loader-circle',
+                value: 280,
+                updated: dayjs('2024-01-31'),
+              },
+            },
+          },
+          {
+            start: dayjs('2024-02-01'),
+            end: dayjs('2024-02-29'),
+            kind: {
+              referral: {
+                name: 'Referral Traffic',
+                icon: 'users-round',
+                value: 892,
+                updated: dayjs('2024-01-29'),
+              },
+              pending: {
+                name: 'Pending',
+                icon: 'loader-circle',
+                value: 321,
+                updated: dayjs('2024-01-29'),
+              },
+            },
+          },
+          {
+            start: dayjs('2024-03-01'),
+            end: dayjs('2024-03-31'),
+            kind: {
+              referral: {
+                name: 'Referral Traffic',
+                icon: 'users-round',
+                value: 781,
+                updated: dayjs('2024-03-31'),
+              },
+              pending: {
+                name: 'Pending',
+                icon: 'loader-circle',
+                value: 422,
+                updated: dayjs('2024-03-31'),
+              },
+            },
+          },
+        ],
+      }
+      for (let i = 0; i < data.overview.length; i++) {
+        const current = data.overview[i]
+        const prev = i > 0 ? data.overview[i - 1] : data.overview[i]
+        for (const key in current.kind) {
+          current.kind[key].move =
+            current.kind[key].value - prev.kind[key].value
+        }
+      }
+      data.overview = data.overview.sort((a, b) => b.end.unix() - a.end.unix())
+
+      document.addEventListener('DOMContentLoaded', () => {
+        refreshIcons()
+        initMenu()
+        initInfoRange()
+        changeInfo()
+      })
+
+      overviewRangeDOM.addEventListener('change', (event) => {
+        changeInfo(Number(event.target.value))
+      })
+
+      function initInfoRange() {
+        overviewRangeDOM.innerHTML = data.overview.reduce(
+          (html, overview, index) => {
+            const label = `${overview.start.format(
+              'DD MMM'
+            )} - ${overview.end.format('DD MMM')}`
+            return (
+              html +
+              `
+            <option ${
+              index == 0 ? 'selected' : ''
+            } value="${index}">${label}</option>
+            `
+            )
+          },
+          ''
+        )
+      }
+
+      function changeInfo(index = 0) {
+        const current = data.overview[index]
+        overviewDOM.innerHTML = ''
+        for (const key in current.kind) {
+          const data = current.kind[key]
+          overviewDOM.innerHTML += cardComponent(data)
+        }
+        refreshIcons()
+      }
+
+      function initMenu() {
+        const html = data.menu.reduce(
+          (html, menu) => html + menuItemComponent(menu),
+          ''
+        )
+        mobileMenuDOM.querySelector('.content').innerHTML = html
+        webMenuDOM.querySelector('.content').innerHTML = html
+      }
+
+      function toggleMobileMenu(isActive = true) {
+        mobileMenuDOM.classList[isActive ? 'remove' : 'add']('invisible')
+      }
+
+      function menuItemComponent(menu, index) {
+        let bgColor = ''
+        if (menu?.isActive) {
+          bgColor = 'bg-pink-500'
+        } else if (menu?.isSecondary) {
+          bgColor = 'bg-gray-700'
+        }
+
+        const childHtml = (menu?.child ?? []).reduce(
+          (html, child) => html + menuItemComponent(child),
+          ''
+        )
+
+        return `
+          <div class="w-full cursor-pointer">
+            <div class="p-3 px-4 ${bgColor} mb-2 rounded-lg flex gap-2 items-center">
+              <i data-lucide="${menu.icon}" class="size-5"></i>
+              <p>${menu.name}</p>
+              ${
+                menu?.notification
+                  ? `<p class="p-1 px-2 ml-1 bg-pink-500 h-fit text-xs rounded-lg">${menu.notification}</p>`
+                  : ''
+              }
+              ${
+                menu?.link
+                  ? `<i class="size-4" data-lucide="external-link"></i>`
+                  : ''
+              }
+            </div>
+            <div class="pr-8">
+              ${childHtml}
+            </div>
+          </div>
+
+        `
+        refreshIcons()
+      }
+
+      function cardComponent(type) {
+        let movePercent = (type.move / type.value) * 100
+        return `
+          <div class="rounded-xl p-4 bg-gray-800 space-y-4">
+            <div
+              class="p-4 bg-gray-700 rounded-xl flex flex-col items-center justify-center h-48"
+            >
+              <div class="flex gap-2 items-center">
+                <p class="text-5xl md:text-6xl poppins-semibold">${
+                  type.value
+                }</p>
+                <div class="p-2 rounded-full ${
+                  movePercent >= 0 ? 'bg-green-500' : 'bg-orange-500'
+                } h-fit">
+                  <i data-lucide="move-${
+                    movePercent >= 0 ? 'up' : 'down'
+                  }" class="size-4"></i>
+                </div>
+              </div>
+              <div class="p-1 px-2 rounded-2xl text-sm mt-2 ${
+                movePercent >= 0 ? 'bg-green-500' : 'bg-orange-500'
+              }">
+                ${movePercent.toFixed(1)}%
+              </div>
+            </div>
+
+            <div class="p-4 bg-gray-700 rounded-xl flex items-center gap-4">
+              <div
+                class="bg-pink-500 rounded-full p-2 items-center justify-center flex"
+              >
+                <i data-lucide="${type.icon}" class="size-7"></i>
+              </div>
+              <div>
+                <p class="">${type.name}</p>
+                <p class="text-gray-400">Last updated on ${type.updated.format(
+                  'DD MMM YYYY'
+                )}</p>
+              </div>
+            </div>
+          </div>
+        `
+      }
+
+      function refreshIcons() {
+        lucide.createIcons()
+      }
+    </script>
+  </body>
+</html>
