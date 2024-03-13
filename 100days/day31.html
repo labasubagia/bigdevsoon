@@ -270,16 +270,12 @@
       function initOverviewRange() {
         overviewRangeDOM.innerHTML = data.overview.reduce(
           (html, overview, index) => {
-            const label = `${overview.start.format(
-              'DD MMM'
-            )} - ${overview.end.format('DD MMM')}`
+            const start = overview.start.format('DD MMM')
+            const end = overview.end.format('DD MMM')
+            const label = `${start} - ${end}`
+            const selected = index == 0 ? 'selected' : ''
             return (
-              html +
-              `
-            <option ${
-              index == 0 ? 'selected' : ''
-            } value="${index}">${label}</option>
-            `
+              html + `<option ${selected} value="${index}">${label}</option>`
             )
           },
           ''
@@ -355,9 +351,9 @@
               class="p-4 bg-gray-700 rounded-xl flex flex-col items-center justify-center h-48"
             >
               <div class="flex gap-2 items-center">
-                <p class="text-5xl md:text-6xl poppins-semibold">${
-                  type.value
-                }</p>
+                <p class="text-5xl md:text-6xl poppins-semibold">
+                  ${type.value}
+                </p>
                 <div class="p-2 rounded-full ${
                   movePercent >= 0 ? 'bg-green-500' : 'bg-orange-500'
                 } h-fit">
@@ -381,9 +377,9 @@
               </div>
               <div>
                 <p class="">${type.name}</p>
-                <p class="text-gray-400">Last updated on ${type.updated.format(
-                  'DD MMM YYYY'
-                )}</p>
+                <p class="text-gray-400">
+                  Last updated on ${type.updated.format('DD MMM YYYY')}
+                </p>
               </div>
             </div>
           </div>
