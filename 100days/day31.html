@@ -248,10 +248,10 @@
       }
       for (let i = 0; i < data.overview.length; i++) {
         const current = data.overview[i]
-        const prev = i > 0 ? data.overview[i - 1] : data.overview[i]
+        const prev = i > 0 ? data.overview[i - 1] : null
         for (const key in current.kind) {
-          current.kind[key].move =
-            current.kind[key].value - prev.kind[key].value
+          const prevVal = prev?.kind?.[key]?.value ?? 0
+          current.kind[key].move = current.kind[key].value - prevVal
         }
       }
       data.overview = data.overview.sort((a, b) => b.end.unix() - a.end.unix())
