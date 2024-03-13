@@ -122,7 +122,8 @@
             </button>`
         }
 
-        const price = data.price[size] - (data.price[size] * 25) / 100
+        const price =
+          data.price[size] - (data.price[size] * data.discountPercent) / 100
         return `
           <div class="text-center md:text-left">
             <p class="uppercase text-2xl text-blue-500 font-medium">${
