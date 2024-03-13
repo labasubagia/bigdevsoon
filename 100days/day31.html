@@ -259,15 +259,15 @@
       document.addEventListener('DOMContentLoaded', () => {
         refreshIcons()
         initMenu()
-        initInfoRange()
-        changeInfo()
+        initOverviewRange()
+        changeOverview()
       })
 
       overviewRangeDOM.addEventListener('change', (event) => {
-        changeInfo(Number(event.target.value))
+        changeOverview(Number(event.target.value))
       })
 
-      function initInfoRange() {
+      function initOverviewRange() {
         overviewRangeDOM.innerHTML = data.overview.reduce(
           (html, overview, index) => {
             const label = `${overview.start.format(
@@ -286,7 +286,7 @@
         )
       }
 
-      function changeInfo(index = 0) {
+      function changeOverview(index = 0) {
         const current = data.overview[index]
         overviewDOM.innerHTML = ''
         for (const key in current.kind) {
