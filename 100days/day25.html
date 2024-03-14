@@ -1,0 +1,563 @@
+<html>
+  <head>
+    <!-- Our unique tag to identify the solution -->
+    <bds />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BigDevSoon Challenge</title>
+
+    <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Add your external script links here, if any -->
+    <link rel="stylesheet" href="../style/font.css" />
+
+    <style>
+      input[type='number']::-webkit-outer-spin-button,
+      input[type='number']::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      input[type='number'] {
+        -moz-appearance: textfield;
+        appearance: textfield;
+      }
+    </style>
+  </head>
+
+  <body class="poppins-regular w-full min-h-screen">
+    <!-- solution -->
+    <div
+      class="min-h-screen min-w-full justify-center items-center flex bg-green-100"
+    >
+      <!-- calendar -->
+      <div
+        class="p-4 md:p-8 sm:rounded-3xl overflow-hidden bg-green-600 w-full h-screen text-white sm:w-[500px] sm:h-fit relative sm:shadow-lg"
+      >
+        <!-- date selector -->
+        <div>
+          <p class="text-yellow-300 text-sm">Calendar</p>
+          <div class="flex justify-between items-center mt-2 gap-4">
+            <p class="font-bold text-2xl" id="calendarName">X</p>
+            <div class="flex gap-2">
+              <button
+                class="p-1 rounded-full bg-white aspect-square bg-opacity-80"
+                onclick="move(false)"
+              >
+                <i class="size-6 text-green-600" data-lucide="chevron-left"></i>
+              </button>
+              <button
+                class="p-1 rounded-full bg-white aspect-square bg-opacity-80"
+                onclick="move(true)"
+              >
+                <i
+                  class="size-6 text-green-600"
+                  data-lucide="chevron-right"
+                ></i>
+              </button>
+            </div>
+          </div>
+          <div
+            id="calendar"
+            class="grid grid-cols-7 grid-rows-6 text-center mt-6"
+          ></div>
+        </div>
+
+        <!-- schedule -->
+        <div
+          class="w-full h-full absolute top-0 left-0 bg-white text-gray-900 hidden p-8"
+          id="schedule"
+        >
+          <!-- header -->
+          <div class="flex gap-4 items-center">
+            <button
+              class="p-2 rounded bg-black bg-opacity-10"
+              onclick="toggleScheduleView(false)"
+            >
+              <i data-lucide="chevron-left" class="size-5"></i>
+            </button>
+            <p class="title text-2xl font-semibold"></p>
+          </div>
+
+          <!-- content -->
+          <div class="content mt-8 overflow-auto"></div>
+
+          <!-- button -->
+          <button
+            class="p-4 rounded-xl bg-yellow-400 absolute bottom-8 right-8"
+            onclick="toggleForm(true)"
+          >
+            <i data-lucide="plus" class="size-7"></i>
+          </button>
+        </div>
+
+        <!-- form -->
+        <div
+          class="w-full h-full absolute top-0 left-0 bg-green-500 hidden text-gray-900"
+          id="addNew"
+        >
+          <!-- header -->
+          <div class="p-8 flex items-center gap-4 h-[10%] sm:h-[15%]">
+            <button
+              class="p-2 rounded bg-white bg-opacity-30"
+              onclick="toggleForm(false)"
+            >
+              <i data-lucide="chevron-left" class="size-5 text-white"></i>
+            </button>
+            <p class="text-2xl font-semibold text-white">Add meeting</p>
+          </div>
+
+          <!-- form -->
+          <form
+            class="bg-white rounded-t-3xl sm:rounded-3xl p-8 h-[90%] sm:h-[85%] flex flex-col justify-between"
+            method="post"
+          >
+            <div>
+              <p class="font-semibold">Title</p>
+              <input
+                type="text"
+                placeholder="Enter the title"
+                name="title"
+                class="p-3 px-4 outline-none bg-gray-100 rounded-xl mt-2 w-full focus:ring-2 focus:ring-black"
+                required
+              />
+
+              <p class="font-semibold flex gap-2 items-center mt-6">
+                <i data-lucide="calendar" class="size-4"></i>
+                Date
+              </p>
+              <input
+                type="text"
+                placeholder=""
+                name="date"
+                disabled
+                class="cursor-not-allowed p-3 px-4 outline-none bg-gray-100 rounded-xl mt-2 w-full"
+              />
+
+              <div class="grid sm:grid-cols-2 mt-6 gap-6">
+                <div class="w-full">
+                  <p class="font-semibold flex gap-2 items-center">
+                    <i data-lucide="clock" class="size-4"></i>
+                    Start
+                  </p>
+                  <div
+                    class="flex gap-2 mt-2 bg-gray-100 focus-within:ring-2 ring-black items-center justify-center rounded-xl overflow-hidden"
+                  >
+                    <input
+                      name="start_hour"
+                      type="number"
+                      min="0"
+                      max="23"
+                      class="p-3 px-4 bg-gray-100 outline-none w-full"
+                      placeholder="10"
+                      required
+                    />
+                    <span class="text-2xl font-extrabold">:</span>
+                    <input
+                      name="start_minute"
+                      type="number"
+                      min="0"
+                      max="59"
+                      class="p-3 px-4 bg-gray-100 outline-none w-full"
+                      placeholder="30"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="w-full">
+                  <p class="font-semibold flex gap-2 items-center">
+                    <i data-lucide="clock" class="size-4"></i>
+                    End
+                  </p>
+                  <div
+                    class="flex gap-2 mt-2 bg-gray-100 focus-within:ring-2 ring-black items-center justify-center rounded-xl overflow-hidden"
+                  >
+                    <input
+                      name="end_hour"
+                      type="number"
+                      min="0"
+                      max="23"
+                      class="p-3 px-4 bg-gray-100 outline-none w-full"
+                      placeholder="12"
+                      required
+                    />
+                    <span class="text-2xl font-extrabold">:</span>
+                    <input
+                      name="end_minute"
+                      type="number"
+                      min="0"
+                      max="59"
+                      class="p-3 px-4 bg-gray-100 outline-none w-full"
+                      placeholder="30"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button
+              class="p-3 px-4 rounded-3xl mt-6 text-black bg-yellow-400 w-full font-medium"
+            >
+              Save
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script>
+      const DATE_FORMAT = 'YYYY-MM-DD'
+
+      const calendarDOM = document.querySelector('#calendar')
+      const calendarNameDOM = document.querySelector('#calendarName')
+      const scheduleDOM = document.querySelector('#schedule')
+      const addNewDOM = document.querySelector('#addNew')
+      const addNewFormDOM = addNewDOM.querySelector('form')
+
+      const data = {
+        status: [
+          { name: 'Not Started', class: 'bg-purple-500 text-white' },
+          { name: 'In Progress', class: 'bg-blue-500 text-white' },
+          { name: 'Done', class: 'bg-pink-500 text-white' },
+        ],
+        month: new Date().getMonth(),
+        year: new Date().getFullYear(),
+        schedule: [
+          {
+            date: dayjs()
+              .subtract(1, 'month')
+              .endOf('month')
+              .format(DATE_FORMAT),
+            list: [
+              {
+                start: '10:00',
+                end: '11:00',
+                name: 'Daily Scrum',
+                status: 2,
+              },
+            ],
+          },
+          {
+            date: dayjs().add(1, 'month').startOf('month').format(DATE_FORMAT),
+            list: [
+              {
+                start: '10:00',
+                end: '11:00',
+                name: 'Daily Scrum',
+                status: 0,
+              },
+            ],
+          },
+          {
+            date: dayjs().subtract(1, 'day').format(DATE_FORMAT),
+            list: [
+              {
+                start: '10:00',
+                end: '11:00',
+                name: 'Daily Scrum',
+                status: 2,
+              },
+            ],
+          },
+          {
+            date: dayjs().format(DATE_FORMAT),
+            list: [
+              {
+                start: '10:00',
+                end: '11:00',
+                name: 'Daily Scrum',
+                status: 2,
+              },
+              {
+                start: '11:00',
+                end: '13:30',
+                name: 'Tech Workshop',
+                status: 1,
+              },
+              {
+                start: '14:00',
+                end: '15:00',
+                name: 'Engineering Review',
+                status: 0,
+              },
+            ],
+          },
+        ].reduce((map, schedule) => {
+          map[schedule.date] = schedule
+          return map
+        }, {}),
+        currentSchedule: null,
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        refreshIcons()
+        changeCalendar()
+      })
+
+      function move(isNext = true) {
+        const [year, month] = isNext
+          ? getNextMonth(data.year, data.month)
+          : getPrevMonth(data.year, data.month)
+        data.year = year
+        data.month = month
+        changeCalendar(data.year, data.month)
+      }
+
+      function changeCalendar(year = data.year, month = data.month) {
+        let htmlCalendarContent = ''
+
+        const firstDayOfMonth = new Date(year, month, 1)
+        const firstDayOfWeek = firstDayOfMonth.getDay()
+
+        const daysFromPrevMonth = firstDayOfWeek === 0 ? 6 : firstDayOfWeek - 1
+        const prevMonthLastDay = new Date(year, month, 0).getDate()
+
+        const daysOfWeek = ['M', 'T', 'W', 'T', 'F', 'S', 'S']
+        htmlCalendarContent += daysOfWeek.reduce(
+          (html, day, index) =>
+            html +
+            `<div class="font-semibold text-lg border-b-2 border-white p-2 mb-2">${day}</div>`,
+          ''
+        )
+
+        let date = 1
+        let prevMonthDate = prevMonthLastDay - daysFromPrevMonth + 1
+
+        const scheduleIndicator = (n) =>
+          `
+            <span class="text-white text-xs bg-pink-500 absolute size-5 flex items-center justify-center rounded-full aspect-square -top-1 -right-1">
+              ${n}
+            </span>
+          `
+
+        for (let week = 0; week < 6; week++) {
+          let htmlWeek = ''
+          for (let day = 0; day < 7; day++) {
+            if (week === 0 && day < daysFromPrevMonth) {
+              const [currentYear, currentMonth] = getPrevMonth(year, month)
+              const dateKey = dayjs(
+                new Date(currentYear, currentMonth, prevMonthDate)
+              ).format(DATE_FORMAT)
+              const schedule = data.schedule[dateKey] ?? null
+
+              const hasSchedule = schedule
+                ? scheduleIndicator(schedule?.list?.length)
+                : ''
+
+              htmlWeek += `
+                <button
+                  class="prev-month relative p-1 m-1 text-gray-300 rounded-full aspect-square"
+                  onclick="move(false)"
+                >
+                  ${prevMonthDate}
+                  ${hasSchedule}
+                  </button>
+                `
+              prevMonthDate++
+            } else if (date > getDaysInMonth(year, month)) {
+              const nextMonthDate = date - getDaysInMonth(year, month)
+
+              const [currentYear, currentMonth] = getNextMonth(year, month)
+              const dateKey = dayjs(
+                new Date(currentYear, currentMonth, nextMonthDate)
+              ).format(DATE_FORMAT)
+              const schedule = data.schedule[dateKey] ?? null
+
+              const hasSchedule = schedule
+                ? scheduleIndicator(schedule?.list?.length ?? 0)
+                : ''
+
+              htmlWeek += `
+                <button
+                  class="next-month relative p-1 m-1 text-gray-300 rounded-full aspect-square"
+                  onclick="move(true)"
+                >
+                  ${nextMonthDate}
+                  ${hasSchedule}
+                </button>
+              `
+              date++
+            } else {
+              const today = dayjs().format(DATE_FORMAT)
+              const dateKey = dayjs(new Date(year, month, date)).format(
+                DATE_FORMAT
+              )
+              const schedule = data.schedule[dateKey] ?? null
+              const hasSchedule = schedule
+                ? scheduleIndicator(schedule?.list?.length)
+                : ''
+
+              const classToday =
+                dateKey == today ? 'bg-black bg-opacity-10' : ''
+              htmlWeek += `
+                <button
+                  class="current relative p-1 m-1 font-medium hover:bg-white hover:bg-opacity-40 rounded-full aspect-square ${classToday}"
+                  onclick="dateClicked('${dateKey}')"
+                >
+                  ${date}
+                  ${hasSchedule}
+                </button>
+              `
+              date++
+            }
+          }
+          htmlCalendarContent += htmlWeek
+        }
+
+        const monthsOfYear = [
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December',
+        ]
+
+        calendarNameDOM.innerHTML = `${monthsOfYear[month]} ${year}`
+        calendarDOM.innerHTML = htmlCalendarContent
+      }
+
+      function getDaysInMonth(year, month) {
+        return new Date(year, month + 1, 0).getDate()
+      }
+
+      function getPrevMonth(year, month) {
+        if (month == 0) {
+          return [year - 1, 11]
+        }
+        return [year, month - 1]
+      }
+
+      function getNextMonth(year, month) {
+        if (month == 11) {
+          return [year + 1, 0]
+        }
+        return [year, month + 1]
+      }
+
+      function toggleScheduleView(isShow = true) {
+        scheduleDOM.classList[isShow ? 'remove' : 'add']('hidden')
+      }
+
+      function dateClicked(date) {
+        changeSchedule(date)
+        toggleScheduleView(true)
+      }
+
+      function changeSchedule(date = data.currentSchedule) {
+        date = dayjs(date).format(DATE_FORMAT)
+        data.currentSchedule = date
+        const schedule = data.schedule?.[date] ?? null
+
+        let title = ''
+        if (dayjs(date).format(DATE_FORMAT) == dayjs().format(DATE_FORMAT)) {
+          title = 'Today'
+        } else {
+          title = dayjs(date).format('DD MMMM YYYY')
+        }
+
+        const scheduleList = (schedule?.list ?? []).sort(
+          (a, b) =>
+            dayjs(`${schedule.date} ${a.start}`).unix() -
+            dayjs(`${schedule.date} ${b.start}`).unix()
+        )
+        let scheduleHtml = scheduleList.reduce((html, item, index) => {
+          const status = data.status[item.status] ?? null
+          html += `
+            <div class="flex justify-between items-center p-2">
+              <div>
+                <p class="text-lg font-semibold">${item.name}</p>
+                <p>
+                  ${String(item.start).padStart(2, '0')} - 
+                  ${String(item.end).padStart(2, '0')}</p>
+              </div>
+              ${
+                status
+                  ? `
+                      <button 
+                        class="${status.class} text-center whitespace-nowrap text-xs h-fit rounded-3xl sm:text-sm p-1 px-2"
+                        onclick="changeScheduleItemStatus('${schedule.date}', ${index}, ${item.status})"
+                      >
+                        ${status.name}
+                      </button>
+                    `
+                  : ''
+              }
+            </div>
+          `
+          return html
+        }, '')
+        scheduleHtml =
+          scheduleHtml ||
+          `<div class="p-8 text-gray-300 text-2xl flex items-center justify-center h-full w-full">No Schedule</div>`
+
+        scheduleDOM.querySelector('.title').innerHTML = title
+        scheduleDOM.querySelector('.content').innerHTML = scheduleHtml
+      }
+
+      function changeScheduleItemStatus(date, index, status = 0) {
+        status = status + 1 >= data.status.length ? 0 : status + 1
+        data.schedule[date].list[index].status = status
+        changeSchedule(date)
+      }
+
+      function toggleForm(isShow = true) {
+        addNewDOM.classList[isShow ? 'remove' : 'add']('hidden')
+        if (!isShow) return
+
+        addNewFormDOM
+          .querySelector('input[name="date"]')
+          .setAttribute(
+            'placeholder',
+            dayjs(data.currentSchedule).format('DD MMMM YYYY')
+          )
+      }
+
+      addNewFormDOM.addEventListener('submit', (event) => {
+        event.preventDefault()
+        const formData = new FormData(event.target)
+        const payload = {
+          name: formData.get('title'),
+          start: `${formData.get('start_hour')}:${formData.get(
+            'start_minute'
+          )}`,
+          end: `${formData.get('end_hour')}:${formData.get('end_minute')}`,
+          date: data.currentSchedule,
+        }
+        if (!(payload.date in data.schedule)) {
+          data.schedule[payload.date] = {
+            date: payload.date,
+            list: [],
+          }
+        }
+        data.schedule[payload.date].list.push({
+          name: payload.name,
+          start: payload.start,
+          end: payload.end,
+          status: 0,
+        })
+
+        changeCalendar(data.year, data.month)
+        changeSchedule(payload.date)
+        toggleForm(false)
+
+        addNewFormDOM.reset()
+      })
+
+      function refreshIcons() {
+        lucide.createIcons()
+      }
+    </script>
+  </body>
+</html>
