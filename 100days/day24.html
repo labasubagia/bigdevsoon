@@ -1,0 +1,387 @@
+<html>
+  <head>
+    <!-- Our unique tag to identify the solution -->
+    <bds />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BigDevSoon Challenge</title>
+
+    <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Add your external script links here, if any -->
+    <link rel="stylesheet" href="../style/font.css" />
+
+    <style>
+      *::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body class="poppins-regular w-full min-h-screen">
+    <!-- solution -->
+    <div
+      class="left-0 top-0 min-h-screen min-w-full justify-center items-center flex bg-purple-50"
+    >
+      <!-- card -->
+      <div
+        class="bg-white w-full h-fit sm:max-w-[425px] sm:rounded-3xl shadow-lg flex gap-4 absolute overflow-hidden"
+      >
+        <!-- movie page -->
+        <div class="flex flex-col">
+          <img
+            class="w-full aspect-square object-cover"
+            src="https://m.media-amazon.com/images/M/MV5BZWMyYzFjYTYtNTRjYi00OGExLWE2YzgtOGRmYjAxZTU3NzBiXkEyXkFqcGdeQXVyMzQ0MzA0NTM@._V1_FMjpg_UX1000_.jpg"
+            alt="wallpaper"
+          />
+          <div
+            class="bg-white rounded-3xl -mt-12 z-10 w-full h-full p-8 flex flex-col"
+          >
+            <div class="overflow-auto h-full sm:max-h-[300px] flex-1">
+              <p class="text-2xl poppins-bold">Spiderman: No Way Home</p>
+
+              <div
+                class="mt-4 flex justify-between items-center text-sm font-light"
+              >
+                <p>Action/Sci-fi</p>
+                <p>2h 28m</p>
+              </div>
+
+              <p class="mt-6">
+                With Spider-Man's identity now revealed, our friendly
+                neighborhood web-slinger is unmasked and no longer able to
+                separate his normal life as Peter Parker from the high stakes of
+                being a superhero. When Peter asks for help from Doctor Strange,
+                the stakes become even more dangerous, forcing him to discover
+                what it truly means to be Spider-Man.
+              </p>
+
+              <p class="text-xl font-semibold mt-4">Cast</p>
+              <div class="grid grid-cols-4 mt-4 gap-4 w-full">
+                <img
+                  class="rounded-lg aspect-square object-cover"
+                  src="https://www.nzherald.co.nz/resizer/S6yn4nu5SOtiupZ0Z0ELnl-y5F0=/576x613/smart/filters:quality(70)/cloudfront-ap-southeast-2.images.arcpublishing.com/nzme/37ZUWSE2KFDXHDJKPAAF2JAUOY.jpg"
+                  alt="Tom holland"
+                />
+                <img
+                  class="rounded-lg aspect-square object-cover"
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Tobey_Maguire_2014.jpg/640px-Tobey_Maguire_2014.jpg"
+                  alt="Tobey Maguire"
+                />
+                <img
+                  class="rounded-lg aspect-square object-cover"
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Andrew_Garfield_in_2023_%28cropped%29.jpg/640px-Andrew_Garfield_in_2023_%28cropped%29.jpg"
+                  alt="Andrew Garfield"
+                />
+                <img
+                  class="rounded-lg aspect-square object-cover"
+                  src="https://media.vogue.fr/photos/6346c1a49c99ea31c59a69da/4:3/w_1080,h_810,c_limit/270625178_505140590786342_2370226527065886147_n.jpg"
+                  alt="Zendaya"
+                />
+                <img
+                  class="rounded-lg aspect-square object-cover"
+                  src="https://hips.hearstapps.com/hmg-prod/images/cumberbatch_179663904jpg.jpg?crop=1xw:1.0xh;center,top&resize=640:*"
+                  alt="Bennedic Cumberbatch"
+                />
+                <img
+                  class="rounded-lg aspect-square object-cover"
+                  src="https://m.media-amazon.com/images/M/MV5BYzU0Y2I1ZjEtYzhkZi00OTc2LWE2MzMtNGRkYTk2ZjBmYzM3XkEyXkFqcGdeQXVyMTA1MTQ2ODk1._V1_.jpg"
+                  alt="Jacob Batalon"
+                />
+                <img
+                  class="rounded-lg aspect-square object-cover"
+                  src="https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/269411_v9_bd.jpg"
+                  alt="Tom Hardy"
+                />
+              </div>
+            </div>
+
+            <button
+              type="button"
+              class="p-3 px-4 rounded-lg bg-orange-500 text-white w-full mt-4"
+              onclick="toggleTicketPage(true)"
+            >
+              Buy Tickets
+            </button>
+          </div>
+        </div>
+
+        <!-- ticket page -->
+        <div
+          id="ticket"
+          class="fixed md:absolute w-full h-screen md:h-fit hidden z-20 bg-white top-0 bottom-0"
+        >
+          <div class="w-full bg-violet-500 p-5 pb-20">
+            <div class="flex gap-4 text-white items-center">
+              <button
+                class="p-1 bg-white bg-opacity-50 rounded-lg"
+                onclick="toggleTicketPage(false)"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="size-6"
+                >
+                  <path d="m15 18-6-6 6-6" />
+                </svg>
+              </button>
+              <p class="font-semibold whitespace-nowrap">Choose Seats</p>
+            </div>
+
+            <div class="absolute w-full top-16 left-0 right-0">
+              <svg
+                width="100%"
+                height="100%"
+                preserveAspectRatio="none"
+                viewBox="0 0 1877 1341"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M259 195.613L414.341 128.472L590.147 68.2423L763.45 30.7222L956.149 9L1331.54 68.2423L1528.61 128.472L1623.71 162.043L1711.5 195.613L2042 1340.5L-113.5 1287L259 195.613Z"
+                  fill="url(#paint0_linear_21_788)"
+                ></path>
+                <path
+                  d="M258.59 190.766C258.59 190.766 601.835 11.0258 935.066 10.9355C1268.3 10.8452 1708.64 190.372 1708.64 190.372"
+                  stroke="white"
+                  stroke-width="20"
+                  stroke-linecap="round"
+                ></path>
+                <defs>
+                  <linearGradient
+                    id="paint0_linear_21_788"
+                    x1="994"
+                    y1="9"
+                    x2="994"
+                    y2="1290.61"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop stop-color="#9848D7"></stop>
+                    <stop
+                      offset="1"
+                      stop-color="#D9D9D9"
+                      stop-opacity="0.03"
+                    ></stop>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+
+            <div
+              id="seat"
+              class="mt-16 w-[90%] mx-auto grid grid-cols-8 grid-rows-6 gap-2 z-50 relative"
+            ></div>
+
+            <div
+              class="flex flex-wrap justify-center items-center gap-4 mt-6 text-sm text-white"
+            >
+              <div class="flex gap-1 items-center">
+                <div class="size-4 aspect-square rounded bg-white"></div>
+                <p>Reserved</p>
+              </div>
+              <div class="flex gap-1 items-center">
+                <div class="size-4 aspect-square rounded bg-orange-500"></div>
+                <p>Selected</p>
+              </div>
+              <div class="flex gap-1 items-center">
+                <div
+                  class="size-4 aspect-square rounded border inset-1 border-white"
+                ></div>
+                <p>Available</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white p-8 rounded-3xl -mt-12">
+            <p class="">Date</p>
+            <div
+              id="date"
+              class="mt-2 grid sm:grid-cols-4 gap-2 text-center grid-cols-2"
+            ></div>
+            <p class="mt-6">Time</p>
+            <div
+              id="time"
+              class="mt-2 grid sm:grid-cols-4 gap-2 text-center grid-cols-2"
+            ></div>
+
+            <button
+              type="button"
+              class="p-3 px-4 rounded-lg bg-black text-white w-full mt-16"
+            >
+              Pay
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+
+    <script>
+      const seatDOM = document.querySelector('#seat')
+      const dateDOM = document.querySelector('#date')
+      const timeDOM = document.querySelector('#time')
+      const ticketDOM = document.querySelector('#ticket')
+      const buyTicketDOM = document.querySelector('#buyTicket')
+
+      const data = {
+        seats: [
+          { selected: false, reserved: false, disabled: true },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: true },
+
+          { selected: false, reserved: false, disabled: true },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: true },
+
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: true, disabled: false },
+          { selected: false, reserved: true, disabled: false },
+
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: true, disabled: false },
+          { selected: false, reserved: true, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+          { selected: false, reserved: false, disabled: false },
+        ],
+        dates: [
+          {
+            date: dayjs('2024-03-10'),
+            times: ['16:00', '17:00', '19:30', '22:10'],
+          },
+          {
+            date: dayjs('2024-03-12'),
+            times: ['14:00', '15:00', '16:00', '17:00'],
+          },
+          {
+            date: dayjs('2024-03-13'),
+            times: ['16:00', '17:00', '18:00'],
+          },
+          {
+            date: dayjs('2024-03-14'),
+            times: ['18:00', '19:00', '21:00', '22:00'],
+          },
+        ],
+        dateIndex: 0,
+        timeIndex: 0,
+      }
+
+      function toggleTicketPage(isShow = true) {
+        ticketDOM.classList[isShow ? 'remove' : 'add']('hidden')
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        changeSeat()
+        changeDate()
+      })
+
+      function toggleSelectSeat(index) {
+        data.seats[index].selected = !data.seats[index].selected
+        changeSeat()
+      }
+
+      function changeSeat() {
+        seatDOM.innerHTML = data.seats.reduce(
+          (html, seat, index) => html + seatItemComponent(seat, index),
+          ''
+        )
+      }
+
+      function changeDate(
+        dateIndex = data.dateIndex,
+        timeIndex = data.timeIndex
+      ) {
+        data.dateIndex = dateIndex
+        data.timeIndex = timeIndex
+
+        dateDOM.innerHTML = data.dates.reduce(
+          (htmlDate, current, index) =>
+            htmlDate +
+            timeItemComponent(
+              current.date.format('DD MMM'),
+              index,
+              timeIndex,
+              index == dateIndex
+            ),
+          ''
+        )
+        timeDOM.innerHTML = data.dates[dateIndex].times.reduce(
+          (html, time, index) =>
+            html +
+            timeItemComponent(time, dateIndex, index, timeIndex == index),
+          ''
+        )
+      }
+
+      function timeItemComponent(time, dateIndex, timeIndex, isActive) {
+        const activeClass = isActive
+          ? 'border-orange-500 text-orange-500'
+          : 'border-gray-500 text-gray-600'
+        return `
+          <button 
+            class="p-2 px-3 text-sm border rounded-lg ${activeClass}"
+            onclick="changeDate(${dateIndex}, ${timeIndex})"
+          >
+            ${time}
+          </button>`
+      }
+
+      function seatItemComponent(seat, index) {
+        if (seat.disabled) {
+          return '<div></div>'
+        }
+        if (seat.reserved) {
+          return '<button class="aspect-square bg-white rounded-md" disabled></button>'
+        }
+        if (seat.selected) {
+          return `<button class="aspect-square bg-orange-500 rounded-md" onclick="toggleSelectSeat(${index})"></button>`
+        }
+        return `<button class="aspect-square border border-inset border-white rounded-md hover:bg-white hover:bg-opacity-50 transition ease-all duration-100" onclick="toggleSelectSeat(${index})"></button>`
+      }
+    </script>
+  </body>
+</html>
