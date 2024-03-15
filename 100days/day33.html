@@ -1,0 +1,173 @@
+<html>
+  <head>
+    <!-- Our unique tag to identify the solution -->
+    <bds />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BigDevSoon Challenge</title>
+
+    <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Add your external script links here, if any -->
+    <link rel="stylesheet" href="../style/font.css" />
+  </head>
+
+  <body class="poppins-regular w-full min-h-screen">
+    <!-- solution -->
+    <div
+      class="min-h-screen min-w-full bg-white sm:p-4 md:p-6 flex justify-center sm:items-center"
+    >
+      <!-- card -->
+      <div
+        class="w-full h-full sm:shadow-md ring-1 sm:rounded-xl ring-gray-200 sm:max-w-[800px] relative"
+      >
+        <!-- head -->
+        <div class="p-4 md:p-8 text-xl font-bold">Brand colors</div>
+        <div class="h-[1px] bg-black w-full"></div>
+
+        <!-- input -->
+        <div class="p-4 md:p-8 py-8">
+          <p class="text-center sm:text-start">
+            Set up your brand color to personalize the.
+          </p>
+
+          <div
+            class="flex gap-4 md:gap-6 justify-center sm:justify-start items-center mt-4"
+          >
+            <button
+              class="follow-color size-10 rounded-full aspect-square bg-[#0ea5e9] ring-2 ring-gray-300"
+              onclick="pickColor()"
+            ></button>
+            <div class="bg-gray-300 rounded p-2 px-4 uppercase" id="colorValue">
+              #0ea5e9
+            </div>
+            <input
+              type="color"
+              name="color"
+              value="#0ea5e9"
+              id="colorPicker"
+              class="invisible absolute"
+            />
+          </div>
+        </div>
+
+        <!-- result -->
+        <div class="p-6 md:p-8 bg-gray-200 py-6 grid sm:grid-cols-2 gap-6">
+          <!-- ui 1-->
+          <div
+            class="bg-white rounded-lg flex flex-col divide-y divide-gray-400"
+          >
+            <!-- head -->
+            <div class="p-4 flex justify-between gap-2 items-center">
+              <div class="flex gap-3 items-center">
+                <div class="size-8 rounded-full border-2 border-gray-400"></div>
+                <div class="h-5 w-28 bg-gray-400 rounded"></div>
+              </div>
+              <i data-lucide="x" class="size-5"></i>
+            </div>
+
+            <!-- content -->
+            <div class="flex-1 min-h-[350px] p-8">
+              <!-- item -->
+              <div
+                class="rounded-lg shadow divide-y divide-gray-300 ring-1 ring-gray-200"
+              >
+                <div class="p-4">
+                  <div class="h-5 w-32 bg-gray-400 rounded"></div>
+                </div>
+                <div class="p-4 space-y-3">
+                  <div class="h-5 bg-gray-800 w-16 rounded"></div>
+                  <input
+                    type="text"
+                    class="follow-color outline-none border-2 border-gray-300 focus:border-[#0ea5e9] p-1 px-2 md:p-2 md:px-3 text-sm rounded-lg w-full"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- action -->
+            <div class="p-4">
+              <div
+                class="follow-color bg-[#0ea5e9] w-full h-10 rounded-lg"
+              ></div>
+            </div>
+          </div>
+
+          <!-- ui 2-->
+          <div
+            class="bg-white rounded-lg flex flex-col divide-y divide-gray-400"
+          >
+            <!-- head -->
+            <div class="p-4 flex justify-between gap-2 items-center">
+              <div class="flex gap-3 items-center">
+                <div class="size-8 rounded-full border-2 border-gray-400"></div>
+                <div class="h-5 w-28 bg-gray-400 rounded"></div>
+              </div>
+              <i data-lucide="x" class="size-5"></i>
+            </div>
+
+            <!-- content -->
+            <div
+              class="flex-1 flex justify-center items-center min-h-[350px] p-8"
+            >
+              <!-- item -->
+              <div class="space-y-2 flex items-center flex-col">
+                <div
+                  class="p-2 rounded-full aspect-square bg-[#0ea5e9] follow-color"
+                >
+                  <i class="text-white size-16" data-lucide="check"></i>
+                </div>
+                <div class="h-5 bg-gray-800 w-16 rounded"></div>
+                <div class="h-5 w-32 bg-gray-300 rounded"></div>
+              </div>
+            </div>
+            <!-- action -->
+            <div class="p-4 flex gap-4">
+              <div class="bg-gray-300 w-full h-10 rounded-lg"></div>
+              <div
+                class="follow-color bg-[#0ea5e9] w-full h-10 rounded-lg"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      const colorPickerDOM = document.querySelector('#colorPicker')
+      const colorValueDOM = document.querySelector('#colorValue')
+
+      const followColorDOM = document.querySelectorAll('.follow-color')
+
+      document.addEventListener('DOMContentLoaded', () => {
+        refreshIcons()
+      })
+
+      colorPickerDOM.addEventListener('change', (event) => {
+        const { value } = event.target
+        colorValueDOM.innerHTML = value
+        followColorDOM.forEach((element) => {
+          element.className = element.className.replace(
+            /#[0-9a-fA-F]{6}|#[0-9a-fA-F]{3}/,
+            value
+          )
+        })
+      })
+
+      function pickColor() {
+        colorPickerDOM.click()
+      }
+
+      function refreshIcons() {
+        lucide.createIcons()
+      }
+    </script>
+  </body>
+</html>
