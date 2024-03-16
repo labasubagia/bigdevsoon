@@ -1,0 +1,121 @@
+<html>
+  <head>
+    <!-- Our unique tag to identify the solution -->
+    <bds />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BigDevSoon Challenge</title>
+
+    <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Add your external script links here, if any -->
+    <link rel="stylesheet" href="../style/font.css" />
+  </head>
+
+  <body class="poppins-regular w-full min-h-screen">
+    <!-- solution -->
+    <div
+      class="min-h-screen min-w-full bg-white p-4 md:p-6 flex justify-center sm:items-center"
+      onclick="toggleProfileShow(false)"
+    >
+      <!-- card -->
+      <div
+        class="rounded-xl shadow-2xl h-fit divide-y divide-gray-400 w-full max-w-[425px] border border-gray-200 relative"
+        onclick="event.stopPropagation()"
+      >
+        <div class="p-4 flex gap-4 justify-between items-center">
+          <div class="flex gap-4 items-center">
+            <img
+              class="size-14 rounded-full overflow-hidden"
+              src="https://i.ibb.co/PwSm21z/f-G2-Rdq79-400x400.webp"
+              alt="profile"
+            />
+            <div class="space-y-1">
+              <div class="flex gap-4">
+                <p class="font-semibold">David</p>
+                <div
+                  class="p-1 px-2 bg-indigo-300 text-indigo-700 ring-1 ring-indigo-700 text-xs rounded-lg"
+                >
+                  PRO
+                </div>
+              </div>
+              <p class="text-sm text-gray-600 on-show hidden">
+                david@gmail.com
+              </p>
+            </div>
+          </div>
+
+          <button
+            class="p-2 rounded-lg hover:bg-black hover:bg-opacity-10 transition ease-in-out duration-150 on-hide"
+            onclick="toggleProfileShow(true)"
+          >
+            <i data-lucide="ellipsis" class="size-6"></i>
+          </button>
+        </div>
+        <div class="divide-y divide-gray-200 font-medium w-full on-show hidden">
+          <div class="py-2" id="menu"></div>
+          <div class="py-2">
+            <button
+              class="p-3 px-4 flex gap-3 font-medium w-full hover:bg-black hover:bg-opacity-10 transition ease-in-out duration-150"
+            >
+              <i class="size-5" data-lucide="log-out"></i>
+              <p>Log out</p>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      const menu = [
+        { icon: 'sliders-horizontal', name: 'Profile Settings' },
+        { icon: 'circle-help', name: 'Help Center' },
+        { icon: 'circle-dollar-sign', name: 'Billings' },
+        { icon: 'gem', name: 'Uprade Plans' },
+      ]
+
+      const onShowDOM = document.querySelectorAll('.on-show')
+      const onHideDOM = document.querySelectorAll('.on-hide')
+
+      document.addEventListener('DOMContentLoaded', () => {
+        initMenu()
+        refreshIcons()
+      })
+
+      function toggleProfileShow(status = true) {
+        onShowDOM.forEach((element) => {
+          element.classList[status ? 'remove' : 'add']('hidden')
+        })
+        onHideDOM.forEach((element) => {
+          element.classList[status ? 'add' : 'remove']('hidden')
+        })
+      }
+
+      function initMenu() {
+        const menuDOM = document.querySelector('#menu')
+        menuDOM.innerHTML = menu.reduce(
+          (html, menu, index) =>
+            html +
+            `
+              <button class="p-3 px-4 flex gap-3 font-medium w-full hover:bg-black hover:bg-opacity-10 transition ease-in-out duration-150 on-hide">
+                <i class="size-5" data-lucide="${menu.icon}"></i>
+                <p>${menu.name}</p>  
+              </button>
+            `,
+          ''
+        )
+      }
+
+      function refreshIcons() {
+        lucide.createIcons()
+      }
+    </script>
+  </body>
+</html>
