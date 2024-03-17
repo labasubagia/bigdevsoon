@@ -84,17 +84,18 @@
     <script>
       const experiencesDOM = document.querySelectorAll('.exp')
 
-      let currentIndex = 0
-      let prevIndex = currentIndex
+      let currentIndex = 2
+      let prevIndex = null
 
       document.addEventListener('DOMContentLoaded', () => {
-        changeExp(2)
+        changeExp(currentIndex)
       })
 
       function changeExp(index) {
         prevIndex = currentIndex
         currentIndex = index
         experiencesDOM[currentIndex].classList.remove('grayscale')
+        if (currentIndex == prevIndex) return
         experiencesDOM[prevIndex].classList.add('grayscale')
       }
     </script>
