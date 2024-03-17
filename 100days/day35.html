@@ -1,0 +1,89 @@
+<html>
+  <head>
+    <!-- Our unique tag to identify the solution -->
+    <bds />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BigDevSoon Challenge</title>
+
+    <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Add your external script links here, if any -->
+    <link rel="stylesheet" href="../style/font.css" />
+  </head>
+
+  <body class="poppins-regular w-full min-h-screen">
+    <!-- solution -->
+    <div
+      class="min-h-screen min-w-full bg-orange-300 p-4 md:p-6 flex justify-center items-center"
+    >
+      <!-- card -->
+      <div class="bg-white p-12 rounded-2xl space-y-8 text-center">
+        <p class="font-semibold text-3xl">Rate Us!</p>
+        <p>Tell us about your experience</p>
+        <div class="flex justify-around gap-8 flex-wrap">
+          <img
+            class="exp size-16 aspect-square grayscale cursor-pointer hover:grayscale-0 transition ease-in-out duration-100"
+            src="https://i.ibb.co/V9w7Z7r/terrible.png"
+            alt="terrible"
+            onclick="changeExp(0)"
+          />
+          <img
+            class="exp size-16 aspect-square grayscale cursor-pointer hover:grayscale-0 transition ease-in-out duration-100"
+            src="https://i.ibb.co/jT2Q6j3/bad.png"
+            alt="bad"
+            onclick="changeExp(1)"
+          />
+          <img
+            class="exp size-16 aspect-square grayscale cursor-pointer hover:grayscale-0 transition ease-in-out duration-100"
+            src="https://i.ibb.co/5TV3SNK/okey.png"
+            alt="ok"
+            onclick="changeExp(2)"
+          />
+          <img
+            class="exp size-16 aspect-square grayscale cursor-pointer hover:grayscale-0 transition ease-in-out duration-100"
+            src="https://i.ibb.co/ck7ZbZR/good.png"
+            alt="good"
+            onclick="changeExp(3)"
+          />
+          <img
+            class="exp size-16 aspect-square grayscale cursor-pointer hover:grayscale-0 transition ease-in-out duration-100"
+            src="https://i.ibb.co/DVYnRvL/great.png"
+            alt="great"
+            onclick="changeExp(4)"
+          />
+        </div>
+        <button
+          class="text-red-500 text-lg p-1 px-3 hover:bg-black hover:bg-opacity-5 rounded-xl"
+        >
+          Skip
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const experiencesDOM = document.querySelectorAll('.exp')
+
+      let currentIndex = 0
+      let prevIndex = currentIndex
+
+      document.addEventListener('DOMContentLoaded', () => {
+        changeExp(2)
+      })
+
+      function changeExp(index) {
+        prevIndex = currentIndex
+        currentIndex = index
+        experiencesDOM[currentIndex].classList.remove('grayscale')
+        experiencesDOM[prevIndex].classList.add('grayscale')
+        console.log(index)
+      }
+    </script>
+  </body>
+</html>
