@@ -1,0 +1,442 @@
+<html>
+  <head>
+    <!-- Our unique tag to identify the solution -->
+    <bds />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BigDevSoon Challenge</title>
+
+    <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Add your external script links here, if any -->
+    <link rel="stylesheet" href="../style/font.css" />
+  </head>
+
+  <body class="poppins-regular w-full min-h-screen">
+    <!-- solution -->
+    <div
+      class="min-h-screen min-w-full bg-gray-200 sm:p-6 flex justify-center sm:items-center"
+    >
+      <!-- card -->
+      <div
+        class="w-full sm:max-w-[425px] sm:rounded-3xl text-white overflow-hidden relative shadow-lg shadow-purple-500"
+      >
+        <!-- page home -->
+        <div class="grid h-full sm:h-[800px] md:gap-12 bg-purple-950">
+          <img
+            src="https://images.unsplash.com/photo-1620055374842-145f66ec4652?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmVhdXRpZnVsJTIwbW9vbnxlbnwwfHwwfHx8MA%3D%3D"
+            class="rounded-b-full object-cover max-h-[400px] w-full"
+            alt="img"
+          />
+          <div class="p-8 space-y-6 text-center self-end">
+            <p class="text-2xl font-semibold">Track your app</p>
+            <p class="">
+              Upgrade your sleep quality with our cutting-edge tracking app.
+              Experience deeper rest and wake up revitalized. Sleep better, live
+              better
+            </p>
+            <button
+              class="p-2 px-3 rounded-xl bg-orange-400 text-white font-medium w-full"
+              onclick="toggleShowInfo(true)"
+            >
+              Get Started
+            </button>
+          </div>
+        </div>
+
+        <!-- info -->
+        <div
+          id="info"
+          class="p-6 absolute top-0 left-0 w-full bg-purple-950 h-full sm:h-[800px] hidden"
+        >
+          <!-- top -->
+          <div class="flex justify-between gap-8">
+            <button
+              class="p-2 bg-white bg-opacity-20 rounded-lg"
+              onclick="toggleShowInfo(false)"
+            >
+              <i class="size-7" data-lucide="align-left"></i>
+            </button>
+            <button class="p-2 bg-white bg-opacity-20 rounded-lg">
+              <i class="size-7 -scale-x-100" data-lucide="fish"></i>
+            </button>
+          </div>
+
+          <div id="stat"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/duration.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/isToday.js"></script>
+
+    <script>
+      dayjs.extend(window.dayjs_plugin_duration)
+      dayjs.extend(window.dayjs_plugin_isToday)
+
+      const infoDOM = document.querySelector('#info')
+      const statDOM = infoDOM.querySelector('#stat')
+
+      const data = {
+        stat: [
+          {
+            day: dayjs(),
+            quality: 92,
+            score: 90,
+            sleepTimes: [
+              {
+                time: [-1, 23, 30],
+                type: 'best',
+              },
+              {
+                time: [0, 0, 30],
+                type: 'good',
+              },
+              {
+                time: [0, 2, 30],
+                type: 'bad',
+              },
+              {
+                time: [0, 3, 30],
+                type: 'best',
+              },
+              {
+                time: [0, 5, 30],
+                type: 'bad',
+              },
+              {
+                time: [0, 6, 0],
+                type: 'good',
+              },
+              {
+                time: [0, 8, 0],
+              },
+            ],
+          },
+          {
+            day: dayjs().subtract(1, 'day'),
+            quality: 80,
+            score: 85,
+            sleepTimes: [
+              {
+                time: [0, 1, 30],
+                type: 'ok',
+              },
+              {
+                time: [0, 5, 30],
+                type: 'good',
+              },
+              {
+                time: [0, 6, 30],
+              },
+            ],
+          },
+          {
+            day: dayjs().subtract(2, 'day'),
+            quality: 90,
+            score: 90,
+            sleepTimes: [
+              {
+                time: [-1, 23, 30],
+                type: 'bad',
+              },
+              {
+                time: [0, 0, 0],
+                type: 'best',
+              },
+              {
+                time: [0, 4, 0],
+                type: 'good',
+              },
+              {
+                time: [0, 5, 30],
+              },
+            ],
+          },
+          {
+            day: dayjs().subtract(3, 'day'),
+            quality: 8,
+            score: 10,
+            sleepTimes: [
+              {
+                time: [0, 4, 0],
+                type: 'terrible',
+              },
+              {
+                time: [0, 5, 30],
+              },
+            ],
+          },
+        ]
+          .map((stat) => getStat(stat))
+          .sort((a, b) => a.day.unix() - b.day.unix()),
+        sleepTimeType: {
+          best: 'bg-blue-500',
+          good: 'bg-green-500',
+          ok: 'bg-yellow-500',
+          bad: 'bg-orange-500',
+          terrible: 'bg-pink-500',
+        },
+        statType: {
+          danger: {
+            name: 'Danger',
+            icon: 'octagon-x',
+            class: 'text-pink-500',
+          },
+          warning: {
+            name: 'Warning',
+            icon: 'triangle-alert',
+            class: 'text-orange-500',
+          },
+          normal: {
+            name: 'Normal',
+            icon: 'circle-check',
+            class: 'text-green-500',
+          },
+          good: {
+            name: 'Good',
+            icon: 'thumbs-up',
+            class: 'text-blue-500',
+          },
+          excellent: {
+            name: 'Excellent',
+            icon: 'sparkles',
+            class: 'text-yellow-500',
+          },
+        },
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        changeStat(data.stat.findIndex((stat) => stat.day.isToday()))
+      })
+
+      function toggleShowInfo(state = true) {
+        infoDOM.classList[state ? 'remove' : 'add']('hidden')
+      }
+
+      function changeStat(index) {
+        const n = data.stat.length - 1
+        if (index > n) index = n
+        if (index < 0) index = 0
+        const stat = data.stat[index]
+
+        const timeType = data.statType[getSleepTimeStatType(stat.durationHour)]
+        const qualityType = data.statType[getQualityStatType(stat.quality)]
+
+        statDOM.innerHTML = `
+          <div>
+            <!-- content -->
+            <div class="py-10">
+              <!-- nav -->
+              <div class="flex gap-6 justify-center items-center">
+                <button
+                  class="
+                    size-fit p-1 rounded-full ring-1 
+                    ${index == 0 ? 'ring-gray-500 text-gray-500' : 'ring-white'}
+                  "
+                  ${index == 0 ? 'disabled' : ''}
+                  onclick="changeStat(${index - 1})"
+                >
+                  <i class="size-5" data-lucide="arrow-left"></i>
+                </button>
+                <div class="space-y-1 text-center">
+                  <p class="font-medium">
+                    ${stat.day.format('dddd')}
+                  </p>
+                  <p class="text-sm text-gray-300">
+                    ${stat.day.format('DD MMMM YYYY')}
+                  </p>
+                </div>
+                <button
+                  class="
+                    size-fit p-1 rounded-full ring-1 
+                    ${index == n ? 'ring-gray-500 text-gray-500' : 'ring-white'}
+                  "
+                  ${index == n ? 'disabled' : ''}
+                  onclick="changeStat(${index + 1})"
+                >
+                  <i class="size-5" data-lucide="arrow-right"></i>
+                </button>
+              </div>
+
+              <!-- chart -->
+              <div
+                class="p-10 bg-purple-500 rounded-full size-fit aspect-square mx-auto mt-8"
+              >
+                <div
+                  class="ring-8 ring-purple-950 p-8 bg-pink-500 rounded-full aspect-square"
+                >
+                  <div
+                    class="rounded-full aspect-square p-3 bg-purple-950 text-center"
+                  >
+                    <p class="text-5xl font-bold">
+                      ${stat.score}
+                    </p>
+                    <p class="text-sm">Sleep Score</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- card -->
+            <div class="grid grid-cols-2 gap-4">
+              <!-- sleep time -->
+              <div class="bg-white bg-opacity-10 rounded-xl p-4 space-y-2">
+                <div class="flex justify-between text-gray-400 items-center">
+                  <p class="text-sm">Sleep Time</p>
+                  <i data-lucide="info" class="size-5"></i>
+                </div>
+                <p class="font-semibold">
+                  <span class="text-3xl">${stat.durationHour}</span>h
+                  <span class="text-3xl">${stat.durationMinute}</span>m
+                </p>
+                <div class="flex gap-2 items-center ${timeType.class}">
+                  <div class="p-[1px] rounded-full aspect-square">
+                    <i data-lucide="${timeType.icon}" class="size-5"></i>
+                  </div>
+                  <p>${timeType.name}</p>
+                </div>
+              </div>
+
+              <!-- sleep quality -->
+              <div class="bg-white bg-opacity-10 rounded-xl p-4 space-y-2">
+                <div class="flex justify-between text-gray-400 items-center">
+                  <p class="text-sm">Sleep Quality</p>
+                  <i data-lucide="info" class="size-5"></i>
+                </div>
+                <p class="font-semibold">
+                  <span class="text-3xl">${stat.quality}</span>%
+                </p>
+                <div class="flex gap-2 items-center ${qualityType.class}">
+                  <div class="p-[1px] rounded-full aspect-square">
+                    <i data-lucide="${qualityType.icon}" class="size-5"></i>
+                  </div>
+                  <p>${qualityType.name}</p>
+                </div>
+              </div>
+
+            </div>
+            <div class="mt-8 flex flex-nowrap gap-1">
+              ${sleepStepComponent(stat)}
+            </div>
+
+            <div class="flex justify-between items-center mt-2">
+              <div class="flex gap-2 items-center">
+                <i data-lucide="moon" class="size-4"></i>
+                <p>${stat.sleepTimes[0].start.format('h:mm A')}</p>
+              </div>
+
+              <div class="flex gap-2 items-center">
+                <i data-lucide="sun" class="size-4"></i>
+                <p>
+                  ${stat.sleepTimes[stat.sleepTimes.length - 1].end.format(
+                    'h:mm A'
+                  )}
+                </p>
+              </div>
+            </div>
+          </div>
+        `
+        refreshIcons()
+      }
+
+      function sleepStepComponent(stat) {
+        return stat.sleepTimes.reduce((html, sleepTime) => {
+          const w = (sleepTime.ms / stat.totalMs) * 100
+          html += `
+            <div
+              class="
+                w-[${parseFloat(w).toFixed(2)}%]
+                ${data.sleepTimeType[sleepTime.type]} h-12
+                rounded
+              "
+            >
+            </div>
+          `
+          return html
+        }, '')
+      }
+
+      function refreshIcons() {
+        lucide.createIcons()
+      }
+
+      function getStat(stat) {
+        // set start time
+        stat.sleepTimes = stat.sleepTimes
+          .map((sleepTime) => {
+            const [addDay, hour, minute] = sleepTime.time
+            sleepTime.start = stat.day
+              .add(addDay, 'day')
+              .set('hour', hour)
+              .set('minute', minute)
+            return sleepTime
+          })
+          .sort((a, b) => a.start.unix() - b.start.unix())
+
+        // set end time
+        for (let i = 1; i < stat.sleepTimes.length; i++) {
+          stat.sleepTimes[i - 1].end = stat.sleepTimes[i].start
+        }
+        // remote last time because the last only act as limit
+        stat.sleepTimes.pop()
+
+        // sleep duration
+        const diff = stat.sleepTimes[stat.sleepTimes.length - 1].end.diff(
+          stat.sleepTimes[0].start
+        )
+        const duration = dayjs.duration(diff)
+        stat.totalMs = duration
+        stat.durationHour = duration.get('hour')
+        stat.durationMinute = duration.get('minute')
+
+        // sleep per step duration
+        stat.sleepTimes = stat.sleepTimes.map((sleepTime) => {
+          sleepTime.ms = sleepTime.end.diff(sleepTime.start)
+          return sleepTime
+        })
+
+        return stat
+      }
+
+      function getSleepTimeStatType(n) {
+        if (n >= 7 && n <= 9) {
+          return 'good'
+        }
+        if (n <= 2 || n >= 15) {
+          return 'danger'
+        }
+        if (n <= 4 || n >= 13) {
+          return 'warning'
+        }
+        if (n <= 6 || n >= 12) {
+          return 'normal'
+        }
+      }
+
+      function getQualityStatType(n) {
+        if (n < 20) {
+          return 'danger'
+        }
+        if (n < 50) {
+          return 'warning'
+        }
+        if (n < 70) {
+          return 'normal'
+        }
+        if (n < 90) {
+          return 'good'
+        }
+        return 'excellent'
+      }
+    </script>
+  </body>
+</html>
