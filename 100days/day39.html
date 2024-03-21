@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <!-- Our unique tag to identify the solution -->
+    <bds />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BigDevSoon Challenge</title>
+
+    <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Add your external script links here, if any -->
+    <link rel="stylesheet" href="../style/font.css" />
+  </head>
+
+  <body class="poppins-regular w-full min-h-screen">
+    <!-- solution -->
+    <div
+      class="min-h-screen min-w-full bg-gray-200 sm:p-6 flex justify-center sm:items-center"
+    >
+      <!-- card -->
+      <div
+        class="w-full sm:max-w-[425px] sm:rounded-3xl bg-black text-white overflow-hidden"
+      >
+        <!-- top -->
+        <div class="p-4 font-medium space-y-4 pb-16 sm:pb-20 h-[25%] sm:h-fit">
+          <div class="flex justify-between items-center">
+            <button class="p-2 aspect-square w-fit">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                class="text-white size-7"
+              >
+                <path
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                  d="M12.707 5.293a1 1 0 0 1 0 1.414L9.414 10l3.293 3.293a1 1 0 0 1-1.414 1.414l-4-4a1 1 0 0 1 0-1.414l4-4a1 1 0 0 1 1.414 0"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </button>
+            <p class="text-xl font-semibold">Scan QR Code</p>
+            <div class="p-5"></div>
+          </div>
+          <p class="text-center">
+            Position the QR code within the frame for fast scanning. Minimize
+            shaking to the expedite results.
+          </p>
+        </div>
+
+        <!-- bottom -->
+        <div
+          class="p-4 rounded-t-3xl flex flex-col justify-between items-center gap-4 bg-white text-black h-[75%] sm:h-fit"
+        >
+          <img src="https://i.ibb.co/pxw7dcT/qr.jpg" alt="qr" class="mt-4" />
+          <div class="p-4 w-full sm:pt-12">
+            <button class="w-full bg-[#02e6af] p-3 px-5 rounded-xl font-medium">
+              Scan QR Code
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
