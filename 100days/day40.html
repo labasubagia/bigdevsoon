@@ -1,0 +1,117 @@
+<html>
+  <head>
+    <!-- Our unique tag to identify the solution -->
+    <bds />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BigDevSoon Challenge</title>
+
+    <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Add your external script links here, if any -->
+    <link rel="stylesheet" href="../style/font.css" />
+  </head>
+
+  <body class="poppins-regular w-full min-h-screen bg-gray-100">
+    <!-- solution -->
+    <div class="min-h-screen min-w-full absolute">
+      <div class="w-full h-60 bg-teal-500"></div>
+      <div class="p-4">
+        <div
+          class="bg-white mx-auto rounded-lg z-10 relative max-w-2xl p-8 -mt-28"
+        >
+          <p class="text-4xl font-bold">
+            <span class="text-teal-500">?</span> FAQs
+          </p>
+          <div class="space-y-4 mt-6 font-medium" id="faq"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      const faqDOM = document.querySelector('#faq')
+
+      const data = {
+        faqs: [
+          {
+            question: 'What is Coding?',
+            answer:
+              'Coding is the act of writing instructions in programming languages such as Python or JavaScript to instruct computers to perform specific tasks or functions.',
+          },
+          {
+            question: 'Which programming language should I learn first?',
+            answer: `For beginners, Python is recommended due to its readability, versatility, and extensive community support. It's ideal for learning fundamental programming concepts and widely used in various fields.`,
+          },
+          {
+            question: 'How do I improve my coding skills?',
+            answer: `To improve coding skills, practice regularly, work on projects, seek feedback, engage with coding communities, read code written by others, and continuously learn new concepts and technologies.`,
+          },
+          {
+            question: 'How do I debug my code effectively?',
+            answer: `To debug effectively, break down the problem, use print statements or debugging tools, isolate the issue, check variable values, and step through the code systematically to identify errors.`,
+          },
+          {
+            question: 'What are APIs? How they work?',
+            answer: `APIs (Application Programming Interfaces) are protocols that allow software applications to communicate. They define methods and data formats, enabling one application to request and exchange information with another, abstracting complexities and facilitating seamless integration and interaction.`,
+          },
+        ],
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        refreshIcons()
+        changeFAQs()
+      })
+
+      function changeFAQs(currentIndex = 0) {
+        faqDOM.innerHTML = data.faqs.reduce((html, faq, index) => {
+          html +=
+            index == currentIndex
+              ? FAQActiveItemComponent(faq, index)
+              : FAQItemComponent(faq, index)
+          return html
+        }, '')
+        refreshIcons()
+      }
+
+      function FAQActiveItemComponent(data, index) {
+        return `
+          <div 
+            class="p-3 px-4 cursor-pointer rounded-xl shadow-md bg-teal-500 text-white transition ease-in-out" 
+            onclick="changeFAQs(null)"
+          >
+            <div class="flex justify-between items-center gap-4">
+              <p>${data.question}</p>
+              <i data-lucide="circle-minus" class="size-6"></i>
+            </div>
+            <div class="mt-2 font-light">
+              ${data.answer}
+            </div>
+          </div>
+        `
+      }
+
+      function FAQItemComponent(data, index) {
+        return `
+          <div 
+            class="p-3 px-4 flex justify-between items-center cursor-pointer gap-4 rounded-xl shadow-md" 
+            onclick="changeFAQs(${index})"
+          >
+            <p>${data.question}</p>
+            <i data-lucide="circle-plus" class="size-6"></i>
+          </div>
+        `
+      }
+
+      function refreshIcons() {
+        lucide.createIcons()
+      }
+    </script>
+  </body>
+</html>
