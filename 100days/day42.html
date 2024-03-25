@@ -27,7 +27,7 @@
   <body class="poppins-regular w-full min-h-screen bg-blue-50">
     <!-- solution -->
     <div
-      class="min-h-screen min-w-screen flex relative items-center justify-center"
+      class="min-h-screen min-w-screen flex relative items-center justify-center p-4"
     >
       <!-- card -->
       <form
@@ -55,11 +55,31 @@
               light: 'Light Theme',
               dark: 'Dark Theme',
             },
-            menu: {
-              notification: 'Notifications',
-              profile: 'Profile',
-              appearance: 'Appearance',
-              account: 'Account',
+            form: {
+              title: 'Settings',
+              menu: {
+                notification: 'Notifications',
+                profile: 'Profile',
+                appearance: 'Appearance',
+                account: 'Account',
+              },
+              lang: {
+                name: 'Language',
+                desc: 'Select the language of application',
+              },
+              theme: {
+                name: 'Interface theme',
+                desc: 'Customize application theme',
+              },
+              accentColor: {
+                name: 'Accent Color',
+                desc: 'Select your application accent color',
+              },
+              action: {
+                reset: 'Reset to default',
+                cancel: 'Cancel',
+                save: 'Save Preferences',
+              },
             },
           },
           id: {
@@ -68,11 +88,31 @@
               light: 'Tema Terang',
               dark: 'Tema Gelap',
             },
-            menu: {
-              notification: 'Notifikasi',
-              profile: 'Profil',
-              appearance: 'Tampilan',
-              account: 'Akun',
+            form: {
+              title: 'Pengaturan',
+              menu: {
+                notification: 'Notifikasi',
+                profile: 'Profil',
+                appearance: 'Tampilan',
+                account: 'Akun',
+              },
+              lang: {
+                name: 'Bahasa',
+                desc: 'Pilih bahasa pada aplikasi',
+              },
+              theme: {
+                name: 'Tema Antarmuka',
+                desc: 'Pilih tema aplikasi',
+              },
+              accentColor: {
+                name: 'Warna Aksen',
+                desc: 'Pilih warna aksen untuk aplikasi',
+              },
+              action: {
+                reset: 'Reset pengaturan',
+                cancel: 'Batalkan',
+                save: 'Simpan Preferensi',
+              },
             },
           },
         },
@@ -117,7 +157,7 @@
         return `
           <!-- title -->
           <div class="flex justify-between gap-4 items-center">
-            <p class="font-bold text-xl">Settings</p>
+            <p class="font-bold text-xl">${lang.form.title}</p>
             <button class="p-2 rounded-full">
               <i data-lucide="x" class="size-7"></i>
             </button>
@@ -127,27 +167,31 @@
           <hr class="mt-4 mb-6" />
           <div class="flex gap-6 font-medium dark:text-white">
             <button type="button" class="cursor-not-allowed">
-              ${lang.menu.profile}
+              ${lang.form.menu.profile}
             </button>
             <button type="button" class="cursor-not-allowed">
-              ${lang.menu.notification}
+              ${lang.form.menu.notification}
             </button>
             <button
               type="button"
               class="underline text-blue-600 underline-offset-8"
             >
-              ${lang.menu.appearance}
+              ${lang.form.menu.appearance}
             </button>
             <button type="button" class="cursor-not-allowed">
-              ${lang.menu.account}
+              ${lang.form.menu.account}
             </button>
           </div>
 
           <!-- lang -->
           <div class="flex mt-8 justify-between items-center">
             <div>
-              <p class="font-medium dark:text-white">Language</p>
-              <p class="font-light">Select the language of application</p>
+              <p class="font-medium dark:text-white">
+                ${lang.form.lang.name}
+              </p>
+              <p class="font-light">
+                ${lang.form.lang.desc}
+              </p>
             </div>
             <select
               name="lang"
@@ -168,8 +212,12 @@
           <!-- mode -->
           <div class="space-y-2 mt-8">
             <div>
-              <p class="font-medium dark:text-white">Interface theme</p>
-              <p class="font-light">Customize application theme</p>
+              <p class="font-medium dark:text-white">
+                ${lang.form.theme.name}
+              </p>
+              <p class="font-light">
+                ${lang.form.theme.desc}
+              </p>
             </div>
             <div class="flex gap-6 pt-2" id="theme">
             </div>
@@ -178,8 +226,12 @@
           <!-- accent color -->
           <div class="flex gap-4 justify-between items-center mt-8">
             <div>
-              <p class="font-medium dark:text-white">Accent Color</p>
-              <p class="font-light">Select your application accent color</p>
+              <p class="font-medium dark:text-white">
+                ${lang.form.accentColor.name}  
+              </p>
+              <p class="font-light">
+                ${lang.form.accentColor.desc}
+              </p>
             </div>
             <div class="flex gap-4 pt-2" id="accentColor"></div>
           </div>
@@ -187,9 +239,9 @@
           <hr class="mt-8 mb-6" />
           <div class="flex justify-between items-center">
             <button type="button">
-              <div class="p-2 px-4 flex gap-4">
+              <div class="p-2 px-4 flex gap-2 md:gap-4 items-center">
                 <i data-lucide="rotate-ccw" class="size-6"></i>
-                reset to default
+                ${lang.form.action.reset}
               </div>
             </button>
 
@@ -198,13 +250,13 @@
                 <div
                   class="rounded-xl p-2 px-4 bg-gray-300 dark:bg-gray-200 dark:text-gray-600"
                 >
-                  Cancel
+                  ${lang.form.action.cancel}
                 </div>
               </button>
               <button
                 class="rounded-xl p-2 px-4 bg-blue-600 text-white dark:bg-blue-500"
               >
-                Save Preferences
+                ${lang.form.action.save}
               </button>
             </div>
           </div>
