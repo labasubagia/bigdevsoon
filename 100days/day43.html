@@ -1,0 +1,199 @@
+<html>
+  <head>
+    <!-- Our unique tag to identify the solution -->
+    <bds />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BigDevSoon Challenge</title>
+
+    <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Add your external script links here, if any -->
+    <link rel="stylesheet" href="../style/font.css" />
+  </head>
+
+  <body class="poppins-regular w-full min-h-screen bg-blue-50">
+    <!-- solution -->
+    <div
+      class="min-h-screen min-w-screen flex relative items-center justify-center p-4"
+    >
+      <!-- card -->
+      <div
+        class="bg-white rounded-3xl overflow-hidden shadow-lg w-full max-w-[425px]"
+      >
+        <!-- head -->
+        <div
+          class="h-[200px] object-cover bg-center w-full bg-[url(https://i.ibb.co/pzBt9yt/image.png)] relative p-4"
+        >
+          <!-- camera icon -->
+          <button
+            class="p-1 bg-gray-100 rounded-full aspect-square absolute right-6 top-6"
+          >
+            <i data-lucide="camera" class="size-8 text-white fill-blue-600"></i>
+          </button>
+
+          <!-- profile photo -->
+          <div class="absolute -bottom-12 left-6">
+            <img
+              src="https://i.ibb.co/7rJzQ8N/image.png"
+              class="size-28 rounded-full ring-4 ring-white aspect-square object-cover"
+              alt=""
+            />
+            <i
+              data-lucide="badge-check"
+              class="size-8 absolute bottom-0 right-0 text-white fill-blue-600"
+            ></i>
+          </div>
+        </div>
+
+        <!-- body -->
+        <div class="p-6">
+          <!-- edit -->
+          <div class="flex justify-between gap-4">
+            <div></div>
+            <button class="p-2 bg-gray-200 rounded-full aspect-square">
+              <i class="text-gray-500 size-5" data-lucide="pencil"></i>
+            </button>
+          </div>
+
+          <!-- name -->
+          <div class="flex justify-between gap-4 items-center mt-4">
+            <p class="text-2xl font-bold">Javier Zanneti</p>
+            <div class="flex gap-2 items-center">
+              <a href="https://twitter.com/javierzanetti?lang=en" class="p-1">
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 16 16"
+                  class="size-7"
+                  height="1em"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                href="https://www.instagram.com/javierzanetti/?hl=en"
+                class="p-1"
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 448 512"
+                  class="size-7"
+                  height="1em"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- badge -->
+          <div class="flex gap-2">
+            <span
+              class="p-1 px-2 rounded-full bg-blue-300 text-blue-700 uppercase text-xs"
+              >football</span
+            >
+            <span
+              class="p-1 px-2 rounded-full bg-blue-300 text-blue-700 uppercase text-xs"
+              >ag</span
+            >
+          </div>
+
+          <!-- club -->
+          <div class="flex gap-2 items-center mt-6">
+            <img
+              src="https://i.ibb.co/LhPzXmb/image.png"
+              class="size-9 object-cover"
+              alt=""
+            />
+            <p class="font-medium">FC Internazionale Milano • #4</p>
+          </div>
+
+          <!-- info -->
+          <div class="mt-4">
+            <div class="flex justify-between items-center cursor-pointer">
+              <p class="text-lg text-blue-700">INFO</p>
+              <i data-lucide="chevron-down" class="size-5"></i>
+            </div>
+          </div>
+
+          <!-- career -->
+          <div class="mt-4">
+            <div class="flex justify-between items-center cursor-pointer">
+              <p class="text-lg text-blue-700">CAREER HISTORY</p>
+              <i data-lucide="chevron-down" class="size-5"></i>
+            </div>
+          </div>
+
+          <!-- linked article -->
+          <div class="mt-4">
+            <div class="flex justify-between items-center cursor-pointer">
+              <p class="text-lg text-blue-700">LINKED ARTICLE</p>
+            </div>
+
+            <a
+              class="flex justify-between gap-4 mt-4 items-center"
+              href="https://www.sportskeeda.com/football/news-javier-zanetti-picks-2023-ballon-d-or-winner"
+            >
+              <div class="flex-1">
+                <p class="text-xs text-gray-400">2023/05/29</p>
+                <p class="font-medium mt-2 leading-4">
+                  Javier Zanetti picks his 2023 Ballon d'Or winner
+                </p>
+              </div>
+              <img
+                src="https://i.ibb.co/ng2JBmN/Ballon-d-Or.jpg"
+                class="size-16 aspect-square rounded-lg object-cover"
+                alt=""
+              />
+            </a>
+
+            <a
+              class="flex justify-between gap-4 mt-4 items-center"
+              href="https://www.sportskeeda.com/football/news-javier-zanetti-picks-2023-ballon-d-or-winner"
+            >
+              <div class="flex-1">
+                <p class="text-xs text-gray-400">2023/05/20</p>
+                <p class="font-medium mt-2 leading-4">
+                  Javier Zanetti: FC Internazionale Milano, Vice President /
+                  Inter Campus Ambassador
+                </p>
+              </div>
+              <img
+                src="https://i.ibb.co/FYyfttV/image.png"
+                class="size-16 aspect-square rounded-lg object-cover"
+                alt=""
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      refreshIcons()
+
+      function refreshIcons() {
+        lucide.createIcons()
+      }
+    </script>
+  </body>
+</html>
