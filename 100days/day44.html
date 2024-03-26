@@ -1,0 +1,82 @@
+<html>
+  <head>
+    <!-- Our unique tag to identify the solution -->
+    <bds />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BigDevSoon Challenge</title>
+
+    <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Add your external script links here, if any -->
+    <link rel="stylesheet" href="../style/font.css" />
+  </head>
+
+  <body class="poppins-regular w-full min-h-screen bg-blue-50">
+    <!-- solution -->
+    <div
+      class="min-h-screen min-w-screen flex relative items-center justify-center p-8 bg-[url(https://i.ibb.co/thGk3xh/image.png)] bg-cover"
+    >
+      <div class="space-y-4 md:space-y-8">
+        <p
+          class="uppercase text-3xl sm:text-5xl md:text-6xl font-medium text-center"
+        >
+          we're launching soon
+        </p>
+        <div
+          id="times"
+          class="backdrop-blur-lg p-4 px-10 sm:p-8 sm:px-20 rounded-3xl shadow-2xl ring-2 ring-white ring-opacity-50 flex flex-wrap justify-between items-center gap-4 sm:gap-8 md:gap-16"
+        ></div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/duration.js"></script>
+    <script>
+      dayjs.extend(window.dayjs_plugin_duration)
+
+      const time = dayjs().add(10, 'day')
+
+      const timesDOM = document.querySelector('#times')
+
+      document.addEventListener('DOMContentLoaded', (event) => {
+        changeTime()
+        setInterval(changeTime, 1000)
+      })
+
+      function changeTime() {
+        const duration = dayjs.duration(time.diff(dayjs()))
+        const days = duration.days()
+        const hours = duration.hours()
+        const minutes = duration.minutes()
+        const seconds = duration.seconds()
+        const arr = [
+          { kind: 'day', n: days },
+          { kind: 'hour', n: hours },
+          { kind: 'minute', n: minutes },
+          { kind: 'second', n: seconds },
+        ]
+        timesDOM.innerHTML = arr.reduce(
+          (html, t) => html + timeComponent(t.n, t.kind),
+          ''
+        )
+      }
+
+      function timeComponent(n, kind) {
+        return `
+          <div class="relative text-center w-fit flex justify-center items-center">
+            <p class="text-6xl md:text-8xl font-bold">
+              ${String(n).padStart(2, 0)}
+            </p>
+            <p
+              class="absolute text-white text-xl md:text-2xl font-medium drop-shadow-xl tracking-widest uppercase top-[30%]"
+            >
+              ${n == 1 ? kind : `${kind}s`}
+            </p>
+          </div>
+        `
+      }
+    </script>
+  </body>
+</html>
