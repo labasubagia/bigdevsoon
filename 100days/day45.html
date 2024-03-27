@@ -1,0 +1,110 @@
+<html>
+  <head>
+    <!-- Our unique tag to identify the solution -->
+    <bds />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BigDevSoon Challenge</title>
+
+    <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Add your external script links here, if any -->
+    <link rel="stylesheet" href="../style/font.css" />
+  </head>
+
+  <body class="poppins-regular w-full min-h-screen bg-white-50">
+    <!-- solution -->
+    <div
+      class="min-h-screen min-w-screen p-4 container mx-auto flex flex-col items-center sm:justify-center"
+    >
+      <div>
+        <p class="text-purple-400 capitalize text-center">Features</p>
+        <p class="text-3xl capitalize text-center mt-2">
+          Our Web Hosting features
+        </p>
+        <div
+          id="features"
+          class="mt-8 grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
+        ></div>
+      </div>
+    </div>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      const features = [
+        {
+          icon: 'shopping-cart',
+          name: 'E-commerce Features',
+          desc: `Support for online transactions, shopping chart and source payment gateways if you plan to run an online store.`,
+        },
+        {
+          icon: 'hard-drive',
+          name: 'Disk Space',
+          desc: 'The amount of storage space provided for your website files, emails, databases, etc.',
+        },
+        {
+          icon: 'server',
+          name: 'Server Location',
+          desc: 'The physical location of the server hosting your website, which can affect page load times and SEO',
+        },
+        {
+          icon: 'mouse-pointer-click',
+          name: 'One-Click Installers',
+          desc: 'Tools like Softculous or Fantastico that simply the installation of popular applications like Wordpress, Joomla or Drupal.',
+        },
+        {
+          icon: 'file-code',
+          name: 'Script Support',
+          desc: 'Support for programming languages and scripts such as PHP, Python, Perl, and Ruby on Rails.',
+        },
+        {
+          icon: 'app-window',
+          name: 'Domain Hosting',
+          desc: 'The ability to host one or more domain names on the same hosting account.',
+        },
+      ]
+
+      const featuresDOM = document.querySelector('#features')
+
+      document.addEventListener('DOMContentLoaded', (event) => {
+        changeFeatures()
+      })
+
+      function changeFeatures() {
+        featuresDOM.innerHTML = features.reduce(
+          (html, feature, index) => html + featureComponent(feature, index),
+          ''
+        )
+        refreshIcons()
+        featuresDOM.querySelector('.feature').focus()
+      }
+
+      function featureComponent(data, index) {
+        return `
+          <div
+            tabindex="${index}"
+            class="
+              feature outline-none
+              rounded-xl p-4 ring-2 group ring-gray-200 space-y-4 cursor-pointer 
+              focus:text-white focus:ring-0 focus:bg-gradient-to-br from-purple-800 to-purple-500
+            "
+          >
+            <div
+              class="bg-white rounded-xl p-2 ring-2 ring-gray-200 aspect-square w-fit group-focus:ring-0"
+            >
+              <i data-lucide="${data?.icon}" class="size-14 text-black"></i>
+            </div>
+            <p class="font-medium text-xl capitalize">${data?.name}</p>
+            <p class="font-light">${data?.desc}</p>
+            <p class="">Learn More</p>
+          </div>
+        `
+      }
+
+      refreshIcons()
+      function refreshIcons() {
+        lucide.createIcons()
+      }
+    </script>
+  </body>
+</html>
