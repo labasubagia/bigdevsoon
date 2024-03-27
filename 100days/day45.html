@@ -87,15 +87,18 @@
               feature outline-none md:max-w-[350px]
               rounded-xl p-4 ring-2 group ring-gray-200 space-y-4 cursor-pointer 
               focus:text-white focus:ring-0 focus:bg-gradient-to-br from-purple-800 to-purple-500
+              flex flex-col justify-between
             "
           >
-            <div
-              class="bg-white rounded-xl p-2 ring-2 ring-gray-200 aspect-square w-fit group-focus:ring-0"
-            >
-              <i data-lucide="${data?.icon}" class="size-14 text-black"></i>
+            <div>
+              <div
+                class="bg-white rounded-xl p-2 ring-2 ring-gray-200 aspect-square w-fit group-focus:ring-0"
+              >
+                <i data-lucide="${data?.icon}" class="size-14 text-black"></i>
+              </div>
+              <p class="font-medium text-xl capitalize">${data?.name}</p>
+              <p class="font-light">${data?.desc}</p>
             </div>
-            <p class="font-medium text-xl capitalize">${data?.name}</p>
-            <p class="font-light">${data?.desc}</p>
             <p class="">Learn More</p>
           </div>
         `
