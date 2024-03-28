@@ -1,0 +1,185 @@
+<html>
+  <head>
+    <!-- Our unique tag to identify the solution -->
+    <bds />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BigDevSoon Challenge</title>
+
+    <!-- TailwindCSS for styling. Feel free to integrate other libraries as needed -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Add your external script links here, if any -->
+    <style type="text/tailwindcss">
+      th,
+      td {
+        @apply text-left p-2 px-3 border-y-8 border-indigo-50;
+      }
+      th {
+        @apply font-medium;
+      }
+      td {
+        @apply bg-white;
+      }
+      tbody tr {
+        @apply rounded-xl overflow-hidden;
+      }
+    </style>
+    <link rel="stylesheet" href="../style/font.css" />
+  </head>
+
+  <body class="poppins-regular w-full min-h-screen bg-indigo-50">
+    <!-- solution -->
+    <div
+      class="min-h-screen min-w-screen p-4 container mx-auto flex flex-col items-center sm:justify-center max-w-[1100px]"
+    >
+      <!-- content -->
+      <div class="w-full">
+        <!-- head -->
+        <div class="flex justify-between items-center container w-full p-2">
+          <p class="text-xl font-medium ml-8">Customer List</p>
+          <button
+            class="text-white p-2 px-5 rounded-full flex gap-1 bg-blue-400"
+          >
+            <i data-lucide="plus" class="size-5"></i>
+            Add Customer
+          </button>
+        </div>
+
+        <!-- content -->
+        <div class="w-full table-auto mt-4 overflow-x-auto">
+          <table class="table-auto overflow-x-scroll w-full">
+            <thead class="uppercase">
+              <tr>
+                <th><input type="checkbox" /></th>
+                <th>basic info</th>
+                <th>company name</th>
+                <th>phone number</th>
+                <th class="text-center">status</th>
+                <th colspan="2">created date</th>
+              </tr>
+            </thead>
+            <tbody class="border-t-8" id="customers"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script>
+      const DAY_FORMAT = 'DD MMM YYYY'
+
+      const data = {
+        status: {
+          active: 'bg-green-400 text-green-800',
+          inactive: 'bg-red-400 text-red-800',
+        },
+        customers: [
+          {
+            image: 'https://i.ibb.co/c8jX32R/image.png',
+            name: 'John',
+            email: 'john@gmail.com',
+            company: 'John Papa',
+            phone: '+62 993 441 231',
+            status: 'active',
+            created: dayjs().format(DAY_FORMAT),
+          },
+          {
+            image: 'https://i.ibb.co/y8hqM9y/image.png',
+            name: 'Minami',
+            email: 'minami@gmail.com',
+            company: 'Purple & Co.',
+            phone: '+62 993 441 265',
+            status: 'inactive',
+            created: dayjs().add(-255, 'day').format(DAY_FORMAT),
+          },
+          {
+            image: 'https://i.ibb.co/68xfyTC/image.png',
+            name: 'Kazuha',
+            email: 'zuha@gmail.com',
+            company: 'Le Entertaiment',
+            phone: '+62 993 881 265',
+            status: 'active',
+            created: dayjs().add(-4, 'day').format(DAY_FORMAT),
+          },
+          {
+            image: 'https://i.ibb.co/S35jVbf/image.png',
+            name: 'Jane',
+            email: 'jane@gmail.com',
+            company: 'Purite Entertaiment',
+            phone: '+62 993 771 165',
+            status: 'active',
+            created: dayjs().add(-2, 'day').format(DAY_FORMAT),
+          },
+          {
+            image: 'https://i.ibb.co/n3yLb4j/image.png',
+            name: 'Tony',
+            email: 'tony@gmail.com',
+            company: 'Stark Inc',
+            phone: '+62 112 771 165',
+            status: 'active',
+            created: dayjs().add(-1, 'day').format(DAY_FORMAT),
+          },
+        ],
+      }
+
+      const customersDOM = document.querySelector('#customers')
+
+      document.addEventListener('DOMContentLoaded', () => {
+        changeCustomers()
+        refreshIcons()
+      })
+
+      function changeCustomers() {
+        customersDOM.innerHTML = data.customers.reduce(
+          (html, customer, index) => html + customerComponent(customer, index),
+          ''
+        )
+        refreshIcons()
+      }
+
+      function customerComponent(customer, index) {
+        return `
+          <tr class="font-medium">
+            <td class="rounded-l-full overflow-hidden">
+              <input type="checkbox" />
+            </td>
+            <td>
+              <div class="flex gap-4 justify-start items-center text-left w-full">
+                <img 
+                  src="${customer?.image}" 
+                  class="size-12 aspect-square rounded-full"
+                />
+                <div>
+                  <p>${customer?.name}</p>
+                  <p class="text-sm font-light">${customer?.email}</p>
+                </div>
+              </div>
+            </td>
+            <td>${customer?.company}</td>
+            <td>${customer?.phone}</td>
+            <td class="text-center">
+              <span 
+                class="
+                  p-1 px-2 text-sm rounded-full ${data.status[customer?.status]}
+                "
+              >
+                ${customer?.status}
+              </span>
+            </td>
+            <td>${customer?.created}</td>
+            <td class="rounded-r-full overflow-hidden">
+              <button class="p1">
+                <i data-lucide="ellipsis" class="size-4"></i>
+              </button>
+            </td>
+          </tr>
+        `
+      }
+
+      function refreshIcons() {
+        lucide.createIcons()
+      }
+    </script>
+  </body>
+</html>
